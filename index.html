@@ -707,7 +707,7 @@ footer {
 
 /* ════════ RESPONSIVE ════════ */
 @media (max-width: 900px) {
-  .pillar-grid, .blog-grid, .prod-grid { grid-template-columns: 1fr; }
+  .pillar-grid, .blog-grid, .prod-grid { grid-template-columns: 1fr !important; }
   .about-inner { grid-template-columns: 1fr; gap: 2rem; }
   .about-photo { max-width: 400px; margin: 0 auto; }
   .foot-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -784,7 +784,7 @@ footer {
     <div class="reveal">
       <p class="tag">What We Believe</p>
       <h2 class="stitle">Three Pillars of Harmony</h2>
-      <p class="sdesc">Real wellness isn't a trend — it's a return to what the earth has always provided.</p>
+      <p class="sdesc">Real wellness isn't a trend it's a return to what the earth has always provided.</p>
     </div>
     <div class="pillar-grid">
       <div class="pillar reveal">
@@ -824,13 +824,14 @@ footer {
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-inner">
-    <div class="about-photo reveal" style="background-image:url('/images/shelf.jpg');background-size:cover;background-position:center;">
+    <div class="about-photo reveal">
+      <span>Your photo here</span>
     </div>
     <div class="about-text">
       <div class="reveal">
         <p class="tag">The Story</p>
         <h2 class="stitle">Rooted in Real Life</h2>
-        <p class="sdesc">Herbal Harmony didn't start with a business plan. It started with a need. I was dealing with respiratory issues and searching for real answers that's when I discovered mullein leaf and its powerful lung support.</p>
+        <p class="sdesc">Herbal Harmony didn't start with a business plan. It started with a need. I was dealing with several issues and searching for real answers that's when I discovered mullein leaf and its powerful lung support.</p>
         <p class="sdesc">That one herb changed everything. It opened a door into the world of natural remedies adaptogens, herbal teas, whole-plant supplements. I started researching, experimenting, and feeling the difference in my own body.</p>
         <p class="sdesc">This site is where I share what I've learned the herbs, the science, the protocols so you can take your wellness into your own hands the same way I did.</p>
         <p class="about-sig">— Dondre</p>
@@ -855,33 +856,42 @@ footer {
   </div>
 </section>
 
-<!-- COMING SOON -->
+<!-- PRODUCTS -->
 <section class="coming-soon" id="products">
   <div class="cs-inner">
     <div class="reveal">
-      <p class="tag">Coming Soon</p>
+      <p class="tag">Shop</p>
       <h2 class="stitle">From Our Hands to Yours</h2>
-      <p class="sdesc">We're developing a line of herbal products rooted in real ingredients and real results. Be the first to know when they drop.</p>
+      <p class="sdesc">Resources and products rooted in real experience, real ingredients, and real results.</p>
     </div>
-    <div class="prod-grid">
+    <div class="prod-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <a href="https://www.amazon.com/6-Phases-Fasting-Dondre-Burton/dp/B0D17YM9G5" target="_blank" rel="noopener" class="prod-card reveal" style="text-decoration:none;border:1.5px solid rgba(184,160,96,0.3);">
+        <div class="prod-emoji">📖</div>
+        <h4>The 6 Phases of Fasting</h4>
+        <p>A comprehensive guide to the transformative journey of fasting — from preparation to autophagy to refeeding.</p>
+        <span style="display:inline-block;margin-top:0.8rem;font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">Buy on Amazon →</span>
+      </a>
       <div class="prod-card reveal">
         <div class="prod-emoji">🍵</div>
         <h4>Herbal Tea Blends</h4>
         <p>Small-batch blends crafted for focus, rest, and daily balance.</p>
+        <span style="display:inline-block;margin-top:0.8rem;font-size:0.65rem;color:rgba(244,241,235,0.35);letter-spacing:0.1em;text-transform:uppercase;">Coming Soon</span>
       </div>
       <div class="prod-card reveal">
         <div class="prod-emoji">🌿</div>
         <h4>Herbal Supplements</h4>
         <p>Whole-plant formulas designed to support your body naturally.</p>
+        <span style="display:inline-block;margin-top:0.8rem;font-size:0.65rem;color:rgba(244,241,235,0.35);letter-spacing:0.1em;text-transform:uppercase;">Coming Soon</span>
       </div>
       <div class="prod-card reveal">
         <div class="prod-emoji">🫙</div>
         <h4>Herbal Tinctures</h4>
         <p>Concentrated plant extracts for targeted, everyday wellness support.</p>
+        <span style="display:inline-block;margin-top:0.8rem;font-size:0.65rem;color:rgba(244,241,235,0.35);letter-spacing:0.1em;text-transform:uppercase;">Coming Soon</span>
       </div>
     </div>
     <div class="notify reveal">
-      <input type="email" placeholder="Enter your email for updates">
+      <input type="email" placeholder="Enter your email for product updates">
       <button>Notify Me</button>
     </div>
   </div>
@@ -1011,3 +1021,4 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 </body>
 </html>
+
