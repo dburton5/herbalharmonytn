@@ -36,7 +36,18 @@ body {
   overflow-x: hidden;
 }
 
-body::after {
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+  body::after {
   content: '';
   position: fixed;
   inset: 0;
