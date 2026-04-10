@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,18 +35,7 @@ body {
   overflow-x: hidden;
 }
 
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
-  body::after {
+body::after {
   content: '';
   position: fixed;
   inset: 0;
@@ -862,39 +850,8 @@ footer {
     <a href="/blog/" class="btn btn-outline reveal" style="font-size:0.72rem; padding:0.65rem 1.4rem;">View All</a>
   </div>
   <div class="blog-grid" id="blogGrid">
-    <!-- Blog posts will be loaded dynamically, fallback cards below -->
-    <div class="bcard reveal">
-      <div class="bcard-img bcard-img-1">
-        <span class="bcard-cat">Herbal Remedies</span>
-      </div>
-      <div class="bcard-body">
-        <p class="bcard-date">Coming Soon</p>
-        <h3>Mullein Leaf: The Herb That Started It All</h3>
-        <p>How I discovered mullein leaf for lung support, what the research says about its respiratory benefits, and how to use it in teas and tinctures.</p>
-        <a href="#" class="bcard-link">Read more →</a>
-      </div>
-    </div>
-    <div class="bcard reveal">
-      <div class="bcard-img bcard-img-2">
-        <span class="bcard-cat">Supplements</span>
-      </div>
-      <div class="bcard-body">
-        <p class="bcard-date">Coming Soon</p>
-        <h3>Adaptogens 101: What They Are and Where to Start</h3>
-        <p>A no-nonsense guide to adaptogenic herbs like ashwagandha, rhodiola, and reishi — what they do, who they're for, and how to pick quality supplements.</p>
-        <a href="#" class="bcard-link">Read more →</a>
-      </div>
-    </div>
-    <div class="bcard reveal">
-      <div class="bcard-img bcard-img-3">
-        <span class="bcard-cat">Holistic Wellness</span>
-      </div>
-      <div class="bcard-body">
-        <p class="bcard-date">Coming Soon</p>
-        <h3>Intermittent Fasting + Herbs: A Protocol That Works</h3>
-        <p>How I pair a 16:8 fasting window with herbal teas and beet juice to support vascular health and sustained focus throughout the day.</p>
-        <a href="#" class="bcard-link">Read more →</a>
-      </div>
+    <div class="bcard reveal" style="text-align:center;padding:3rem;grid-column:1/-1;">
+      <p style="color:var(--text-light);font-family:'Lora',serif;">Loading posts...</p>
     </div>
   </div>
 </section>
@@ -974,6 +931,83 @@ const obs = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Fetch latest blog posts from GitHub
+(function() {
+  var GITHUB_USER = 'dburton5';
+  var GITHUB_REPO = 'herbalharmonytn';
+  var POSTS_PATH = 'blog/posts';
+  var MAX_POSTS = 3;
+
+  var catColors = {
+    'herbal remedies': 'linear-gradient(135deg, #6B8B5E 0%, #8BA87A 40%, #A8C49A 100%)',
+    'supplements': 'linear-gradient(135deg, #C47A4E 0%, #D4A06A 40%, #E8C5A0 100%)',
+    'holistic wellness': 'linear-gradient(135deg, #7A6B5E 0%, #A08B7A 40%, #C4B4A0 100%)'
+  };
+
+  function parseFM(content) {
+    var m = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+    if (!m) return { meta: {}, body: content };
+    var meta = {};
+    m[1].split('\n').forEach(function(line) {
+      var i = line.indexOf(':');
+      if (i > -1) {
+        var k = line.substring(0, i).trim();
+        var v = line.substring(i + 1).trim();
+        if ((v.charAt(0) === '"' && v.charAt(v.length-1) === '"') ||
+            (v.charAt(0) === "'" && v.charAt(v.length-1) === "'")) v = v.slice(1,-1);
+        meta[k] = v;
+      }
+    });
+    return { meta: meta, body: m[2] };
+  }
+
+  function fmtDate(d) {
+    if (!d) return '';
+    try { return new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}); }
+    catch(e) { return d; }
+  }
+
+  fetch('https://api.github.com/repos/' + GITHUB_USER + '/' + GITHUB_REPO + '/contents/' + POSTS_PATH)
+    .then(function(r) { if (!r.ok) throw new Error(); return r.json(); })
+    .then(function(files) {
+      var md = files.filter(function(f) { return f.name.endsWith('.md'); });
+      if (md.length === 0) throw new Error('no posts');
+      return Promise.all(md.map(function(f) {
+        return fetch(f.download_url).then(function(r) { return r.text(); }).then(function(txt) {
+          var p = parseFM(txt);
+          return { title: p.meta.title||'Untitled', date: p.meta.date||'', category: p.meta.category||'',
+                   description: p.meta.description||'', thumbnail: p.meta.thumbnail||'' };
+        });
+      }));
+    })
+    .then(function(posts) {
+      posts.sort(function(a,b) { return new Date(b.date) - new Date(a.date); });
+      var grid = document.getElementById('blogGrid');
+      var html = '';
+      var shown = posts.slice(0, MAX_POSTS);
+      for (var i = 0; i < shown.length; i++) {
+        var p = shown[i];
+        var bg = catColors[(p.category||'').toLowerCase()] || catColors['herbal remedies'];
+        var thumbStyle = p.thumbnail ? 'background-image:url('+p.thumbnail+');background-size:cover;background-position:center;' : 'background:'+bg+';';
+        html += '<a href="/blog/" class="bcard reveal vis">' +
+          '<div class="bcard-img" style="'+thumbStyle+'">' +
+          (p.category ? '<span class="bcard-cat">'+p.category+'</span>' : '') +
+          '</div><div class="bcard-body">' +
+          '<p class="bcard-date">'+fmtDate(p.date)+'</p>' +
+          '<h3>'+p.title+'</h3>' +
+          '<p>'+p.description+'</p>' +
+          '<span class="bcard-link">Read more →</span>' +
+          '</div></a>';
+      }
+      grid.innerHTML = html;
+    })
+    .catch(function() {
+      document.getElementById('blogGrid').innerHTML =
+        '<div style="text-align:center;padding:3rem;grid-column:1/-1;">' +
+        '<p style="color:var(--text-light);font-family:Lora,serif;">Posts coming soon — check back shortly.</p></div>';
+    });
+})();
 </script>
 
 </body>
