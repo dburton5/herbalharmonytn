@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Herbal Harmony TN</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-deep: #2B3B22;
+  --green-dark: #3A4F2F;
+  --green-mid: #4E6B3C;
+  --green-sage: #7A8B6F;
+  --green-light: #96A88A;
+  --cream: #F4F1EB;
+  --cream-warm: #EAE4D8;
+  --gold: #B8A060;
+  --text-dark: #2A2A25;
+  --text-mid: #5A5A50;
+  --text-light: #8A8A7E;
+  --white: #FDFBF7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(244, 241, 235, 0.95);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 16px rgba(0,0,0,0.05);
+}
+
+.nav-logo img { height: 56px; }
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-mid);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--green-dark); }
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 24px; height: 2px;
+  background: var(--green-deep);
+}
+
+/* HEADER */
+.blog-header {
+  padding: 8rem 2.5rem 3rem;
+  background: var(--cream);
+  text-align: center;
+}
+
+.blog-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  color: var(--green-deep);
+  margin-bottom: 0.8rem;
+}
+
+.blog-header p {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  color: var(--text-mid);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* POSTS GRID */
+.posts-section {
+  padding: 3rem 2.5rem 6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+.post-card {
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(122,139,111,0.08);
+  transition: all 0.4s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 44px rgba(0,0,0,0.06);
+}
+
+.post-thumb {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #6B8B5E 0%, #8BA87A 40%, #A8C49A 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.post-body { padding: 1.4rem; }
+
+.post-cat {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.post-date {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.post-card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.post-card p {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+.post-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+  color: var(--green-mid);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  grid-column: 1 / -1;
+}
+
+.empty-state h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: var(--green-deep);
+  margin-bottom: 0.8rem;
+}
+
+.empty-state p {
+  font-family: 'Lora', serif;
+  color: var(--text-mid);
+  font-size: 1rem;
+}
+
+/* FOOTER */
+footer {
+  background: #1E2419;
+  color: rgba(244,241,235,0.55);
+  padding: 2.5rem 2.5rem 1.5rem;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.72rem;
+  color: rgba(244,241,235,0.25);
+}
+
+footer a {
+  color: rgba(244,241,235,0.4);
+  text-decoration: none;
+}
+
+footer a:hover { color: var(--green-light); }
+
+@media (max-width: 900px) {
+  .posts-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  nav { padding: 0.8rem 1.5rem; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: var(--cream);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.1rem; }
+  .menu-toggle { display: flex; z-index: 1001; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.jpg" alt="Herbal Harmony">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" onclick="closeMenu()">Home</a></li>
+    <li><a href="/#about" onclick="closeMenu()">About</a></li>
+    <li><a href="/blog/" onclick="closeMenu()">Blog</a></li>
+    <li><a href="/#products" onclick="closeMenu()">Products</a></li>
+  </ul>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="blog-header">
+  <h1>The Journal</h1>
+  <p>Herbal wisdom, wellness insights, and holistic living — from our experience to yours.</p>
+</div>
+
+<div class="posts-section">
+  <div class="posts-grid" id="postsGrid">
+    <div class="empty-state">
+      <h2>Posts are on the way</h2>
+      <p>We're working on our first articles. Check back soon for content on herbal remedies, natural supplements, and holistic wellness.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Herbal Harmony TN &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; Harmonize Life</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+</script>
+
+</body>
+</html>

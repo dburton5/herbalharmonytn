@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herbal Harmony TN — Harmonize Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-deep: #2B3B22;
+  --green-dark: #3A4F2F;
+  --green-mid: #4E6B3C;
+  --green-sage: #7A8B6F;
+  --green-light: #96A88A;
+  --green-pale: #B5C4A8;
+  --cream: #F4F1EB;
+  --cream-warm: #EAE4D8;
+  --cream-dark: #D9D0C1;
+  --gold: #B8A060;
+  --gold-light: #D4C48A;
+  --bark: #6B5744;
+  --text-dark: #2A2A25;
+  --text-mid: #5A5A50;
+  --text-light: #8A8A7E;
+  --white: #FDFBF7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ════════ NAV ════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.4s ease;
+}
+
+nav.scrolled {
+  background: rgba(244, 241, 235, 0.95);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 16px rgba(0,0,0,0.05);
+  padding: 0.6rem 2.5rem;
+}
+
+.nav-logo img {
+  height: 72px;
+  transition: height 0.4s ease;
+}
+
+nav.scrolled .nav-logo img { height: 56px; }
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-mid);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--green-mid);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--green-dark); }
+.nav-links a:hover::after { width: 100%; }
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 24px; height: 2px;
+  background: var(--green-deep);
+  transition: all 0.3s;
+}
+
+/* ════════ HERO ════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 2rem;
+  position: relative;
+  background: linear-gradient(170deg, var(--cream) 0%, var(--cream-warm) 50%, var(--white) 100%);
+  overflow: hidden;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  animation: orbFloat 10s ease-in-out infinite;
+}
+
+.hero-orb-1 {
+  top: -8%; right: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(122,139,111,0.1) 0%, transparent 70%);
+}
+
+.hero-orb-2 {
+  bottom: -12%; left: -8%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(184,160,96,0.07) 0%, transparent 70%);
+  animation-delay: -5s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(15px, -25px) scale(1.05); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.hero-logo {
+  width: 280px;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+.hero-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--green-sage);
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 6.5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.08;
+  color: var(--green-deep);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--green-mid);
+}
+
+.hero-sub {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+
+.hero-btns {
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1s;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-fill {
+  background: var(--green-dark);
+  color: var(--cream);
+  border: none;
+}
+
+.btn-fill:hover {
+  background: var(--green-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(43,59,34,0.18);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--green-dark);
+  border: 1.5px solid var(--green-sage);
+}
+
+.btn-outline:hover {
+  background: var(--green-sage);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1.3s;
+}
+
+.scroll-cue span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+.scroll-cue .bar {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, var(--green-sage), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════ SHARED ════════ */
+section { padding: 6rem 2.5rem; }
+
+.tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--green-sage);
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.stitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+  font-weight: 400;
+  color: var(--green-deep);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.sdesc {
+  font-family: 'Lora', serif;
+  font-size: 0.98rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 540px;
+}
+
+/* ════════ PILLARS ════════ */
+.pillars { background: var(--cream); }
+
+.pillars-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  margin-top: 3rem;
+}
+
+.pillar {
+  background: var(--white);
+  padding: 2.2rem 1.8rem;
+  border-radius: 6px;
+  border: 1px solid rgba(122,139,111,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.pillar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--green-mid), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.pillar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.05);
+}
+
+.pillar:hover::before { transform: scaleX(1); }
+
+.pillar-icon {
+  width: 44px; height: 44px;
+  margin-bottom: 1.2rem;
+}
+
+.pillar h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin-bottom: 0.6rem;
+}
+
+.pillar p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ════════ ABOUT ════════ */
+.about { background: var(--white); }
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(145deg, var(--cream-warm), var(--green-pale), var(--cream));
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-photo::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(122,139,111,0.15);
+  border-radius: 4px;
+}
+
+.about-photo span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--green-dark);
+  opacity: 0.45;
+  text-align: center;
+  padding: 2rem;
+}
+
+.about-text .sdesc { margin-bottom: 1.2rem; }
+
+.about-sig {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--green-mid);
+  margin-top: 1.5rem;
+}
+
+/* ════════ BLOG ════════ */
+.blog { background: var(--cream); }
+
+.blog-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.bcard {
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(122,139,111,0.06);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.bcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 44px rgba(0,0,0,0.06);
+}
+
+.bcard-img {
+  width: 100%;
+  height: 190px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.bcard-img-1 { background: linear-gradient(135deg, #6B8B5E 0%, #8BA87A 40%, #A8C49A 100%); }
+.bcard-img-2 { background: linear-gradient(135deg, #C47A4E 0%, #D4A06A 40%, #E8C5A0 100%); }
+.bcard-img-3 { background: linear-gradient(135deg, #7A6B5E 0%, #A08B7A 40%, #C4B4A0 100%); }
+
+.bcard-cat {
+  position: absolute;
+  bottom: 10px; left: 10px;
+  background: rgba(253,251,247,0.92);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.bcard-body { padding: 1.4rem; }
+
+.bcard-date {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.bcard h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.bcard p {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+.bcard-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+  color: var(--green-mid);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  transition: color 0.3s;
+}
+
+.bcard-link:hover { color: var(--green-deep); }
+
+/* ════════ COMING SOON ════════ */
+.coming-soon {
+  background: var(--green-deep);
+  color: var(--cream);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.coming-soon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(122,139,111,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 60%, rgba(184,160,96,0.08) 0%, transparent 55%);
+}
+
+.cs-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.coming-soon .tag { color: var(--gold); }
+.coming-soon .stitle { color: var(--cream); }
+.coming-soon .sdesc {
+  color: rgba(244,241,235,0.65);
+  margin: 0 auto 2.5rem;
+}
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 2.5rem;
+}
+
+.prod-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 1.8rem 1.2rem;
+  transition: all 0.35s ease;
+}
+
+.prod-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}
+
+.prod-emoji { font-size: 1.8rem; margin-bottom: 0.8rem; }
+
+.prod-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+
+.prod-card p {
+  font-size: 0.78rem;
+  color: rgba(244,241,235,0.5);
+  line-height: 1.6;
+}
+
+.notify {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 420px;
+  margin: 2.5rem auto 0;
+}
+
+.notify input {
+  flex: 1;
+  padding: 0.8rem 1.1rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 3px;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.notify input::placeholder { color: rgba(244,241,235,0.3); }
+.notify input:focus { border-color: var(--green-sage); }
+
+.notify button {
+  padding: 0.8rem 1.6rem;
+  background: var(--gold);
+  color: var(--green-deep);
+  border: none;
+  border-radius: 3px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.notify button:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+/* ════════ FOOTER ════════ */
+footer {
+  background: #1E2419;
+  color: rgba(244,241,235,0.55);
+  padding: 3.5rem 2.5rem 1.5rem;
+}
+
+.foot-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
+}
+
+.foot-brand img {
+  height: 44px;
+  margin-bottom: 1rem;
+  filter: brightness(1.8) saturate(0.5);
+}
+
+.foot-brand p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.foot-col h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--cream);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.foot-col a {
+  display: block;
+  color: rgba(244,241,235,0.45);
+  text-decoration: none;
+  font-size: 0.83rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.foot-col a:hover { color: var(--green-light); }
+
+.foot-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(244,241,235,0.25);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ════════ REVEAL ════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════ RESPONSIVE ════════ */
+@media (max-width: 900px) {
+  .pillar-grid, .blog-grid, .prod-grid { grid-template-columns: 1fr; }
+  .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .about-photo { max-width: 400px; margin: 0 auto; }
+  .foot-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+@media (max-width: 700px) {
+  nav { padding: 0.8rem 1.5rem; }
+  nav.scrolled { padding: 0.5rem 1.5rem; }
+  section { padding: 4rem 1.5rem; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: var(--cream);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.1rem; letter-spacing: 0.15em; }
+  .menu-toggle { display: flex; z-index: 1001; }
+  .hero-logo { width: 200px; }
+  .blog-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .notify { flex-direction: column; }
+  .notify button { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.jpg" alt="Herbal Harmony">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" onclick="closeMenu()">Home</a></li>
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="/blog/" onclick="closeMenu()">Blog</a></li>
+    <li><a href="#products" onclick="closeMenu()">Products</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <img src="/images/logo.jpg" alt="Herbal Harmony" class="hero-logo">
+    <p class="hero-tag">Memphis, Tennessee · Rooted in Nature</p>
+    <h1>Wellness Through<br><em>Nature's Wisdom</em></h1>
+    <p class="hero-sub">Exploring the healing power of herbs, natural supplements, and holistic living — helping you find balance from the roots up.</p>
+    <div class="hero-btns">
+      <a href="/blog/" class="btn btn-fill">Read the Blog</a>
+      <a href="#products" class="btn btn-outline">Coming Soon</a>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Explore</span>
+    <div class="bar"></div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="pillars-inner">
+    <div class="reveal">
+      <p class="tag">What We Believe</p>
+      <h2 class="stitle">Three Pillars of Harmony</h2>
+      <p class="sdesc">Real wellness isn't a trend — it's a return to what the earth has always provided.</p>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar reveal">
+        <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C">
+          <path d="M24 44V22"/>
+          <path d="M24 22C24 22 16 18 16 10C16 6 20 2 24 6C28 2 32 6 32 10C32 18 24 22 24 22Z"/>
+          <path d="M18 38C12 36 8 30 8 24C8 18 12 14 16 14"/>
+          <path d="M30 38C36 36 40 30 40 24C40 18 36 14 32 14"/>
+        </svg>
+        <h3>Herbal Wisdom</h3>
+        <p>Understanding the plants that heal — from mullein and elderberry to adaptogens and ancient herbal remedies passed down through generations.</p>
+      </div>
+      <div class="pillar reveal">
+        <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C">
+          <circle cx="24" cy="24" r="10"/>
+          <path d="M24 4v6M24 38v6M4 24h6M38 24h6"/>
+          <path d="M10 10l4 4M34 34l4 4M10 38l4-4M34 14l4-4"/>
+        </svg>
+        <h3>Nourish & Supplement</h3>
+        <p>Whole-food nutrition, natural supplements, and intentional nourishment — giving your body the building blocks it needs to heal and thrive.</p>
+      </div>
+      <div class="pillar reveal">
+        <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C">
+          <path d="M8 24C8 14 14 8 24 8"/>
+          <path d="M14 24C14 18 18 14 24 14"/>
+          <path d="M20 24C20 21 21 20 24 20"/>
+          <circle cx="24" cy="24" r="2" fill="#4E6B3C"/>
+          <path d="M24 8C34 8 40 14 40 24C40 34 34 40 24 40C14 40 8 34 8 24"/>
+        </svg>
+        <h3>Holistic Living</h3>
+        <p>Fasting protocols, movement, sauna sessions, herbal teas — building a daily rhythm that brings your mind and body into alignment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo reveal">
+      <span>Your photo here</span>
+    </div>
+    <div class="about-text">
+      <div class="reveal">
+        <p class="tag">The Story</p>
+        <h2 class="stitle">Rooted in Real Life</h2>
+        <p class="sdesc">Herbal Harmony didn't start with a business plan. It started with a need. I was dealing with respiratory issues and searching for real answers — that's when I discovered mullein leaf and its powerful lung support.</p>
+        <p class="sdesc">That one herb changed everything. It opened a door into the world of natural remedies — adaptogens, herbal teas, whole-plant supplements. I started researching, experimenting, and feeling the difference in my own body.</p>
+        <p class="sdesc">This site is where I share what I've learned — the herbs, the science, the protocols — so you can take your wellness into your own hands the same way I did.</p>
+        <p class="about-sig">— Dondre</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="blog-top">
+    <div class="reveal">
+      <p class="tag">From the Journal</p>
+      <h2 class="stitle">Latest Posts</h2>
+    </div>
+    <a href="/blog/" class="btn btn-outline reveal" style="font-size:0.72rem; padding:0.65rem 1.4rem;">View All</a>
+  </div>
+  <div class="blog-grid" id="blogGrid">
+    <!-- Blog posts will be loaded dynamically, fallback cards below -->
+    <div class="bcard reveal">
+      <div class="bcard-img bcard-img-1">
+        <span class="bcard-cat">Herbal Remedies</span>
+      </div>
+      <div class="bcard-body">
+        <p class="bcard-date">Coming Soon</p>
+        <h3>Mullein Leaf: The Herb That Started It All</h3>
+        <p>How I discovered mullein leaf for lung support, what the research says about its respiratory benefits, and how to use it in teas and tinctures.</p>
+        <a href="#" class="bcard-link">Read more →</a>
+      </div>
+    </div>
+    <div class="bcard reveal">
+      <div class="bcard-img bcard-img-2">
+        <span class="bcard-cat">Supplements</span>
+      </div>
+      <div class="bcard-body">
+        <p class="bcard-date">Coming Soon</p>
+        <h3>Adaptogens 101: What They Are and Where to Start</h3>
+        <p>A no-nonsense guide to adaptogenic herbs like ashwagandha, rhodiola, and reishi — what they do, who they're for, and how to pick quality supplements.</p>
+        <a href="#" class="bcard-link">Read more →</a>
+      </div>
+    </div>
+    <div class="bcard reveal">
+      <div class="bcard-img bcard-img-3">
+        <span class="bcard-cat">Holistic Wellness</span>
+      </div>
+      <div class="bcard-body">
+        <p class="bcard-date">Coming Soon</p>
+        <h3>Intermittent Fasting + Herbs: A Protocol That Works</h3>
+        <p>How I pair a 16:8 fasting window with herbal teas and beet juice to support vascular health and sustained focus throughout the day.</p>
+        <a href="#" class="bcard-link">Read more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="coming-soon" id="products">
+  <div class="cs-inner">
+    <div class="reveal">
+      <p class="tag">Coming Soon</p>
+      <h2 class="stitle">From Our Hands to Yours</h2>
+      <p class="sdesc">We're developing a line of herbal products rooted in real ingredients and real results. Be the first to know when they drop.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card reveal">
+        <div class="prod-emoji">🍵</div>
+        <h4>Herbal Tea Blends</h4>
+        <p>Small-batch blends crafted for focus, rest, and daily balance.</p>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-emoji">🌿</div>
+        <h4>Herbal Supplements</h4>
+        <p>Whole-plant formulas designed to support your body naturally.</p>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-emoji">🫙</div>
+        <h4>Herbal Tinctures</h4>
+        <p>Concentrated plant extracts for targeted, everyday wellness support.</p>
+      </div>
+    </div>
+    <div class="notify reveal">
+      <input type="email" placeholder="Enter your email for updates">
+      <button>Notify Me</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <img src="/images/logo.jpg" alt="Herbal Harmony">
+      <p>Wellness rooted in nature, grown in Memphis. Sharing herbal wisdom, natural remedies, and holistic living — one post at a time.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="/">Home</a>
+      <a href="#about">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="#products">Products</a>
+    </div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Email Us</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    &copy; 2026 Herbal Harmony TN. All rights reserved. &nbsp;·&nbsp; Harmonize Life
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
