@@ -6,9 +6,6 @@ description: How I discovered mullein leaf for lung support, what it actually
   does in your body, and simple ways to start using it.
 thumbnail: /images/uploads/mullein500_large.jpg
 ---
-
-
-
 There's one herb that changed everything for me. Before I knew anything about herbalism, before I started researching adaptogens or building tea blends there was mullein leaf.
 
 I was dealing with several issues and looking for something real. Not another over-the-counter band-aid, but something that actually addressed what was going on in my body. That search led me to mullein, and once I felt the difference, I never looked back.
@@ -17,7 +14,7 @@ I was dealing with several issues and looking for something real. Not another ov
 
 Mullein (*Verbascum thapsus*) is a woolly-leafed biennial plant you'll find growing wild across the United States and Europe. Most people walk right past it, it looks like a weed. During its first year, it forms a low rosette of large, fuzzy leaves. In its second year, it shoots up a tall stem with yellow flowers.
 
-Here's what caught my attention: this plant has been used medicinally since at least 450 BCE. Hippocrates the father of medicine identified it as a powerful anti-inflammatory agent over two thousand years ago. It goes by other names too: candlewick, lungwort, velvet plant.
+Here's what caught my attention: this plant has been used medicinally since at least 450 BCE. It has been identified as a powerful anti-inflammatory agent since more than over two thousand years ago. It goes by other names too: candlewick, lungwort, velvet plant.
 
 ## Why Mullein Works for Respiratory Health
 
