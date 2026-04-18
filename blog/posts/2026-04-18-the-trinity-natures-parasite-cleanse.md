@@ -28,7 +28,9 @@ A targeted cleanse using proven antiparasitic herbs is one of the oldest and mos
 
 The Three Herbs And What They Do
 
-🌰 Black Walnut Hull: Kills Adult Parasites    The outer hull of the black walnut (Juglans nigra) contains juglone, a powerful compound with documented antiparasitic, antifungal, and antibacterial activity. Research has shown that juglone significantly inhibits the growth of parasites by increasing reactive oxygen species (ROS), effectively disrupting parasite cellular function. The tannin content in black walnut also creates an astringent environment in the gut that parasites cannot thrive in.Important: Quality matters here. Green hull black walnut harvested before the hull turns black contains the highest concentration of juglone. Always source your walnut hull from a reputable supplier.
+🌰 Black Walnut Hull: Kills Adult Parasites
+
+\    The outer hull of the black walnut (Juglans nigra) contains juglone, a powerful compound with documented antiparasitic, antifungal, and antibacterial activity. Research has shown that juglone significantly inhibits the growth of parasites by increasing reactive oxygen species (ROS), effectively disrupting parasite cellular function. The tannin content in black walnut also creates an astringent environment in the gut that parasites cannot thrive in.Important: Quality matters here. Green hull black walnut harvested before the hull turns black contains the highest concentration of juglone. Always source your walnut hull from a reputable supplier.
 
 🌿 Wormwood: Destroys Larvae
 
@@ -36,7 +38,9 @@ Wormwood (Artemisia absinthium) is the cornerstone of this protocol. Its key act
 
 \*Note: Wormwood is a potent herb that should be used in short cycles never daily long term. The Trinity is designed as a structured cleanse protocol, not a daily supplement.
 
-🌸 Cloves: Eliminates EggsCloves are the critical third piece of this protocol. Without an ovicidal agent something that kills eggs a parasite cleanse can eliminate adult worms and larvae while leaving thousands of eggs intact, leading to reinfection within weeks. Cloves solve this problem. The active compound in cloves is eugenol, which makes up 80-90% of clove essential oil. Eugenol has been extensively studied for its ability to disrupt parasite cell membranes, impair mitochondrial function, and directly kill parasite eggs. A 2023 peer-reviewed study published in the journal Pathogens demonstrated that eugenol achieved significant efficacy against both muscle larvae and adult stages of Trichinella spiralis a common foodborne parasite.
+🌸 Cloves: Eliminates Eggs
+
+Cloves are the critical third piece of this protocol. Without an ovicidal agent something that kills eggs a parasite cleanse can eliminate adult worms and larvae while leaving thousands of eggs intact, leading to reinfection within weeks. Cloves solve this problem. The active compound in cloves is eugenol, which makes up 80-90% of clove essential oil. Eugenol has been extensively studied for its ability to disrupt parasite cell membranes, impair mitochondrial function, and directly kill parasite eggs. A 2023 peer-reviewed study published in the journal Pathogens demonstrated that eugenol achieved significant efficacy against both muscle larvae and adult stages of Trichinella spiralis a common foodborne parasite.
 
 Why These Three Work Together
 
