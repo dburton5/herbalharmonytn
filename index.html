@@ -768,6 +768,7 @@ footer {
     <li><a href="/" onclick="closeMenu()">Home</a></li>
     <li><a href="#about" onclick="closeMenu()">About</a></li>
     <li><a href="/blog/" onclick="closeMenu()">Blog</a></li>
+    <li><a href="/book/" onclick="closeMenu()">Book</a></li>
     <li><a href="/shop/" onclick="closeMenu()">Shop</a></li>
   </ul>
   <button class="menu-toggle" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
@@ -881,11 +882,11 @@ footer {
       <p class="sdesc">Resources and products rooted in real experience, real ingredients, and real results.</p>
     </div>
     <div class="prod-grid" style="grid-template-columns: repeat(4, 1fr);">
-      <a href="https://www.amazon.com/6-Phases-Fasting-Dondre-Burton/dp/B0D17YM9G5" target="_blank" rel="noopener" class="prod-card reveal" style="text-decoration:none;border:1.5px solid rgba(184,160,96,0.3);">
+      <a href="/book/" class="prod-card reveal" style="text-decoration:none;border:1.5px solid rgba(184,160,96,0.3);">
         <div class="prod-emoji">📖</div>
         <h4>The 6 Phases of Fasting</h4>
         <p>A comprehensive guide to the transformative journey of fasting — from preparation to autophagy to refeeding.</p>
-        <span style="display:inline-block;margin-top:0.8rem;font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">Buy on Amazon →</span>
+        <span style="display:inline-block;margin-top:0.8rem;font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">Learn More →</span>
       </a>
       <a href="/shop/harmony-herbal-blend/" class="prod-card reveal" style="text-decoration:none;border:1.5px solid rgba(184,160,96,0.3);">
         <div class="prod-emoji">🍵</div>
@@ -907,10 +908,13 @@ footer {
       </div>
     </div>
     <a href="/shop/" class="btn btn-fill reveal" style="margin-top:2.2rem;background:var(--gold);color:var(--green-deep);">Preview the Shop</a>
-    <div class="notify reveal">
-      <input type="email" placeholder="Enter your email for product updates">
-      <button>Notify Me</button>
-    </div>
+    <form class="notify reveal" id="notifyForm" action="https://buttondown.com/api/emails/embed-subscribe/BUTTONDOWN_USERNAME" method="post" target="_blank" novalidate>
+      <input type="email" name="email" aria-label="Email address" placeholder="Enter your email for product updates" autocomplete="email" required>
+      <input type="hidden" name="tag" value="product-updates">
+      <input type="hidden" name="embed" value="1">
+      <button type="submit">Notify Me</button>
+    </form>
+    <p id="notifyMsg" role="status" aria-live="polite" style="display:none;margin-top:1rem;color:var(--gold-light);font-family:'Lora',serif;">You're on the list. Check your inbox to confirm.</p>
   </div>
 </section>
 
@@ -926,6 +930,7 @@ footer {
       <a href="/">Home</a>
       <a href="#about">About</a>
       <a href="/blog/">Blog</a>
+      <a href="/book/">Book</a>
       <a href="/shop/">Shop</a>
     </div>
     <div class="foot-col">
@@ -957,6 +962,21 @@ const obs = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Product-updates signup: subscribe via Buttondown in the background
+(function () {
+  var f = document.getElementById('notifyForm');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var em = f.querySelector('input[type=email]');
+    if (!em.value || !em.checkValidity()) { em.focus(); if (em.reportValidity) em.reportValidity(); return; }
+    f.querySelector('button').disabled = true;
+    fetch(f.action, { method: 'POST', mode: 'no-cors', body: new FormData(f) })
+      .catch(function () {})
+      .then(function () { f.style.display = 'none'; document.getElementById('notifyMsg').style.display = 'block'; });
+  });
+})();
 
 // Fetch latest blog posts from GitHub
 (function() {

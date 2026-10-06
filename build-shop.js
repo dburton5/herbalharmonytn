@@ -153,6 +153,7 @@ function head(opts) {
     '    <li><a href="/">Home</a></li>\n' +
     '    <li><a href="/#about">About</a></li>\n' +
     '    <li><a href="/blog/">Blog</a></li>\n' +
+    '    <li><a href="/book/">Book</a></li>\n' +
     '    <li><a href="/shop/" class="active">Shop</a></li>\n' +
     '  </ul>\n' +
     '  <button class="menu-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var o=document.getElementById(\'navLinks\').classList.toggle(\'open\');this.setAttribute(\'aria-expanded\',o)"><span></span><span></span><span></span></button>\n' +
@@ -166,7 +167,7 @@ function foot() {
     '      <p class="foot-script">Harmonize Life.</p>\n' +
     '      <p>Small-batch herbal goods, hand-blended in Memphis, TN.</p>\n' +
     '    </div>\n' +
-    '    <div class="foot-col"><h4>Explore</h4><a href="/">Home</a><a href="/#about">About</a><a href="/blog/">Blog</a><a href="/shop/">Shop</a></div>\n' +
+    '    <div class="foot-col"><h4>Explore</h4><a href="/">Home</a><a href="/#about">About</a><a href="/blog/">Blog</a><a href="/book/">Book</a><a href="/shop/">Shop</a></div>\n' +
     '  </div>\n' +
     '  <div class="foot-bottom">&copy; ' + new Date().getFullYear() + ' Herbal Harmony TN &nbsp;·&nbsp; Memphis, TN &nbsp;·&nbsp; Secure checkout by Stripe</div>\n' +
     '</footer>\n</body>\n</html>\n';
