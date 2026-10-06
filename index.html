@@ -122,7 +122,7 @@ nav.scrolled .nav-logo img { height: 56px; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 2rem 2rem;
+  padding: 7rem 2rem 7.5rem;
   position: relative;
   background: linear-gradient(170deg, var(--cream) 0%, var(--cream-warm) 50%, var(--white) 100%);
   overflow: hidden;
@@ -159,7 +159,8 @@ nav.scrolled .nav-logo img { height: 56px; }
 }
 
 .hero-logo {
-  width: 280px;
+  width: 260px;
+  max-width: 70vw;
   margin-bottom: 2rem;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.2s;
@@ -253,8 +254,8 @@ nav.scrolled .nav-logo img { height: 56px; }
 .scroll-cue {
   position: absolute;
   bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -654,9 +655,8 @@ footer {
 }
 
 .foot-brand img {
-  height: 44px;
+  height: 64px;
   margin-bottom: 1rem;
-  filter: brightness(1.8) saturate(0.5);
 }
 
 .foot-brand p {
@@ -714,6 +714,10 @@ footer {
   .foot-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 
+@media (max-height: 760px) {
+  .scroll-cue { display: none; }
+}
+
 @media (max-width: 700px) {
   nav { padding: 0.8rem 1.5rem; }
   nav.scrolled { padding: 0.5rem 1.5rem; }
@@ -734,7 +738,19 @@ footer {
   .nav-links.open { display: flex; }
   .nav-links a { font-size: 1.1rem; letter-spacing: 0.15em; }
   .menu-toggle { display: flex; z-index: 1001; }
-  .hero-logo { width: 200px; }
+  .nav-logo img { height: 52px; }
+  nav.scrolled .nav-logo img { height: 44px; }
+  .hero {
+    min-height: auto;
+    padding: 7rem 1.5rem 3.5rem;
+  }
+  .hero-logo { width: 190px; margin-bottom: 1.4rem; }
+  .hero-tag { font-size: 0.64rem; letter-spacing: 0.16em; line-height: 1.7; }
+  .hero h1 { margin-bottom: 1.1rem; }
+  .hero-sub { font-size: 1rem; margin-bottom: 2rem; }
+  .hero-btns { flex-direction: column; align-items: stretch; width: 100%; max-width: 300px; }
+  .hero-btns .btn { text-align: center; }
+  .scroll-cue { display: none; }
   .blog-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .notify { flex-direction: column; }
   .notify button { width: 100%; }
@@ -746,7 +762,7 @@ footer {
 <!-- NAV -->
 <nav id="navbar">
   <a href="/" class="nav-logo">
-    <img src="/images/logo.jpg" alt="Herbal Harmony">
+    <img src="/images/logo.png" alt="Herbal Harmony">
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/" onclick="closeMenu()">Home</a></li>
@@ -764,7 +780,7 @@ footer {
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="hero-content">
-    <img src="/images/logo.jpg" alt="Herbal Harmony" class="hero-logo">
+    <img src="/images/logo.png" alt="Herbal Harmony" class="hero-logo">
     <p class="hero-tag">Memphis, Tennessee · Rooted in Nature</p>
     <h1>Wellness Through<br><em>Nature's Wisdom</em></h1>
     <p class="hero-sub">Exploring the healing power of herbs, natural supplements, and holistic living helping you find balance from the roots up.</p>
@@ -902,7 +918,7 @@ footer {
 <footer>
   <div class="foot-grid">
     <div class="foot-brand">
-      <img src="/images/logo.jpg" alt="Herbal Harmony">
+      <img src="/images/logo-light.png" alt="Herbal Harmony">
       <p>Wellness rooted in nature, grown in Memphis. Sharing herbal wisdom, natural remedies, and holistic living one post at a time.</p>
     </div>
     <div class="foot-col">

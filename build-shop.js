@@ -148,7 +148,7 @@ function head(opts) {
     (opts.extraHead || '') +
     '</head>\n<body>\n' +
     '<nav class="site-nav">\n' +
-    '  <a href="/" class="nav-logo"><img src="/images/logo.jpg" alt="Herbal Harmony"></a>\n' +
+    '  <a href="/" class="nav-logo"><img src="/images/logo.png" alt="Herbal Harmony"></a>\n' +
     '  <ul class="nav-links" id="navLinks">\n' +
     '    <li><a href="/">Home</a></li>\n' +
     '    <li><a href="/#about">About</a></li>\n' +
