@@ -1,5 +1,7 @@
 # Generated on every Netlify build by build-shop.js / generate-rss.js
 /shop/
 /rss.xml
+/blog/*/
+!/blog/posts/
 node_modules/
 .DS_Store

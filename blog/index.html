@@ -487,6 +487,7 @@ function fetchPosts() {
             var parsed = parseFrontmatter(content);
             return {
               filename: file.name,
+              slug: file.name.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, ''),
               title: parsed.meta.title || 'Untitled',
               date: parsed.meta.date || '',
               category: parsed.meta.category || '',
@@ -503,6 +504,7 @@ function fetchPosts() {
       posts.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
       allPosts = posts;
       renderPosts();
+      openPostFromHash();
     })
     .catch(function(err) {
       console.error(err);
@@ -542,9 +544,19 @@ function renderPosts() {
   grid.innerHTML = html;
 }
 
+// Open a post directly from a shared link like /blog/#post-slug
+function openPostFromHash() {
+  var hash = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+  if (!hash) return;
+  for (var i = 0; i < allPosts.length; i++) {
+    if (allPosts[i].slug === hash) { showPost(i); return; }
+  }
+}
+
 function showPost(index) {
   var post = allPosts[index];
   if (!post) return;
+  if (history.replaceState) history.replaceState(null, '', '#' + encodeURIComponent(post.slug));
 
   document.getElementById('pvCat').textContent = post.category;
   document.getElementById('pvTitle').textContent = post.title;
@@ -567,6 +579,7 @@ function showPost(index) {
 function showList() {
   document.getElementById('postView').classList.remove('active');
   document.getElementById('listView').style.display = 'block';
+  if (history.replaceState) history.replaceState(null, '', window.location.pathname);
   window.scrollTo(0, 0);
 }
 
