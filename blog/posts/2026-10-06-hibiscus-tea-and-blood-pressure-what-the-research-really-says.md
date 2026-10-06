@@ -3,6 +3,7 @@ title: "Hibiscus Tea & Blood Pressure: What the Research Really Says"
 date: 2026-10-06T11:15:00.000-05:00
 category: Herbal Remedies
 description: A plain-English look at the studies on hibiscus tea and blood pressure, how to brew it, and who should be careful.
+thumbnail: /images/uploads/hibiscus-tea-blood-pressure-banner.jpg
 ---
 If you grew up around Caribbean, Mexican, or West African kitchens, you probably already know this tea. It's called **sorrel**, **agua de Jamaica**, **bissap**, or **karkadé** depending on where you are, and it pours out a deep ruby red with a tart, cranberry-like taste.
 
