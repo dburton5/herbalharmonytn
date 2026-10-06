@@ -18,3 +18,62 @@ collections:
       - { label: "Description", name: "description", widget: "string", hint: "Short summary for the blog card" }
       - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  # ── SHOP ──────────────────────────────────────────────
+  # Each product is saved as /products/<slug>.json. Saving here commits to
+  # GitHub, Netlify rebuilds, and the product appears at /shop/<slug>/.
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    description: "Products shown on the Shop page. Copy rule: flavor, tradition and ritual language only — no disease or treatment claims."
+    folder: "products"
+    format: "json"
+    extension: "json"
+    create: true
+    delete: true
+    identifier_field: "name"
+    slug: "{{fields.slug}}"
+    summary: "{{name}} — ${{price}}"
+    sortable_fields: ["order", "name", "price"]
+    fields:
+      - { label: "Product Name", name: "name", widget: "string" }
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Lowercase words with dashes, e.g. harmony-herbal-blend. This becomes herbalharmonytn.com/shop/<slug>/ — don't change it after the product is live."
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Lowercase letters, numbers and single dashes only"]
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Herbal Tea", "Herbal Syrup", "Herbal Supplement", "Book", "Other"]
+        required: false
+      - { label: "Price (USD)", name: "price", widget: "number", value_type: "float", min: 0, step: 0.01 }
+      - { label: "Size / Container", name: "size", widget: "string", required: false, hint: "e.g. 8 oz clear glass jar with rose-gold lid" }
+      - { label: "Net Weight", name: "netWeight", widget: "string", required: false, hint: "As printed on the label, e.g. 2.5 oz (71 g). Leave blank to hide." }
+      - { label: "In Stock", name: "inStock", widget: "boolean", default: true, hint: "Turn off to show 'Sold Out' and hide the Buy button." }
+      - label: "Buy Link (Stripe Payment Link)"
+        name: "buyLink"
+        widget: "string"
+        required: false
+        hint: "Paste the Stripe Payment Link (starts with https://buy.stripe.com/). Leave blank to show 'Available Soon'."
+        pattern: ['^https://(buy|checkout)\.stripe\.com/\S+$', "Must be a Stripe Payment Link starting with https://buy.stripe.com/"]
+      - { label: "Short Description", name: "shortDescription", widget: "text", hint: "1–2 sentences for the shop card and page top. Flavor, tradition and ritual — no health claims." }
+      - { label: "Full Description", name: "description", widget: "markdown", buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "The story of the product. No disease or treatment claims." }
+      - label: "Photos"
+        name: "photos"
+        widget: "list"
+        summary: "{{fields.alt}}"
+        hint: "First photo is the main/cover image. Square photos look best."
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt Text", name: "alt", widget: "string", hint: "Describe the photo for screen readers and Google, e.g. 'Jar of Harmony Herbal Blend beside a mug of tea'." }
+      - label: "Ingredients"
+        name: "ingredients"
+        widget: "list"
+        field: { label: "Ingredient", name: "ingredient", widget: "string" }
+      - { label: "How to Use / Brewing Directions", name: "directions", widget: "text", required: false }
+      - { label: "Good to Know", name: "goodToKnow", widget: "text", required: false, hint: "Cautions and notes, as on the label." }
+      - { label: "Storage", name: "storage", widget: "string", required: false, default: "Store cool & dry." }
+      - { label: "Show FDA Disclaimer", name: "showDisclaimer", widget: "boolean", default: true, hint: "Shows the standard FDA statement at the bottom of the product page. Keep on if any wellness language is used." }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 10, hint: "Lower numbers show first on the Shop page." }
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn off to hide the product from the site without deleting it." }

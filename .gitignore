@@ -1,0 +1,5 @@
+# Generated on every Netlify build by build-shop.js / generate-rss.js
+/shop/
+/rss.xml
+node_modules/
+.DS_Store

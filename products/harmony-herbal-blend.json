@@ -1,0 +1,36 @@
+{
+  "name": "Harmony Herbal Blend",
+  "slug": "harmony-herbal-blend",
+  "category": "Herbal Tea",
+  "price": 15,
+  "size": "8 oz clear glass jar with rose-gold lid",
+  "netWeight": "",
+  "inStock": true,
+  "buyLink": "",
+  "shortDescription": "A warming, caffeine-free loose-leaf blend of six herbs and spices — cool peppermint, mellow mullein, cinnamon, ginger, golden turmeric and a touch of the sea. Hand-blended in small batches in Memphis, TN.",
+  "description": "Harmony Herbal Blend brings six botanicals together in one easy, everyday cup. Cool peppermint leads the way, softened by mellow mullein leaf, then warmed through with cinnamon and ginger root. Earthy turmeric root adds a golden note, and a touch of bladderwrack — a sea vegetable — rounds it out with a gentle, savory depth.\n\nThe result is bright, warming and comforting. Peppermint and ginger make a classic after-dinner pairing, and because the blend is naturally caffeine free, it's just as welcome first thing in the morning as it is at the end of the night.\n\n**A small-batch ritual.** Every jar is blended by hand in Memphis, TN and packed in clear glass with a rose-gold lid, so you can see every leaf. Measure, steep, strain, and take a few quiet minutes for yourself. It's more than tea — it's a ritual.",
+  "photos": [
+    {
+      "image": "/images/uploads/harmony-herbal-blend-jar.jpg",
+      "alt": "Glass jar of Harmony Herbal Blend loose-leaf tea with a rose-gold lid, fresh mint and a cinnamon stick on a wooden table"
+    },
+    {
+      "image": "/images/uploads/harmony-herbal-blend-with-mug.jpg",
+      "alt": "Harmony Herbal Blend jar beside a steaming glass mug of golden herbal tea and a wooden scoop of loose leaf"
+    }
+  ],
+  "ingredients": [
+    "Peppermint leaf",
+    "Mullein leaf",
+    "Cinnamon",
+    "Ginger root",
+    "Turmeric root",
+    "Bladderwrack"
+  ],
+  "directions": "Steep about 2¾ tsp in 8 oz of freshly boiled water for 10–15 min. Strain and enjoy.\n1–3 cups daily.",
+  "goodToKnow": "This blend includes bladderwrack, a natural source of iodine. If you have a thyroid condition or take thyroid medication, please check with your doctor first. As with any herbal tea, ask your healthcare provider before enjoying if pregnant, nursing, on blood thinners or diabetes medication, or if you have gallbladder issues.",
+  "storage": "Store cool & dry.",
+  "showDisclaimer": true,
+  "order": 1,
+  "published": true
+}

@@ -1,0 +1,12 @@
+# Netlify build settings (this file overrides the build settings in the Netlify UI).
+# Builds the Shop pages from /products, then the RSS feed from /blog/posts.
+[build]
+  publish = "."
+  command = "node build-shop.js && node generate-rss.js"
+
+# Product JSON files and build scripts don't need to be browsable.
+[[redirects]]
+  from = "/products/*"
+  to = "/shop/"
+  status = 301
+  force = true
