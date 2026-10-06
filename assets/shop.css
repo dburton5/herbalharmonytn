@@ -99,6 +99,7 @@ a.pcard:hover .pcard-img img { transform: scale(1.03); }
   font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
   padding: 0.3rem 0.7rem; border-radius: 2px;
 }
+.badge-soon { background: var(--sage); }
 .pcard-body { padding: 1.4rem 1.4rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
 .pcard h2 { font-family: var(--slab); font-size: 1.45rem; font-weight: 600; color: var(--forest); line-height: 1.2; margin-bottom: 0.5rem; }
 .pcard-desc { font-family: var(--serif); font-size: 0.92rem; color: var(--ink-mid); line-height: 1.65; margin-bottom: 1.1rem; }

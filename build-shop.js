@@ -176,7 +176,7 @@ function foot() {
 
 function buyButton(p, cls) {
   if (!p.inStock) return '<span class="btn btn-disabled ' + (cls || '') + '">Sold Out</span>';
-  if (!p.buyLink) return '<span class="btn btn-disabled ' + (cls || '') + '">Available Soon</span>';
+  if (!p.buyLink) return '<span class="btn btn-disabled ' + (cls || '') + '">Coming Soon</span>';
   return '<a class="btn btn-buy ' + (cls || '') + '" href="' + esc(p.buyLink) + '">Buy Now · ' + esc(money(p.price)) + '</a>';
 }
 
@@ -188,7 +188,7 @@ function card(p) {
   return '<a class="pcard" href="/shop/' + esc(p.slug) + '/">\n' +
     '  <div class="pcard-img">' +
     (img ? '<img src="' + esc(img) + '" alt="' + esc(alt) + '" loading="lazy">' : '<div class="pcard-noimg">Photo coming soon</div>') +
-    (!p.inStock ? '<span class="badge">Sold Out</span>' : '') +
+    (!p.inStock ? '<span class="badge">Sold Out</span>' : (!p.buyLink ? '<span class="badge badge-soon">Coming Soon</span>' : '')) +
     '</div>\n' +
     '  <div class="pcard-body">\n' +
     (p.category ? '    <p class="eyebrow">' + esc(p.category) + '</p>\n' : '') +
@@ -288,6 +288,7 @@ function productPage(p) {
     (facts.length ? '  <ul class="facts">' + facts.join('') + '</ul>\n' : '') +
     '  ' + buyButton(p, 'btn-wide') + '\n' +
     (p.inStock && p.buyLink ? '  <p class="secure">Secure checkout with Stripe. You\'ll get an email receipt.</p>\n' : '') +
+    (p.inStock && !p.buyLink ? '  <p class="secure">Coming soon to the shop — check back shortly.</p>\n' : '') +
     '  <p class="script pd-script">Harmonize Life.</p>\n' +
     '</div>\n</div>\n' +
     '<div class="pd-details">\n' + sections.join('\n') + '\n</div>\n' +
