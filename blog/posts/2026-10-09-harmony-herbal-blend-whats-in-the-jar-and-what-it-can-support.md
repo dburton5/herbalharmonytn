@@ -5,7 +5,7 @@ category: Herbal Remedies
 description: An honest, plain-English look at the six herbs in Harmony Herbal Blend, what each one has traditionally been used for, and what a cup can realistically do for you.
 thumbnail: /images/uploads/harmony-herbal-blend-shelf.jpg
 ---
-Every jar on that shelf was measured, blended, and filled by hand right here in Memphis. Before you brew a cup, I want you to know exactly what's inside and what it can and can't do for you.
+Every jar on that shelf was measured, blended, and filled by hand right here in Memphis. Before you brew a cup, I want you to know exactly what's inside and what it can do for you.
 
 There's a lot of hype in the herbal world. Teas that "detox everything," cleanses that promise to melt pounds, blends that claim to cure whatever ails you. That's not what this is. Harmony Herbal Blend is a simple, caffeine-free tea made from six plants people have been brewing for generations. Used regularly, it can be a gentle, everyday support for your body. Here's the honest breakdown.
 
@@ -59,12 +59,6 @@ No single cup of tea is a miracle. Where herbal tea shines is in **consistency**
 - **A caffeine-free ritual:** no jitters and no afternoon crash. You can drink it in the morning or right before bed.
 - **Fewer sugary drinks:** with cinnamon's natural sweetness, it's a simple swap for soda or sweet tea.
 - **A quiet moment for yourself:** measuring, steeping, and sipping slowly is a few minutes of calm in a busy day. That matters too.
-
-## 🌿 What It Won't Do
-
-I'd rather tell you this up front. Harmony Herbal Blend will not cure a disease, replace your medication, "detox" your organs, or make you lose weight on its own. Your liver and kidneys already handle detox for you. A good tea supports a healthy lifestyle. It doesn't replace one.
-
-If anyone ever tells you an herbal tea can do all of that, that's your cue to walk away.
 
 ## 🌿 How to Brew It
 
