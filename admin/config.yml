@@ -77,3 +77,17 @@ collections:
       - { label: "Show FDA Disclaimer", name: "showDisclaimer", widget: "boolean", default: true, hint: "Shows the standard FDA statement at the bottom of the product page. Keep on if any wellness language is used." }
       - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 10, hint: "Lower numbers show first on the Shop page." }
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn off to hide the product from the site without deleting it." }
+
+  # ── SHOP SETTINGS ─────────────────────────────────────
+  # Store-wide text: pickup & delivery terms and the after-checkout message.
+  - name: "settings"
+    label: "Shop Settings"
+    editor: { preview: false }
+    files:
+      - name: "shop"
+        label: "Pickup, Delivery, Shipping & Thank-You"
+        file: "settings/shop.json"
+        fields:
+          - { label: "Shop Page Banner", name: "fulfillmentBanner", widget: "string", required: false, hint: "One short line shown under the Shop page heading. Leave blank to hide." }
+          - { label: "Pickup, Delivery & Shipping Details", name: "fulfillment", widget: "markdown", buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], required: false, hint: "Shown on every product page. Never put your home address here — send it by text after purchase." }
+          - { label: "Thank-You Page Message", name: "thankYou", widget: "markdown", buttons: ["bold", "italic", "link"], editor_components: [], required: false, hint: "Shown after checkout if your Stripe Payment Link sends customers to herbalharmonytn.com/shop/thank-you/." }

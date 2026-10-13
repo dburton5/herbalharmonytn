@@ -198,3 +198,11 @@ a.pcard:hover .pcard-img img { transform: scale(1.03); }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* ---- pickup & delivery ---- */
+.hero-note { font-family: var(--serif); font-size: 0.95rem; color: var(--ink-mid); margin-top: 0.8rem; }
+.pd-ship { grid-column: 1 / -1; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 1.6rem 1.8rem; scroll-margin-top: 6rem; }
+.pd-ship .prose { font-size: 0.95rem; }
+.pd-ship .prose ul { list-style: none; margin-left: 0; }
+.pd-ship .prose li { margin-bottom: 0.5rem; }
+@media (max-width: 700px) { .pd-ship { padding: 1.3rem 1.2rem; } }

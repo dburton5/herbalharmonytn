@@ -10,3 +10,9 @@
   to = "/shop/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/settings/*"
+  to = "/shop/"
+  status = 301
+  force = true

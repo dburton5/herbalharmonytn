@@ -16,6 +16,7 @@ const path = require('path');
 
 const ROOT = __dirname;
 const PRODUCTS_DIR = path.join(ROOT, 'products');
+const SETTINGS_FILE = path.join(ROOT, 'settings', 'shop.json');
 const OUT_DIR = path.join(ROOT, 'shop');
 const SITE_URL = 'https://herbalharmonytn.com';
 const FDA_DISCLAIMER =
@@ -74,6 +75,19 @@ function absUrl(src) {
   if (!src) return '';
   return /^https?:\/\//.test(src) ? src : SITE_URL + (src.charAt(0) === '/' ? '' : '/') + src;
 }
+
+/* ---------- load shop settings ---------- */
+
+// Store-wide text edited in the admin panel under "Shop Settings".
+function loadSettings() {
+  try {
+    return JSON.parse(fs.readFileSync(SETTINGS_FILE, 'utf8')) || {};
+  } catch (e) {
+    console.warn('No shop settings found (' + e.message + ') — using defaults.');
+    return {};
+  }
+}
+const SETTINGS = loadSettings();
 
 /* ---------- load products ---------- */
 
@@ -215,6 +229,7 @@ function shopPage(products) {
     '  <p class="eyebrow">Small Batch · Hand-Blended in Memphis, TN</p>\n' +
     '  <h1>From Our Hands to Yours</h1>\n' +
     '  <p class="script hero-script">Harmonize Life.</p>\n' +
+    (SETTINGS.fulfillmentBanner ? '  <p class="hero-note">' + esc(SETTINGS.fulfillmentBanner) + '</p>\n' : '') +
     '</header>\n' +
     '<main class="shop-main">\n' +
     (products.length
@@ -247,6 +262,9 @@ function productPage(p) {
   if (p.description) sections.push('<section class="pd-block"><h2>About the Blend</h2><div class="prose">' + md(p.description) + '</div></section>');
   if (p.ingredients.length) sections.push('<section class="pd-block"><h2>Ingredients</h2><ul class="chips">' + p.ingredients.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul></section>');
   if (p.directions) sections.push('<section class="pd-block"><h2>How to Use</h2><div class="prose">' + md(p.directions) + '</div></section>');
+  if (SETTINGS.fulfillment) {
+    sections.push('<section class="pd-block pd-ship" id="pickup-delivery"><h2>Pickup, Delivery &amp; Shipping</h2><div class="prose">' + md(SETTINGS.fulfillment) + '</div></section>');
+  }
   if (p.goodToKnow || p.storage) {
     sections.push('<section class="pd-block pd-note"><h2>Good to Know</h2><div class="prose">' + md(p.goodToKnow) +
       (p.storage ? '<p class="storage">' + esc(p.storage) + '</p>' : '') + '</div></section>');
@@ -288,7 +306,8 @@ function productPage(p) {
     (p.shortDescription ? '  <p class="pd-short">' + esc(p.shortDescription) + '</p>\n' : '') +
     (facts.length ? '  <ul class="facts">' + facts.join('') + '</ul>\n' : '') +
     '  ' + buyButton(p, 'btn-wide') + '\n' +
-    (p.inStock && p.buyLink ? '  <p class="secure">Secure checkout with Stripe. You\'ll get an email receipt.</p>\n' : '') +
+    (p.inStock && p.buyLink ? '  <p class="secure">Secure checkout with Stripe. You\'ll get an email receipt.' +
+      (SETTINGS.fulfillment ? ' <a href="#pickup-delivery">Pickup, delivery &amp; shipping details</a>.' : '') + '</p>\n' : '') +
     (p.inStock && !p.buyLink ? '  <p class="secure">Coming soon to the shop — check back shortly.</p>\n' : '') +
     '  <p class="script pd-script">Harmonize Life.</p>\n' +
     '</div>\n</div>\n' +
@@ -314,7 +333,9 @@ function thankYouPage() {
     '<main class="ty-main">\n' +
     '  <p class="script ty-script">Thank you.</p>\n' +
     '  <h1>Your order is in</h1>\n' +
-    '  <p>A receipt is on its way to your email from Stripe. We\'ll reach out when your order is on its way.</p>\n' +
+    (SETTINGS.thankYou
+      ? md(SETTINGS.thankYou) + '\n'
+      : '  <p>A receipt is on its way to your email from Stripe. We\'ll reach out when your order is on its way.</p>\n') +
     '  <p>Questions? Just reply to your receipt email.</p>\n' +
     '  <a class="btn btn-buy" href="/shop/">Back to the Shop</a>\n' +
     '</main>\n' + foot();
