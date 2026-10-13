@@ -239,6 +239,15 @@ function loadProducts() {
 
 function head(opts) {
   return '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
+    '<!-- Google tag (gtag.js) -->\n' +
+    '<script async src="https://www.googletagmanager.com/gtag/js?id=G-S7YN9JLEH8"></script>\n' +
+    '<script>\n' +
+    '  window.dataLayer = window.dataLayer || [];\n' +
+    '  function gtag(){dataLayer.push(arguments);}\n' +
+    '  gtag(\'js\', new Date());\n' +
+    '\n' +
+    '  gtag(\'config\', \'G-S7YN9JLEH8\');\n' +
+    '</script>\n' +
     '<meta charset="UTF-8">\n' +
     '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
     '<title>' + esc(opts.title) + '</title>\n' +
