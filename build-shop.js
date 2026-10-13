@@ -17,6 +17,7 @@ const path = require('path');
 const ROOT = __dirname;
 const PRODUCTS_DIR = path.join(ROOT, 'products');
 const SETTINGS_FILE = path.join(ROOT, 'settings', 'shop.json');
+const REVIEWS_DIR = path.join(ROOT, 'reviews');
 const OUT_DIR = path.join(ROOT, 'shop');
 const SITE_URL = 'https://herbalharmonytn.com';
 const FDA_DISCLAIMER =
@@ -89,6 +90,102 @@ function loadSettings() {
 }
 const SETTINGS = loadSettings();
 
+/* ---------- load reviews ---------- */
+
+// Approved customer reviews, added in the admin panel under "Reviews".
+function loadReviews() {
+  let files = [];
+  try {
+    files = fs.readdirSync(REVIEWS_DIR).filter(function (f) { return /\.json$/.test(f); });
+  } catch (e) {
+    return [];
+  }
+  const out = [];
+  files.forEach(function (f) {
+    let r;
+    try {
+      r = JSON.parse(fs.readFileSync(path.join(REVIEWS_DIR, f), 'utf8'));
+    } catch (e) {
+      console.error('Skipping review ' + f + ': not valid JSON (' + e.message + ')');
+      return;
+    }
+    const rating = Math.round(Number(r.rating));
+    if (r.approved === false || !r.name || !r.text || !r.product || !(rating >= 1 && rating <= 5)) return;
+    out.push({
+      name: String(r.name).trim(),
+      city: r.city ? String(r.city).trim() : '',
+      product: String(r.product).trim(),
+      rating: rating,
+      text: String(r.text).trim(),
+      date: r.date ? String(r.date).slice(0, 10) : ''
+    });
+  });
+  out.sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); });
+  return out;
+}
+const REVIEWS = loadReviews();
+
+function reviewsFor(slug) {
+  return REVIEWS.filter(function (r) { return r.product === slug; });
+}
+
+function avgRating(list) {
+  if (!list.length) return 0;
+  return list.reduce(function (t, r) { return t + r.rating; }, 0) / list.length;
+}
+
+function stars(n, label) {
+  const full = Math.round(n);
+  let s = '';
+  for (let i = 1; i <= 5; i++) s += '<span class="star' + (i <= full ? ' on' : '') + '">★</span>';
+  return '<span class="stars" role="img" aria-label="' + esc(label || (full + ' out of 5 stars')) + '">' + s + '</span>';
+}
+
+function prettyDate(d) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) return '';
+  const m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const parts = d.split('-');
+  return m[Number(parts[1]) - 1] + ' ' + Number(parts[2]) + ', ' + parts[0];
+}
+
+function reviewsSection(p) {
+  const list = reviewsFor(p.slug);
+  const avg = avgRating(list);
+  const summary = list.length
+    ? '<div class="rv-summary">' + stars(avg, avg.toFixed(1) + ' out of 5 stars') +
+      '<span class="rv-avg">' + avg.toFixed(1) + '</span><span class="rv-count">' + list.length + ' review' + (list.length === 1 ? '' : 's') + '</span></div>'
+    : '<p class="rv-empty">No reviews yet. Enjoying your jar? Be the first to share how you take your cup.</p>';
+  const items = list.map(function (r) {
+    return '<li class="rv-item">' + stars(r.rating) +
+      '<p class="rv-text">' + esc(r.text).replace(/\n+/g, '<br>') + '</p>' +
+      '<p class="rv-meta"><strong>' + esc(r.name) + '</strong>' + (r.city ? ' · ' + esc(r.city) : '') +
+      (prettyDate(r.date) ? ' · ' + prettyDate(r.date) : '') + '</p></li>';
+  }).join('');
+  const formName = 'review';
+  const form =
+    '<details class="rv-form-wrap" id="write-review">\n' +
+    '  <summary class="btn btn-outline-dark">Write a Review</summary>\n' +
+    '  <form class="rv-form" name="' + formName + '" method="POST" action="/shop/review-thanks/" data-netlify="true" netlify-honeypot="company">\n' +
+    '    <input type="hidden" name="form-name" value="' + formName + '">\n' +
+    '    <input type="hidden" name="product" value="' + esc(p.slug) + '">\n' +
+    '    <p class="rv-hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>\n' +
+    '    <fieldset class="rv-rate"><legend>Your rating</legend><div class="rv-stars-in">' +
+    [5, 4, 3, 2, 1].map(function (n) {
+      return '<input type="radio" id="rate' + n + '" name="rating" value="' + n + '"' + (n === 5 ? ' checked' : '') + ' required>' +
+        '<label for="rate' + n + '" title="' + n + ' star' + (n === 1 ? '' : 's') + '">★<span class="visually-hidden">' + n + ' star' + (n === 1 ? '' : 's') + '</span></label>';
+    }).join('') + '</div></fieldset>\n' +
+    '    <label>Your name <span class="hint">(first name and last initial is fine)</span><input name="name" required maxlength="60" autocomplete="name"></label>\n' +
+    '    <label>City <span class="hint">(optional)</span><input name="city" maxlength="60"></label>\n' +
+    '    <label>Your review<textarea name="review" required rows="4" maxlength="1500" placeholder="How do you enjoy it? Flavor, aroma, your favorite time for a cup…"></textarea></label>\n' +
+    '    <label>Email <span class="hint">(optional, never shown)</span><input type="email" name="email" autocomplete="email"></label>\n' +
+    '    <button type="submit" class="btn btn-buy">Send Review</button>\n' +
+    '    <p class="rv-note">Reviews are read before they appear on the site.</p>\n' +
+    '  </form>\n' +
+    '</details>\n';
+  return '<section class="reviews" id="reviews">\n<h2>Reviews</h2>\n' + summary + '\n' +
+    (items ? '<ul class="rv-list">' + items + '</ul>\n' : '') + form + '</section>\n';
+}
+
 /* ---------- load products ---------- */
 
 function loadProducts() {
@@ -114,8 +211,8 @@ function loadProducts() {
       console.error('Skipping ' + f + ': needs a name and slug.');
       return;
     }
-    if (p.slug === 'thank-you') {
-      console.error('Skipping ' + f + ': "thank-you" is reserved for the checkout confirmation page.');
+    if (p.slug === 'thank-you' || p.slug === 'review-thanks') {
+      console.error('Skipping ' + f + ': "' + p.slug + '" is reserved for a confirmation page.');
       return;
     }
     if (seen[p.slug]) {
@@ -288,6 +385,24 @@ function productPage(p) {
     }
   };
 
+  const prodReviews = reviewsFor(p.slug);
+  if (prodReviews.length) {
+    ld.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: avgRating(prodReviews).toFixed(1),
+      reviewCount: prodReviews.length
+    };
+    ld.review = prodReviews.slice(0, 10).map(function (r) {
+      return {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: r.name },
+        reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+        reviewBody: r.text,
+        datePublished: r.date || undefined
+      };
+    });
+  }
+
   return head({
       title: p.name + ' — Herbal Harmony TN',
       description: p.shortDescription || p.name,
@@ -302,6 +417,10 @@ function productPage(p) {
     '<div class="pd-info">\n' +
     (p.category ? '  <p class="eyebrow">' + esc(p.category) + '</p>\n' : '') +
     '  <h1>' + esc(p.name) + '</h1>\n' +
+    (prodReviews.length
+      ? '  <a class="pd-rating" href="#reviews">' + stars(avgRating(prodReviews), avgRating(prodReviews).toFixed(1) + ' out of 5 stars') +
+        ' <span>' + prodReviews.length + ' review' + (prodReviews.length === 1 ? '' : 's') + '</span></a>\n'
+      : '') +
     '  <p class="pd-price">' + esc(money(p.price)) + '</p>\n' +
     (p.shortDescription ? '  <p class="pd-short">' + esc(p.shortDescription) + '</p>\n' : '') +
     (facts.length ? '  <ul class="facts">' + facts.join('') + '</ul>\n' : '') +
@@ -312,6 +431,7 @@ function productPage(p) {
     '  <p class="script pd-script">Harmonize Life.</p>\n' +
     '</div>\n</div>\n' +
     '<div class="pd-details">\n' + sections.join('\n') + '\n</div>\n' +
+    reviewsSection(p) +
     (p.showDisclaimer ? '<p class="disclaimer">' + esc(FDA_DISCLAIMER) + '</p>\n' : '') +
     '<p class="back"><a href="/shop/">&larr; Back to the shop</a></p>\n' +
     '</main>\n' +
@@ -341,6 +461,23 @@ function thankYouPage() {
     '</main>\n' + foot();
 }
 
+/* ---------- review thank-you page ---------- */
+
+function reviewThanksPage() {
+  return head({
+      title: 'Thanks for Your Review — Herbal Harmony TN',
+      description: 'Thank you for reviewing Herbal Harmony TN.',
+      path: '/shop/review-thanks/',
+      noindex: true
+    }) +
+    '<main class="ty-main">\n' +
+    '  <p class="script ty-script">Thank you.</p>\n' +
+    '  <h1>Your review is in</h1>\n' +
+    '  <p>I read every review before it goes up, so yours will appear on the site shortly. I appreciate you taking the time.</p>\n' +
+    '  <a class="btn btn-buy" href="/shop/">Back to the Shop</a>\n' +
+    '</main>\n' + foot();
+}
+
 /* ---------- write ---------- */
 
 function write(rel, html) {
@@ -354,6 +491,16 @@ function main() {
   fs.rmSync(OUT_DIR, { recursive: true, force: true });
   write('', shopPage(products));
   write('thank-you', thankYouPage());
+  write('review-thanks', reviewThanksPage());
+  // Latest approved reviews for the home page (it loads this file and hides
+  // its Reviews section when the list is empty).
+  const names = {};
+  products.forEach(function (p) { names[p.slug] = p.name; });
+  const homeReviews = REVIEWS.filter(function (r) { return names[r.product]; }).slice(0, 6).map(function (r) {
+    return { name: r.name, city: r.city, rating: r.rating, text: r.text, date: r.date,
+      product: names[r.product], url: '/shop/' + r.product + '/#reviews' };
+  });
+  fs.writeFileSync(path.join(OUT_DIR, 'reviews.json'), JSON.stringify(homeReviews), 'utf8');
   products.forEach(function (p) { write(p.slug, productPage(p)); });
   console.log('Shop built: ' + products.length + ' product(s) → /shop/');
 }

@@ -567,6 +567,18 @@ section { padding: 6rem 2.5rem; }
 
 .bcard-link:hover { color: var(--green-deep); }
 
+/* ════════ HOME REVIEWS ════════ */
+.home-reviews { background: var(--cream-warm); text-align: center; }
+.hr-inner { max-width: 1100px; margin: 0 auto; }
+.hr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; margin-top: 2.5rem; text-align: left; }
+.hr-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 6px; padding: 1.6rem 1.4rem; display: flex; flex-direction: column; }
+.hr-stars { color: var(--gold); letter-spacing: 2px; font-size: 1.05rem; }
+.hr-stars .off { color: var(--cream-dark); }
+.hr-text { font-family: 'Lora', serif; font-size: 0.98rem; line-height: 1.75; color: var(--text-dark); margin: 0.8rem 0 1rem; flex: 1; }
+.hr-meta { font-size: 0.8rem; color: var(--text-light); }
+.hr-meta strong { color: var(--green-deep); font-weight: 600; }
+.hr-meta a { color: var(--green-mid); text-decoration: none; }
+
 /* ════════ COMING SOON ════════ */
 .coming-soon {
   background: var(--green-deep);
@@ -828,7 +840,7 @@ footer {
     <p class="hero-sub">Exploring the healing power of herbs, natural supplements, and holistic living helping you find balance from the roots up.</p>
     <div class="hero-btns">
       <a href="/blog/" class="btn btn-fill">Read the Blog</a>
-      <a href="/shop/" class="btn btn-outline">Coming Soon</a>
+      <a href="/shop/" class="btn btn-outline">Shop Now</a>
     </div>
   </div>
   <div class="scroll-cue">
@@ -943,7 +955,7 @@ footer {
         <div class="prod-emoji">🍵</div>
         <h4>Harmony Herbal Blend</h4>
         <p>Our first small-batch loose-leaf tea — warming, caffeine free, hand-blended in Memphis.</p>
-        <span style="display:inline-block;margin-top:0.8rem;font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">Coming Soon · Preview →</span>
+        <span style="display:inline-block;margin-top:0.8rem;font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">Now Available · $15 →</span>
       </a>
       <div class="prod-card reveal">
         <div class="prod-emoji">🌿</div>
@@ -958,13 +970,23 @@ footer {
         <span style="display:inline-block;margin-top:0.8rem;font-size:0.65rem;color:rgba(244,241,235,0.35);letter-spacing:0.1em;text-transform:uppercase;">Coming Soon</span>
       </div>
     </div>
-    <a href="/shop/" class="btn btn-fill reveal" style="margin-top:2.2rem;background:var(--gold);color:var(--green-deep);">Preview the Shop</a>
+    <a href="/shop/" class="btn btn-fill reveal" style="margin-top:2.2rem;background:var(--gold);color:var(--green-deep);">Visit the Shop</a>
     <form class="notify reveal" id="notifyForm" action="https://buttondown.com/api/emails/embed-subscribe/HerbalHarmonyTN" method="post" target="_blank" novalidate>
       <input type="email" name="email" aria-label="Email address" placeholder="Enter your email for product updates" autocomplete="email" required>
       <input type="hidden" name="embed" value="1">
       <button type="submit">Notify Me</button>
     </form>
     <p id="notifyMsg" role="status" aria-live="polite" style="display:none;margin-top:1rem;color:var(--gold-light);font-family:'Lora',serif;">You're on the list. Check your inbox to confirm.</p>
+  </div>
+</section>
+
+<!-- REVIEWS (filled from /shop/reviews.json; stays hidden until there are approved reviews) -->
+<section class="home-reviews" id="reviews" hidden>
+  <div class="hr-inner">
+    <p class="tag">Reviews</p>
+    <h2 class="stitle">Kind Words from the Community</h2>
+    <div class="hr-grid" id="homeReviews"></div>
+    <a href="/shop/" class="btn btn-fill" style="margin-top:2.2rem;">Visit the Shop</a>
   </div>
 </section>
 
@@ -1201,6 +1223,30 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
 </script>
 
+<script>
+// Home page reviews: show the latest approved reviews, or keep the section hidden.
+(function () {
+  var sec = document.getElementById('reviews');
+  var grid = document.getElementById('homeReviews');
+  if (!sec || !grid || !window.fetch) return;
+  function esc(t) { var d = document.createElement('div'); d.textContent = t == null ? '' : String(t); return d.innerHTML; }
+  fetch('/shop/reviews.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (list) {
+      if (!Array.isArray(list) || !list.length) return;
+      grid.innerHTML = list.slice(0, 3).map(function (rv) {
+        var n = Math.max(1, Math.min(5, Math.round(Number(rv.rating) || 0)));
+        var st = '★★★★★'.slice(0, n) + '<span class="off">' + '★★★★★'.slice(n) + '</span>';
+        return '<div class="hr-card"><div class="hr-stars" role="img" aria-label="' + n + ' out of 5 stars">' + st + '</div>' +
+          '<p class="hr-text">' + esc(rv.text) + '</p>' +
+          '<p class="hr-meta"><strong>' + esc(rv.name) + '</strong>' + (rv.city ? ' · ' + esc(rv.city) : '') +
+          '<br><a href="' + esc(rv.url) + '">' + esc(rv.product) + ' →</a></p></div>';
+      }).join('');
+      sec.hidden = false;
+    })
+    .catch(function () {});
+})();
+</script>
 </body>
 </html>
 

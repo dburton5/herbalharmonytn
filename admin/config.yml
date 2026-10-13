@@ -78,6 +78,31 @@ collections:
       - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 10, hint: "Lower numbers show first on the Shop page." }
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn off to hide the product from the site without deleting it." }
 
+  # ── REVIEWS ───────────────────────────────────────────
+  # Customer reviews. Submissions arrive in Netlify (Forms); copy the ones you
+  # approve here. Only "Approved" reviews show on the site.
+  - name: "reviews"
+    label: "Reviews"
+    label_singular: "Review"
+    description: "Add real customer reviews only. Skip any that claim the tea treats, cures or prevents a condition — those count as health claims on your site."
+    folder: "reviews"
+    format: "json"
+    extension: "json"
+    create: true
+    delete: true
+    identifier_field: "name"
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.name}}"
+    summary: "{{name}} — {{rating}}★ — {{product}}"
+    sortable_fields: ["date", "rating", "name"]
+    fields:
+      - { label: "Customer Name", name: "name", widget: "string", hint: "First name and last initial is plenty, e.g. Keisha W." }
+      - { label: "City", name: "city", widget: "string", required: false, hint: "Optional, e.g. Memphis, TN" }
+      - { label: "Product", name: "product", widget: "relation", collection: "products", value_field: "slug", search_fields: ["name"], display_fields: ["name"] }
+      - { label: "Rating", name: "rating", widget: "select", options: [{ label: "★★★★★ (5)", value: 5 }, { label: "★★★★ (4)", value: 4 }, { label: "★★★ (3)", value: 3 }, { label: "★★ (2)", value: 2 }, { label: "★ (1)", value: 1 }], default: 5 }
+      - { label: "Review", name: "text", widget: "text", hint: "Paste their words. You can trim for length, but don't change what they meant." }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "MMM D, YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Approved (show on site)", name: "approved", widget: "boolean", default: true }
+
   # ── SHOP SETTINGS ─────────────────────────────────────
   # Store-wide text: pickup & delivery terms and the after-checkout message.
   - name: "settings"

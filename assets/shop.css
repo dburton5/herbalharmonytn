@@ -206,3 +206,44 @@ a.pcard:hover .pcard-img img { transform: scale(1.03); }
 .pd-ship .prose ul { list-style: none; margin-left: 0; }
 .pd-ship .prose li { margin-bottom: 0.5rem; }
 @media (max-width: 700px) { .pd-ship { padding: 1.3rem 1.2rem; } }
+
+/* ---- reviews ---- */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.stars { display: inline-flex; gap: 2px; font-size: 1.05rem; line-height: 1; }
+.star { color: var(--tan); }
+.star.on { color: var(--rose-gold); }
+.pd-rating { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; margin-bottom: 0.6rem; }
+.pd-rating span { font-size: 0.82rem; color: var(--ink-mid); }
+.reviews { margin-top: 3.5rem; padding-top: 3rem; border-top: 1px solid var(--line); max-width: 760px; scroll-margin-top: 6rem; }
+.reviews h2 { font-family: var(--slab); font-size: 1.6rem; font-weight: 600; color: var(--forest); margin-bottom: 1rem; }
+.rv-summary { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.6rem; }
+.rv-summary .stars { font-size: 1.4rem; }
+.rv-avg { font-family: var(--slab); font-size: 1.4rem; font-weight: 600; color: var(--forest); }
+.rv-count { font-size: 0.85rem; color: var(--ink-light); }
+.rv-empty { font-family: var(--serif); color: var(--ink-mid); margin-bottom: 1.4rem; line-height: 1.7; }
+.rv-list { list-style: none; margin-bottom: 1.8rem; }
+.rv-item { padding: 1.3rem 0; border-bottom: 1px solid var(--line); }
+.rv-item:first-child { border-top: 1px solid var(--line); }
+.rv-text { font-family: var(--serif); font-size: 1rem; line-height: 1.75; color: var(--ink); margin: 0.6rem 0 0.5rem; }
+.rv-meta { font-size: 0.8rem; color: var(--ink-light); }
+.rv-meta strong { color: var(--forest); font-weight: 600; }
+.btn-outline-dark { background: transparent; color: var(--forest); border: 1.5px solid var(--forest); cursor: pointer; list-style: none; }
+.btn-outline-dark:hover { background: var(--forest); color: var(--cream); }
+.rv-form-wrap > summary::-webkit-details-marker { display: none; }
+.rv-form-wrap[open] > summary { display: none; }
+.rv-form { display: grid; gap: 1rem; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 1.6rem 1.8rem; }
+.rv-form label { display: grid; gap: 0.35rem; font-size: 0.85rem; font-weight: 600; color: var(--forest); }
+.rv-form .hint { font-weight: 400; color: var(--ink-light); }
+.rv-form input:not([type=radio]), .rv-form textarea { font: inherit; font-weight: 400; font-size: 1rem; color: var(--ink); padding: 0.7rem 0.8rem; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); width: 100%; }
+.rv-form input:focus, .rv-form textarea:focus { outline: 2px solid var(--sage-soft); outline-offset: 1px; }
+.rv-form .btn { justify-self: start; border: 0; cursor: pointer; }
+.rv-note { font-size: 0.78rem; color: var(--ink-light); }
+.rv-hp { position: absolute; left: -9999px; }
+.rv-rate { border: 0; padding: 0; margin: 0; }
+.rv-stars-in { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 0.2rem; }
+.rv-rate legend { font-size: 0.85rem; font-weight: 600; color: var(--forest); margin-bottom: 0.4rem; padding: 0; }
+.rv-rate input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.rv-rate label { font-size: 1.9rem; color: var(--tan); cursor: pointer; display: inline; line-height: 1; }
+.rv-rate input:checked ~ label, .rv-rate label:hover, .rv-rate label:hover ~ label { color: var(--rose-gold); }
+.rv-rate input:focus-visible + label { outline: 2px solid var(--sage-soft); outline-offset: 2px; border-radius: 3px; }
+@media (max-width: 700px) { .rv-form { padding: 1.3rem 1.1rem; } }

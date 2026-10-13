@@ -16,3 +16,9 @@
   to = "/shop/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/reviews/*"
+  to = "/shop/"
+  status = 301
+  force = true
