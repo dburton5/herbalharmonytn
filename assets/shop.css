@@ -29,12 +29,11 @@ a { color: var(--sage); }
   position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
   display: flex; justify-content: space-between; align-items: center;
   padding: 0.8rem 2.5rem;
-  background: rgba(245, 238, 221, 0.95);
-  backdrop-filter: blur(14px);
+  background: rgba(245, 238, 221, 0.98);
   box-shadow: 0 1px 16px rgba(0,0,0,0.05);
 }
 .nav-logo img { height: 56px; }
-.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links { display: flex; gap: 1.35rem; list-style: none; }
 .nav-links a {
   text-decoration: none; color: var(--ink-mid);
   font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
@@ -178,12 +177,23 @@ a.pcard:hover .pcard-img img { transform: scale(1.03); }
   .pd-details { grid-template-columns: 1fr; }
   .btn-wide { max-width: none; }
 }
+@media (max-width: 860px) {
+  .nav-links {
+    display: none; position: fixed; inset: 0; height: 100vh; background: var(--cream);
+    flex-direction: column; align-items: center; justify-content: safe center; gap: 1.15rem; z-index: 1000;
+    overflow-y: auto; padding: 5.25rem 1.5rem 2rem;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.1rem; }
+  .menu-toggle { display: flex; z-index: 1001; }
+}
 @media (max-width: 700px) {
   .site-nav { padding: 0.7rem 1.25rem; }
   .nav-logo img { height: 48px; }
   .nav-links {
     display: none; position: fixed; inset: 0; height: 100vh; background: var(--cream);
-    flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    flex-direction: column; align-items: center; justify-content: safe center; gap: 1.15rem;
+    overflow-y: auto; padding: 5.25rem 1.5rem 2rem;
   }
   .nav-links.open { display: flex; }
   .nav-links a { font-size: 1.1rem; }

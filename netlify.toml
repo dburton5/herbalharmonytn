@@ -1,8 +1,15 @@
 # Netlify build settings (this file overrides the build settings in the Netlify UI).
-# Builds the Shop pages from /products, then the RSS feed from /blog/posts.
+# Shop pages, then the journal (article HTML + posts.json), then the RSS feed.
+#
+# Contributor form: /write/index.html posts to Netlify Forms as
+# "write-for-herbal-harmony". After deploy, open Site → Forms →
+# write-for-herbal-harmony → Form notifications and email submissions to Don.
+# File fields (headshot, manuscript) need a plan that includes form file uploads.
+# Text fields work without that add-on. Nothing in the form is published;
+# approved posts are added by hand from blog/templates/community-voice.md.
 [build]
   publish = "."
-  command = "node build-shop.js && node generate-rss.js"
+  command = "node build-shop.js && node build-blog.js && node generate-rss.js"
 
 # Product JSON files and build scripts don't need to be browsable.
 [[redirects]]

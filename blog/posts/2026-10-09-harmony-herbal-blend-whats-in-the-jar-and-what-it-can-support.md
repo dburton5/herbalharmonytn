@@ -1,9 +1,26 @@
 ---
 title: "Harmony Herbal Blend: What's in the Jar and What It Can Support"
 date: 2026-10-09T00:30:00.000-05:00
-category: Herbal Remedies
-description: An honest, plain-English look at the six herbs in Harmony Herbal Blend, what each one has traditionally been used for, and what a cup can realistically do for you.
+category: Herbs A–Z
+tags: Harmony Herbal Blend, Tea, Memphis
+description: "An honest, plain-English look at the six herbs in Harmony Herbal Blend, what each one has traditionally been used for, and what a cup can realistically do for you."
 thumbnail: /images/uploads/harmony-herbal-blend-shelf.jpg
+thumbnailAlt: "Rows of glass jars of Harmony Herbal Blend with copper-colored lids lined up on a wooden shelf."
+featured: false
+author: Dondre Burton
+authorRole: Founder, Herbal Harmony TN
+authorPhoto: /images/authors/dondre.svg
+authorBio: "Dondre Burton founded Herbal Harmony TN in Memphis. Mullein leaf was his way into herbs, and he writes about teas, plants, and everyday rituals in plain language from his own experience."
+reviewer: Herbal Harmony Editorial
+reviewerRole: "Checked for plain language and sourcing. Not a clinical review."
+takeaways:
+  - "Harmony Herbal Blend is a caffeine-free loose tea of six plants, measured and packed by hand in Memphis: peppermint, mullein, cinnamon, ginger, turmeric, and bladderwrack."
+  - "The article frames a cup as gentle daily support for digestion, seasonal comfort, hydration, and a sugary-drink swap, not as a cure."
+  - "Shake the jar, use about 2¾ teaspoons in 8 ounces of water, steep 10–15 minutes, and strain well because of the mullein hairs."
+  - "Check with a clinician first if you have a thyroid condition, are pregnant or nursing, take blood thinners or diabetes medication, have gallbladder issues, or deal with reflux."
+sources:
+  - title: "This article is the maker's plain-language look at the six herbs in the blend, based on traditional use. It does not cite peer-reviewed studies."
+    url: 
 ---
 Every jar on that shelf was measured, blended, and filled by hand right here in Memphis. Before you brew a cup, I want you to know exactly what's inside and what it can do for you.
 

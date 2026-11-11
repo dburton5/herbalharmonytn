@@ -81,8 +81,7 @@ nav {
 }
 
 nav.scrolled {
-  background: rgba(244, 241, 235, 0.95);
-  backdrop-filter: blur(14px);
+  background: rgba(244, 241, 235, 0.98);
   box-shadow: 0 1px 16px rgba(0,0,0,0.05);
   padding: 0.6rem 2.5rem;
 }
@@ -96,7 +95,7 @@ nav.scrolled .nav-logo img { height: 56px; }
 
 .nav-links {
   display: flex;
-  gap: 2.2rem;
+  gap: 1.35rem;
   list-style: none;
 }
 
@@ -122,6 +121,10 @@ nav.scrolled .nav-logo img { height: 56px; }
 
 .nav-links a:hover { color: var(--green-dark); }
 .nav-links a:hover::after { width: 100%; }
+.nav-links a:focus-visible, .menu-toggle:focus-visible, .btn:focus-visible {
+  outline: 2px solid var(--green-mid);
+  outline-offset: 3px;
+}
 
 .menu-toggle {
   display: none;
@@ -576,6 +579,12 @@ section { padding: 6rem 2.5rem; }
 
 .bcard-link:hover { color: var(--green-deep); }
 
+.bcard-by {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-mid);
+}
+
 /* ════════ HOME REVIEWS ════════ */
 .home-reviews { background: var(--cream-warm); text-align: center; }
 .hr-inner { max-width: 1100px; margin: 0 auto; }
@@ -778,6 +787,26 @@ footer {
   .scroll-cue { display: none; }
 }
 
+@media (max-width: 860px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: var(--cream);
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe center;
+    gap: 1.15rem;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 5.25rem 1.5rem 2rem;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.1rem; letter-spacing: 0.14em; }
+  .menu-toggle { display: flex; z-index: 1001; }
+}
+
 @media (max-width: 700px) {
   nav { padding: 0.8rem 1.5rem; }
   nav.scrolled { padding: 0.5rem 1.5rem; }
@@ -791,8 +820,10 @@ footer {
     background: var(--cream);
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: safe center;
+    gap: 1.15rem;
+    overflow-y: auto;
+    padding: 5.25rem 1.5rem 2rem;
   }
 
   .nav-links.open { display: flex; }
@@ -830,10 +861,11 @@ footer {
     <li><a href="/" onclick="closeMenu()">Home</a></li>
     <li><a href="#about" onclick="closeMenu()">About</a></li>
     <li><a href="/blog/" onclick="closeMenu()">Blog</a></li>
+    <li><a href="/write/" title="Write for Herbal Harmony" onclick="closeMenu()">Write</a></li>
     <li><a href="/book/" onclick="closeMenu()">Book</a></li>
     <li><a href="/shop/" onclick="closeMenu()">Shop</a></li>
   </ul>
-  <button class="menu-toggle" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+  <button class="menu-toggle" id="menuBtn" type="button" onclick="toggleMenu()" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -1011,6 +1043,7 @@ footer {
       <a href="/">Home</a>
       <a href="#about">About</a>
       <a href="/blog/">Blog</a>
+      <a href="/write/">Write for Us</a>
       <a href="/book/">Book</a>
       <a href="/shop/">Shop</a>
     </div>
@@ -1032,7 +1065,13 @@ window.addEventListener('scroll', () => {
 });
 
 function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
+  var links = document.getElementById('navLinks');
+  var open = links.classList.toggle('open');
+  var btn = document.getElementById('menuBtn');
+  if (btn) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
 }
 function closeMenu() {
   document.getElementById('navLinks').classList.remove('open');
@@ -1154,74 +1193,46 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   });
 })();
 
-// Fetch latest blog posts from GitHub
+// Latest posts come from /blog/posts.json, written by build-blog.js.
 (function() {
-  var GITHUB_USER = 'dburton5';
-  var GITHUB_REPO = 'herbalharmonytn';
-  var POSTS_PATH = 'blog/posts';
   var MAX_POSTS = 3;
-
   var catColors = {
-    'herbal remedies': 'linear-gradient(135deg, #6B8B5E 0%, #8BA87A 40%, #A8C49A 100%)',
-    'supplements': 'linear-gradient(135deg, #C47A4E 0%, #D4A06A 40%, #E8C5A0 100%)',
-    'holistic wellness': 'linear-gradient(135deg, #7A6B5E 0%, #A08B7A 40%, #C4B4A0 100%)'
+    'herbs a–z': 'linear-gradient(135deg, #6B8B5E 0%, #8BA87A 40%, #A8C49A 100%)',
+    'conditions': 'linear-gradient(135deg, #8A5A4A 0%, #C47A4E 40%, #E8C5A0 100%)',
+    'rituals & rest': 'linear-gradient(135deg, #7A6B5E 0%, #A08B7A 40%, #C4B4A0 100%)',
+    'recipes': 'linear-gradient(135deg, #6B5344 0%, #A67C52 40%, #E4C9A0 100%)',
+    'community voices': 'linear-gradient(135deg, #3A4F2F 0%, #7A8B6F 50%, #D4C48A 100%)'
   };
 
-  function parseFM(content) {
-    var m = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-    if (!m) return { meta: {}, body: content };
-    var meta = {};
-    m[1].split('\n').forEach(function(line) {
-      var i = line.indexOf(':');
-      if (i > -1) {
-        var k = line.substring(0, i).trim();
-        var v = line.substring(i + 1).trim();
-        if ((v.charAt(0) === '"' && v.charAt(v.length-1) === '"') ||
-            (v.charAt(0) === "'" && v.charAt(v.length-1) === "'")) v = v.slice(1,-1);
-        meta[k] = v;
-      }
-    });
-    return { meta: meta, body: m[2] };
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  function fmtDate(d) {
-    if (!d) return '';
-    try { return new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}); }
-    catch(e) { return d; }
-  }
-
-  fetch('https://api.github.com/repos/' + GITHUB_USER + '/' + GITHUB_REPO + '/contents/' + POSTS_PATH)
-    .then(function(r) { if (!r.ok) throw new Error(); return r.json(); })
-    .then(function(files) {
-      var md = files.filter(function(f) { return f.name.endsWith('.md'); });
-      if (md.length === 0) throw new Error('no posts');
-      return Promise.all(md.map(function(f) {
-        return fetch(f.download_url).then(function(r) { return r.text(); }).then(function(txt) {
-          var p = parseFM(txt);
-          return { title: p.meta.title||'Untitled', date: p.meta.date||'', category: p.meta.category||'',
-                   description: p.meta.description||'', thumbnail: p.meta.thumbnail||'' };
-        });
-      }));
-    })
-    .then(function(posts) {
-      posts.sort(function(a,b) { return new Date(b.date) - new Date(a.date); });
+  fetch('/blog/posts.json', { cache: 'no-cache' })
+    .then(function(r) { if (!r.ok) throw new Error('posts'); return r.json(); })
+    .then(function(data) {
+      var posts = (data && data.posts) || [];
+      if (!posts.length) throw new Error('empty');
       var grid = document.getElementById('blogGrid');
       var html = '';
-      var shown = posts.slice(0, MAX_POSTS);
-      for (var i = 0; i < shown.length; i++) {
-        var p = shown[i];
-        var bg = catColors[(p.category||'').toLowerCase()] || catColors['herbal remedies'];
-        var thumbStyle = p.thumbnail ? 'background-image:url('+p.thumbnail+');background-size:cover;background-position:center;' : 'background:'+bg+';';
-        html += '<a href="/blog/" class="bcard reveal vis">' +
-          '<div class="bcard-img" style="'+thumbStyle+'">' +
-          (p.category ? '<span class="bcard-cat">'+p.category+'</span>' : '') +
+      posts.slice(0, MAX_POSTS).forEach(function(p) {
+        var bg = catColors[(p.category || '').toLowerCase()] || catColors['herbs a–z'];
+        var safeThumb = (p.thumbnail && (p.thumbnail.charAt(0) === '/' || /^https:/.test(p.thumbnail))) ? p.thumbnail : '';
+        var thumbStyle = safeThumb
+          ? 'background-image:url(' + esc(safeThumb) + ');background-size:cover;background-position:center;'
+          : 'background:' + bg + ';';
+        html += '<a href="' + esc(p.url || '/blog/') + '" class="bcard reveal vis">' +
+          '<div class="bcard-img" style="' + thumbStyle + '">' +
+          (p.category ? '<span class="bcard-cat">' + esc(p.category) + '</span>' : '') +
           '</div><div class="bcard-body">' +
-          '<p class="bcard-date">'+fmtDate(p.date)+'</p>' +
-          '<h3>'+p.title+'</h3>' +
-          '<p>'+p.description+'</p>' +
+          '<p class="bcard-date">' + esc(p.dateLabel || '') + '</p>' +
+          '<h3>' + esc(p.title) + '</h3>' +
+          '<p>' + esc(p.description) + '</p>' +
+          '<p class="bcard-by">' + esc(p.author || '') + (p.readLabel ? ' · ' + esc(p.readLabel) : '') + '</p>' +
           '<span class="bcard-link">Read more →</span>' +
           '</div></a>';
-      }
+      });
       grid.innerHTML = html;
     })
     .catch(function() {

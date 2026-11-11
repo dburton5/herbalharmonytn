@@ -1,10 +1,26 @@
 ---
 title: "Mullein Leaf: The Herb That Started It All"
 date: 2026-04-10T15:10:00.000-05:00
-category: Herbal Remedies
-description: How I discovered mullein leaf for lung support, what it actually
-  does in your body, and simple ways to start using it.
+category: Herbs A–Z
+tags: Mullein, Respiratory, Tea
+description: "How I discovered mullein leaf for lung support, what it actually does in your body, and simple ways to start using it."
 thumbnail: /images/uploads/mullein500_large.jpg
+thumbnailAlt: "Close-up of a mullein plant with soft, fuzzy gray-green leaves wrapped around a pale central bud."
+featured: false
+author: Dondre Burton
+authorRole: Founder, Herbal Harmony TN
+authorPhoto: /images/authors/dondre.svg
+authorBio: "Dondre Burton founded Herbal Harmony TN in Memphis. Mullein leaf was his way into herbs, and he writes about teas, plants, and everyday rituals in plain language from his own experience."
+reviewer: Herbal Harmony Editorial
+reviewerRole: "Checked for plain language and sourcing. Not a clinical review."
+takeaways:
+  - "Mullein (Verbascum thapsus) is a woolly-leafed plant with a long tradition of respiratory use, going back at least to 450 BCE."
+  - "The piece points to saponins for loosening mucus, mucilage for soothing irritated tissue, and flavonoids such as hesperidin and verbascoside."
+  - "A simple start is mullein tea: 1–2 teaspoons of dried leaf, steeped 10–15 minutes, and strained well so the leaf hairs don't irritate your throat."
+  - "Safety in pregnancy isn't established here, and the article notes possible interactions with diabetes medicines and diuretics."
+sources:
+  - title: "This article is drawn from traditional herbal use and the author's experience. It does not cite peer-reviewed studies."
+    url: 
 ---
 There's one herb that changed everything for me. Before I knew anything about herbalism, before I started researching adaptogens or building tea blends there was mullein leaf.
 
