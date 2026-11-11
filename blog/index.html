@@ -7,609 +7,175 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-S7YN9JLEH8');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — Herbal Harmony TN</title>
-<meta name="description" content="Herbal wellness articles from Herbal Harmony TN in Memphis.">
+<title>The Journal — Herbal Harmony TN</title>
+<meta name="description" content="Plain-language herbal and wellness articles from Herbal Harmony TN in Memphis. Herbs, conditions, rituals, recipes, and community voices.">
+<link rel="canonical" href="https://herbalharmonytn.com/blog/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Herbal Harmony TN">
-<meta property="og:title" content="Blog — Herbal Harmony TN">
-<meta property="og:description" content="Herbal wellness articles from Herbal Harmony TN in Memphis.">
+<meta property="og:title" content="The Journal — Herbal Harmony TN">
+<meta property="og:description" content="Plain-language herbal and wellness articles from Herbal Harmony TN in Memphis. Herbs, conditions, rituals, recipes, and community voices.">
 <meta property="og:url" content="https://herbalharmonytn.com/blog/">
 <meta property="og:image" content="https://herbalharmonytn.com/images/share-card.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://herbalharmonytn.com/images/share-card.jpg">
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="shortcut icon" href="/favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <link rel="alternate" type="application/rss+xml" title="Herbal Harmony TN" href="https://herbalharmonytn.com/rss.xml">
-<style>
-:root {
-  --green-deep: #2B3B22;
-  --green-dark: #3A4F2F;
-  --green-mid: #4E6B3C;
-  --green-sage: #7A8B6F;
-  --green-light: #96A88A;
-  --cream: #F4F1EB;
-  --cream-warm: #EAE4D8;
-  --gold: #B8A060;
-  --text-dark: #2A2A25;
-  --text-mid: #5A5A50;
-  --text-light: #8A8A7E;
-  --white: #FDFBF7;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  color: var(--text-dark);
-  background: var(--white);
-}
-
-nav {
-  position: fixed;
-  top: 0; left: 0; width: 100%;
-  padding: 1rem 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  background: rgba(244, 241, 235, 0.95);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 16px rgba(0,0,0,0.05);
-}
-
-.nav-logo img { height: 56px; }
-
-.nav-links {
-  display: flex;
-  gap: 2.2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--text-mid);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover { color: var(--green-dark); }
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu-toggle span {
-  width: 24px; height: 2px;
-  background: var(--green-deep);
-}
-
-.blog-header {
-  padding: 8rem 2.5rem 3rem;
-  background: var(--cream);
-  text-align: center;
-}
-
-.blog-header h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 400;
-  color: var(--green-deep);
-  margin-bottom: 0.8rem;
-}
-
-.blog-header p {
-  font-family: 'Lora', serif;
-  font-size: 1rem;
-  color: var(--text-mid);
-  max-width: 500px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-
-.posts-section {
-  padding: 3rem 2.5rem 6rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
-}
-
-.post-card {
-  background: var(--white);
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid rgba(122,139,111,0.08);
-  transition: all 0.4s ease;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  cursor: pointer;
-}
-
-.post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 44px rgba(0,0,0,0.06);
-}
-
-.post-thumb {
-  width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.post-thumb.herbal-remedies { background-color: #6B8B5E; background-image: linear-gradient(135deg, #6B8B5E 0%, #8BA87A 40%, #A8C49A 100%); }
-.post-thumb.supplements { background-color: #C47A4E; background-image: linear-gradient(135deg, #C47A4E 0%, #D4A06A 40%, #E8C5A0 100%); }
-.post-thumb.holistic-wellness { background-color: #7A6B5E; background-image: linear-gradient(135deg, #7A6B5E 0%, #A08B7A 40%, #C4B4A0 100%); }
-.post-thumb.default { background-color: #6B8B5E; background-image: linear-gradient(135deg, #6B8B5E 0%, #8BA87A 40%, #A8C49A 100%); }
-
-.post-cat-label {
-  position: absolute;
-  bottom: 10px; left: 10px;
-  background: rgba(253,251,247,0.92);
-  padding: 0.25rem 0.65rem;
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--green-dark);
-  border-radius: 2px;
-  font-weight: 600;
-}
-
-.post-body { padding: 1.4rem; }
-
-.post-date {
-  font-size: 0.7rem;
-  color: var(--text-light);
-  margin-bottom: 0.5rem;
-}
-
-.post-card h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--green-deep);
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-
-.post-card p {
-  font-size: 0.85rem;
-  color: var(--text-mid);
-  line-height: 1.65;
-}
-
-.post-link {
-  display: inline-block;
-  margin-top: 0.8rem;
-  font-size: 0.75rem;
-  color: var(--green-mid);
-  font-weight: 500;
-  letter-spacing: 0.06em;
-}
-
-.loading-state, .empty-state {
-  text-align: center;
-  padding: 4rem 2rem;
-  grid-column: 1 / -1;
-}
-
-.loading-state p, .empty-state p {
-  font-family: 'Lora', serif;
-  color: var(--text-mid);
-  font-size: 1rem;
-}
-
-.empty-state h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem;
-  color: var(--green-deep);
-  margin-bottom: 0.8rem;
-}
-
-/* SINGLE POST VIEW */
-.post-view {
-  display: none;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 8rem 2.5rem 6rem;
-}
-
-.post-view.active { display: block; }
-
-.post-view .back-link {
-  display: inline-block;
-  margin-bottom: 2rem;
-  font-size: 0.8rem;
-  color: var(--green-mid);
-  text-decoration: none;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.post-view .back-link:hover { color: var(--green-deep); }
-
-.post-view .pv-cat {
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--green-sage);
-  font-weight: 500;
-  margin-bottom: 0.6rem;
-}
-
-.post-view h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
-  color: var(--green-deep);
-  margin-bottom: 0.8rem;
-  line-height: 1.15;
-}
-
-.post-view .pv-date {
-  font-size: 0.82rem;
-  color: var(--text-light);
-  margin-bottom: 2.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(122,139,111,0.12);
-}
-
-.post-view .pv-thumb {
-  width: 100%;
-  height: 360px;
-  border-radius: 6px;
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 2.5rem;
-}
-
-.post-view .pv-body {
-  font-family: 'Lora', serif;
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: var(--text-dark);
-}
-
-.post-view .pv-body h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--green-deep);
-  margin: 2.5rem 0 1rem;
-}
-
-.post-view .pv-body h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--green-deep);
-  margin: 2rem 0 0.8rem;
-}
-
-.post-view .pv-body p { margin-bottom: 1.2rem; }
-
-.post-view .pv-body ul, .post-view .pv-body ol {
-  margin: 1rem 0 1.2rem 1.5rem;
-}
-
-.post-view .pv-body li {
-  margin-bottom: 0.5rem;
-  line-height: 1.7;
-}
-
-.post-view .pv-body blockquote {
-  border-left: 3px solid var(--green-sage);
-  padding: 0.8rem 1.5rem;
-  margin: 1.5rem 0;
-  color: var(--text-mid);
-  font-style: italic;
-  background: var(--cream);
-  border-radius: 0 4px 4px 0;
-}
-
-.post-view .pv-body img {
-  max-width: 100%;
-  border-radius: 4px;
-  margin: 1.5rem 0;
-}
-
-.post-view .pv-body strong { color: var(--green-deep); }
-
-footer {
-  background: #1E2419;
-  color: rgba(244,241,235,0.55);
-  padding: 2.5rem 2.5rem 1.5rem;
-  text-align: center;
-}
-
-footer p {
-  font-size: 0.72rem;
-  color: rgba(244,241,235,0.25);
-}
-
-footer a {
-  color: rgba(244,241,235,0.4);
-  text-decoration: none;
-}
-
-footer a:hover { color: var(--green-light); }
-
-@media (max-width: 900px) {
-  .posts-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 700px) {
-  nav { padding: 0.8rem 1.5rem; }
-  .nav-logo img { height: 48px; }
-  .blog-header { padding: 7rem 1.5rem 2.5rem; }
-  .posts-section { padding: 2rem 1rem 4rem; }
-  .nav-links {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    background: var(--cream);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-  }
-  .nav-links.open { display: flex; }
-  .nav-links a { font-size: 1.1rem; }
-  .menu-toggle { display: flex; z-index: 1001; }
-  .post-view { padding: 7rem 1.5rem 4rem; }
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/blog.css">
+<link rel="alternate" type="application/rss+xml" title="Herbal Harmony TN" href="https://herbalharmonytn.com/rss.xml">
 </head>
-<body>
-
-<nav>
-  <a href="/" class="nav-logo">
-    <img src="/images/logo.png" alt="Herbal Harmony">
-  </a>
+<body data-page="index">
+<a class="skip" href="#main">Skip to content</a>
+<nav class="site-nav" aria-label="Primary">
+  <a class="nav-logo" href="/"><img src="/images/logo.png" alt="Herbal Harmony"></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/" onclick="closeMenu()">Home</a></li>
-    <li><a href="/#about" onclick="closeMenu()">About</a></li>
-    <li><a href="/blog/" onclick="closeMenu()">Blog</a></li>
-    <li><a href="/book/" onclick="closeMenu()">Book</a></li>
-    <li><a href="/shop/" onclick="closeMenu()">Shop</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/blog/" aria-current="page">Blog</a></li>
+    <li><a href="/write/" title="Write for Herbal Harmony">Write</a></li>
+    <li><a href="/book/">Book</a></li>
+    <li><a href="/shop/">Shop</a></li>
   </ul>
-  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="menu-toggle" id="menuBtn" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
-
-<div id="listView">
-  <div class="blog-header">
-    <h1>The Journal</h1>
-    <p>Herbal wisdom, wellness insights, and holistic living — from our experience to yours.</p>
+<main id="main">
+  <header class="masthead">
+    <div class="masthead-inner">
+      <p class="eyebrow">Harmonize Life · Memphis</p>
+      <h1>The Journal</h1>
+      <hr class="rule">
+      <p class="lede">Plain-language notes on herbs, food, and feeling well, written in Memphis. Read for yourself, then decide with a clinician when health is on the line.</p>
+      <p class="invite">Live in Memphis? <a href="/write/">Write for us</a>. Don reads every pitch. Nothing is published on its own.</p>
+<nav class="topics" aria-label="Topics">
+<a href="/blog/" data-all="true">All</a>
+    <a href="/blog/?category=herbs-a-z" data-category="herbs-a-z">Herbs A–Z</a>
+    <a href="/blog/?category=conditions" data-category="conditions">Conditions</a>
+    <a href="/blog/?category=rituals-rest" data-category="rituals-rest">Rituals &amp; Rest</a>
+    <a href="/blog/?category=recipes" data-category="recipes">Recipes</a>
+    <a href="/blog/?category=community-voices" data-category="community-voices">Community Voices</a>
+    <a class="topics-write" href="/write/">Write for Us</a>
+  </nav>    </div>
+  </header>
+  <div class="wrap section">
+<article class="featured" id="featured">
+  <a class="featured-link" href="/blog/hibiscus-tea-and-blood-pressure-what-the-research-really-says/" aria-labelledby="featured-title">
+    <div class="featured-media"><img src="/images/uploads/hibiscus-tea-blood-pressure-banner.jpg" alt="" width="1600" height="900" fetchpriority="high"></div>
+    <div class="featured-copy">
+      <p class="kicker">Featured · Conditions</p>
+      <h2 id="featured-title">Hibiscus Tea &amp; Blood Pressure: What the Research Really Says</h2>
+      <p class="dek">A plain-English look at the studies on hibiscus tea and blood pressure, how to brew it, and who should be careful.</p>
+      <p class="meta"><img class="avatar" src="/images/authors/dondre.svg" alt="" width="36" height="36"><span>Dondre Burton</span><span class="dot">7 min read · October 6, 2026</span></p>
+    </div>
+  </a>
+</article>
+    <h2 class="section-title" id="listHeading">Latest</h2>
+    <noscript><p class="noscript">Topic filters use JavaScript. Every article is still listed here.</p></noscript>
+    <div class="cards" id="postList">
+<a class="card" href="/blog/harmony-herbal-blend-whats-in-the-jar-and-what-it-can-support/" data-category="herbs-a-z" data-tags="harmony-herbal-blend|tea|memphis" aria-labelledby="card-harmony-herbal-blend-whats-in-the-jar-and-what-it-can-support">
+  <div class="card-media"><img src="/images/uploads/harmony-herbal-blend-shelf.jpg" alt="" width="1200" height="1600" loading="lazy"></div>
+  <div class="card-body">
+    <p class="kicker">Herbs A–Z</p>
+    <h3 id="card-harmony-herbal-blend-whats-in-the-jar-and-what-it-can-support">Harmony Herbal Blend: What's in the Jar and What It Can Support</h3>
+    <p class="excerpt">An honest, plain-English look at the six herbs in Harmony Herbal Blend, what each one has traditionally been used for, and what a cup can realistically do for you.</p>
+    <p class="card-meta"><span>Dondre Burton</span><span>5 min read</span></p>
   </div>
-  <div class="posts-section">
-    <div class="posts-grid" id="postsGrid">
-      <div class="loading-state">
-        <p>Loading posts...</p>
-      </div>
+</a>
+<a class="card" href="/blog/hibiscus-tea-and-blood-pressure-what-the-research-really-says/" data-category="conditions" data-tags="hibiscus|blood-pressure|tea" data-featured="true" hidden aria-labelledby="card-hibiscus-tea-and-blood-pressure-what-the-research-really-says">
+  <div class="card-media"><img src="/images/uploads/hibiscus-tea-blood-pressure-banner.jpg" alt="" width="1600" height="900" loading="lazy"></div>
+  <div class="card-body">
+    <p class="kicker">Conditions</p>
+    <h3 id="card-hibiscus-tea-and-blood-pressure-what-the-research-really-says">Hibiscus Tea &amp; Blood Pressure: What the Research Really Says</h3>
+    <p class="excerpt">A plain-English look at the studies on hibiscus tea and blood pressure, how to brew it, and who should be careful.</p>
+    <p class="card-meta"><span>Dondre Burton</span><span>7 min read</span></p>
+  </div>
+</a>
+<a class="card" href="/blog/peppermint-leaf-tea-a-refreshing-classic-for-digestion-and-calm/" data-category="herbs-a-z" data-tags="peppermint|digestion|tea" aria-labelledby="card-peppermint-leaf-tea-a-refreshing-classic-for-digestion-and-calm">
+  <div class="card-media"><img src="/images/uploads/u3215293719_peppermint_leaf_tea_-hd_-v_8.1_58d78e11-3ef5-4ee2-9b32-db4b7a02ae1a_0.png" alt="" width="2048" height="2048" loading="lazy"></div>
+  <div class="card-body">
+    <p class="kicker">Herbs A–Z</p>
+    <h3 id="card-peppermint-leaf-tea-a-refreshing-classic-for-digestion-and-calm">Peppermint Leaf Tea: A Refreshing Classic for Digestion and Calm</h3>
+    <p class="excerpt">A look at peppermint leaf tea's soothing flavor, traditional uses for digestion and relaxation, and simple tips for brewing a great cup at home.</p>
+    <p class="card-meta"><span>Dondre Burton</span><span>3 min read</span></p>
+  </div>
+</a>
+<a class="card" href="/blog/watermelon-juice-natures-nitric-oxide-booster/" data-category="recipes" data-tags="watermelon|circulation|fasting" aria-labelledby="card-watermelon-juice-natures-nitric-oxide-booster">
+  <div class="card-media"><img src="/images/uploads/img_1161.jpeg" alt="" width="1179" height="1316" loading="lazy"></div>
+  <div class="card-body">
+    <p class="kicker">Recipes</p>
+    <h3 id="card-watermelon-juice-natures-nitric-oxide-booster">🍉 Watermelon Juice: Nature’s Nitric Oxide Booster</h3>
+    <p class="excerpt">Summer’s favorite fruit is hiding a serious wellness secret.</p>
+    <p class="card-meta"><span>Dondre Burton</span><span>2 min read</span></p>
+  </div>
+</a>
+<a class="card" href="/blog/the-trinity-natures-parasite-cleanse/" data-category="conditions" data-tags="black-walnut|wormwood|cloves|cleanse" aria-labelledby="card-the-trinity-natures-parasite-cleanse">
+  <div class="card-media"><img src="/images/uploads/img_1091.jpeg" alt="" width="3161" height="2921" loading="lazy"></div>
+  <div class="card-body">
+    <p class="kicker">Conditions</p>
+    <h3 id="card-the-trinity-natures-parasite-cleanse">The Trinity: Nature's Parasite Cleanse</h3>
+    <p class="excerpt">Black Walnut Hull · Wormwood · Cloves 100% Pure · No Fillers · No Compromise</p>
+    <p class="card-meta"><span>Dondre Burton</span><span>5 min read</span></p>
+  </div>
+</a>
+<a class="card" href="/blog/the-ancient-power-of-elderberry-syrup/" data-category="recipes" data-tags="elderberry|immune|syrup" aria-labelledby="card-the-ancient-power-of-elderberry-syrup">
+  <div class="card-media"><img src="/images/uploads/ca032e0b-5bf0-405f-aa54-593b24c1cf02.png" alt="" width="1024" height="1536" loading="lazy"></div>
+  <div class="card-body">
+    <p class="kicker">Recipes</p>
+    <h3 id="card-the-ancient-power-of-elderberry-syrup">The Ancient Power of Elderberry Syrup</h3>
+    <p class="excerpt">How a simple purple berry became one of nature's most trusted immune allies</p>
+    <p class="card-meta"><span>Dondre Burton</span><span>3 min read</span></p>
+  </div>
+</a>
+<a class="card" href="/blog/mullein-leaf-the-herb-that-started-it-all/" data-category="herbs-a-z" data-tags="mullein|respiratory|tea" aria-labelledby="card-mullein-leaf-the-herb-that-started-it-all">
+  <div class="card-media"><img src="/images/uploads/mullein500_large.jpg" alt="" width="480" height="480" loading="lazy"></div>
+  <div class="card-body">
+    <p class="kicker">Herbs A–Z</p>
+    <h3 id="card-mullein-leaf-the-herb-that-started-it-all">Mullein Leaf: The Herb That Started It All</h3>
+    <p class="excerpt">How I discovered mullein leaf for lung support, what it actually does in your body, and simple ways to start using it.</p>
+    <p class="card-meta"><span>Dondre Burton</span><span>3 min read</span></p>
+  </div>
+</a>
+    </div>
+    <div class="empty-state" id="emptyState" hidden>
+      <h2>Nothing in this topic yet</h2>
+      <p id="emptyText">Try another topic, or read the latest articles.</p>
+      <a class="btn" href="/write/">Write for Herbal Harmony</a>
     </div>
   </div>
-</div>
-
-<div class="post-view" id="postView">
-  <span class="back-link" onclick="showList()">&#8592; Back to all posts</span>
-  <p class="pv-cat" id="pvCat"></p>
-  <h1 id="pvTitle"></h1>
-  <p class="pv-date" id="pvDate"></p>
-  <div class="pv-thumb" id="pvThumb"></div>
-  <div class="pv-body" id="pvBody"></div>
-</div>
-
-<footer>
-  <p>&copy; 2026 Herbal Harmony TN &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; Harmonize Life</p>
+</main>
+<script type="application/json" id="blog-meta">{"legacy":{"🍉-watermelon-juice-nature’s-nitric-oxide-booster":"watermelon-juice-natures-nitric-oxide-booster"},"slugs":["harmony-herbal-blend-whats-in-the-jar-and-what-it-can-support","hibiscus-tea-and-blood-pressure-what-the-research-really-says","peppermint-leaf-tea-a-refreshing-classic-for-digestion-and-calm","watermelon-juice-natures-nitric-oxide-booster","the-trinity-natures-parasite-cleanse","the-ancient-power-of-elderberry-syrup","mullein-leaf-the-herb-that-started-it-all"]}</script>
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div>
+      <img src="/images/logo-light.png" alt="Herbal Harmony">
+      <p>Wellness rooted in nature, grown in Memphis. Herbs, teas, and everyday rituals. Harmonize Life.</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <a href="/">Home</a>
+      <a href="/#about">About</a>
+      <a href="/blog/">Blog</a>
+      <a href="/book/">Book</a>
+      <a href="/shop/">Shop</a>
+      <a href="/write/">Write for Us</a>
+    </div>
+    <div>
+      <h2>Topics</h2>
+        <a href="/blog/?category=herbs-a-z">Herbs A–Z</a>
+        <a href="/blog/?category=conditions">Conditions</a>
+        <a href="/blog/?category=rituals-rest">Rituals &amp; Rest</a>
+        <a href="/blog/?category=recipes">Recipes</a>
+        <a href="/blog/?category=community-voices">Community Voices</a>
+    </div>
+  </div>
+  <p class="foot-bottom">&copy; 2026 Herbal Harmony TN &nbsp;·&nbsp; Memphis, TN &nbsp;·&nbsp; Harmonize Life</p>
 </footer>
-
-<script>
-// ============================================
-// UPDATE THIS with your GitHub username
-// ============================================
-var GITHUB_USER = 'dburton5';
-var GITHUB_REPO = 'herbalharmonytn';
-var POSTS_PATH = 'blog/posts';
-
-var allPosts = [];
-
-function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
-}
-function closeMenu() {
-  document.getElementById('navLinks').classList.remove('open');
-}
-
-function parseFrontmatter(content) {
-  var match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) return { meta: {}, body: content };
-
-  var meta = {};
-  var lines = match[1].split('\n');
-  for (var i = 0; i < lines.length; i++) {
-    var line = lines[i];
-    var colonIndex = line.indexOf(':');
-    if (colonIndex > -1) {
-      var key = line.substring(0, colonIndex).trim();
-      var value = line.substring(colonIndex + 1).trim();
-      if ((value.charAt(0) === '"' && value.charAt(value.length-1) === '"') ||
-          (value.charAt(0) === "'" && value.charAt(value.length-1) === "'")) {
-        value = value.slice(1, -1);
-      }
-      meta[key] = value;
-    }
-  }
-
-  return { meta: meta, body: match[2] };
-}
-
-function getCategoryClass(category) {
-  if (!category) return 'default';
-  var lower = category.toLowerCase().replace(/\s+/g, '-');
-  if (lower === 'herbal-remedies') return 'herbal-remedies';
-  if (lower === 'supplements') return 'supplements';
-  if (lower === 'holistic-wellness') return 'holistic-wellness';
-  return 'default';
-}
-
-function formatDate(dateStr) {
-  if (!dateStr) return '';
-  try {
-    var d = new Date(dateStr);
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  } catch(e) {
-    return dateStr;
-  }
-}
-
-function fetchPosts() {
-  fetch('https://api.github.com/repos/' + GITHUB_USER + '/' + GITHUB_REPO + '/contents/' + POSTS_PATH)
-    .then(function(res) {
-      if (!res.ok) throw new Error('Failed');
-      return res.json();
-    })
-    .then(function(files) {
-      var mdFiles = files.filter(function(f) { return f.name.endsWith('.md'); });
-      if (mdFiles.length === 0) {
-        showEmpty();
-        return;
-      }
-      var promises = mdFiles.map(function(file) {
-        return fetch(file.download_url)
-          .then(function(r) { return r.text(); })
-          .then(function(content) {
-            var parsed = parseFrontmatter(content);
-            return {
-              filename: file.name,
-              slug: file.name.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, ''),
-              title: parsed.meta.title || 'Untitled',
-              date: parsed.meta.date || '',
-              category: parsed.meta.category || '',
-              description: parsed.meta.description || '',
-              thumbnail: parsed.meta.thumbnail || '',
-              body: parsed.body
-            };
-          });
-      });
-      return Promise.all(promises);
-    })
-    .then(function(posts) {
-      if (!posts) return;
-      posts.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
-      allPosts = posts;
-      renderPosts();
-      openPostFromHash();
-    })
-    .catch(function(err) {
-      console.error(err);
-      showEmpty();
-    });
-}
-
-function showEmpty() {
-  document.getElementById('postsGrid').innerHTML =
-    '<div class="empty-state">' +
-    '<h2>Posts are on the way</h2>' +
-    '<p>We\'re working on our first articles. Check back soon for content on herbal remedies, natural supplements, and holistic wellness.</p>' +
-    '</div>';
-}
-
-function renderPosts() {
-  var grid = document.getElementById('postsGrid');
-  if (allPosts.length === 0) { showEmpty(); return; }
-
-  var html = '';
-  for (var i = 0; i < allPosts.length; i++) {
-    var post = allPosts[i];
-    var catClass = getCategoryClass(post.category);
-    var thumbStyle = post.thumbnail ? 'background-image: url(' + post.thumbnail + ');' : '';
-
-    html += '<div class="post-card" onclick="showPost(' + i + ')">' +
-      '<div class="post-thumb ' + catClass + '" style="' + thumbStyle + '">' +
-      (post.category ? '<span class="post-cat-label">' + post.category + '</span>' : '') +
-      '</div>' +
-      '<div class="post-body">' +
-      '<p class="post-date">' + formatDate(post.date) + '</p>' +
-      '<h2>' + post.title + '</h2>' +
-      '<p>' + post.description + '</p>' +
-      '<span class="post-link">Read more →</span>' +
-      '</div></div>';
-  }
-  grid.innerHTML = html;
-}
-
-// Open a post directly from a shared link like /blog/#post-slug
-function openPostFromHash() {
-  var hash = decodeURIComponent(window.location.hash.replace(/^#/, ''));
-  if (!hash) return;
-  for (var i = 0; i < allPosts.length; i++) {
-    if (allPosts[i].slug === hash) { showPost(i); return; }
-  }
-}
-
-function showPost(index) {
-  var post = allPosts[index];
-  if (!post) return;
-  if (history.replaceState) history.replaceState(null, '', '#' + encodeURIComponent(post.slug));
-
-  document.getElementById('pvCat').textContent = post.category;
-  document.getElementById('pvTitle').textContent = post.title;
-  document.getElementById('pvDate').textContent = formatDate(post.date);
-  document.getElementById('pvBody').innerHTML = marked.parse(post.body);
-
-  var thumb = document.getElementById('pvThumb');
-  if (post.thumbnail) {
-    thumb.style.backgroundImage = 'url(' + post.thumbnail + ')';
-    thumb.style.display = 'block';
-  } else {
-    thumb.style.display = 'none';
-  }
-
-  document.getElementById('listView').style.display = 'none';
-  document.getElementById('postView').classList.add('active');
-  window.scrollTo(0, 0);
-}
-
-function showList() {
-  document.getElementById('postView').classList.remove('active');
-  document.getElementById('listView').style.display = 'block';
-  if (history.replaceState) history.replaceState(null, '', window.location.pathname);
-  window.scrollTo(0, 0);
-}
-
-fetchPosts();
-</script>
-
+<script src="/assets/blog.js"></script>
 </body>
 </html>
-

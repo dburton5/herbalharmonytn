@@ -1,9 +1,26 @@
 ---
-title: The Ancient Power of Elderberry Syrup
+title: "The Ancient Power of Elderberry Syrup"
 date: 2026-04-11T14:36:00.000-05:00
-category: Herbal Remedies
-description: How a simple purple berry became one of nature's most trusted immune allies
+category: Recipes
+tags: Elderberry, Immune, Syrup
+description: "How a simple purple berry became one of nature's most trusted immune allies"
 thumbnail: /images/uploads/ca032e0b-5bf0-405f-aa54-593b24c1cf02.png
+thumbnailAlt: "A swing-top bottle of dark elderberry syrup on a wooden board, with fresh elderberries, honey, and a small jar of syrup beside it."
+featured: false
+author: Dondre Burton
+authorRole: Founder, Herbal Harmony TN
+authorPhoto: /images/authors/dondre.svg
+authorBio: "Dondre Burton founded Herbal Harmony TN in Memphis. Mullein leaf was his way into herbs, and he writes about teas, plants, and everyday rituals in plain language from his own experience."
+reviewer: Herbal Harmony Editorial
+reviewerRole: "Checked for plain language and sourcing. Not a clinical review."
+takeaways:
+  - "Elderberry (Sambucus nigra) has a long folk history as teas, syrups, and wines across several continents."
+  - "The article credits anthocyanins and flavonoids such as quercetin and rutin for its reputation as an immune ally, and says the research is still evolving."
+  - "Let the berry decoction cool before stirring in raw honey so heat doesn't undo what the honey is there for."
+  - "Raw honey should not be given to children under one year of age, and anyone pregnant, nursing, on medication, or managing an autoimmune condition should talk with a clinician first."
+sources:
+  - title: "This article is drawn from traditional use and the author's experience. It mentions preliminary research but does not name the studies."
+    url: 
 ---
 Long before pharmacies lined every corner, people turned to the earth. They watched the seasons, studied the plants, and passed down remedies from one generation to the next. Among the most enduring of those remedies is the elderberry a small, dark purple fruit that has quietly supported human health for centuries.
 

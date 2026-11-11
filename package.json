@@ -1,0 +1,11 @@
+{
+  "name": "herbal-harmony-tn",
+  "private": true,
+  "description": "Static site for Herbal Harmony TN. Netlify runs npm run build.",
+  "scripts": {
+    "build": "node build-shop.js && node build-blog.js && node generate-rss.js"
+  },
+  "dependencies": {
+    "marked": "^4.3.0"
+  }
+}

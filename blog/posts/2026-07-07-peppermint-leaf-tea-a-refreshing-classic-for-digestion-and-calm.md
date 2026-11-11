@@ -1,10 +1,26 @@
 ---
 title: "Peppermint Leaf Tea: A Refreshing Classic for Digestion and Calm"
 date: 2026-07-07T07:46:00.000-05:00
-category: Herbal Remedies
-description: A look at peppermint leaf tea's soothing flavor, traditional uses
-  for digestion and relaxation, and simple tips for brewing a great cup at home.
+category: Herbs A–Z
+tags: Peppermint, Digestion, Tea
+description: "A look at peppermint leaf tea's soothing flavor, traditional uses for digestion and relaxation, and simple tips for brewing a great cup at home."
 thumbnail: /images/uploads/u3215293719_peppermint_leaf_tea_-hd_-v_8.1_58d78e11-3ef5-4ee2-9b32-db4b7a02ae1a_0.png
+thumbnailAlt: "A white bowl of dried peppermint leaves with a spoon, fresh mint sprigs, and a honey dipper on a stone surface."
+featured: false
+author: Dondre Burton
+authorRole: Founder, Herbal Harmony TN
+authorPhoto: /images/authors/dondre.svg
+authorBio: "Dondre Burton founded Herbal Harmony TN in Memphis. Mullein leaf was his way into herbs, and he writes about teas, plants, and everyday rituals in plain language from his own experience."
+reviewer: Herbal Harmony Editorial
+reviewerRole: "Checked for plain language and sourcing. Not a clinical review."
+takeaways:
+  - "Peppermint leaf tea is a caffeine-free brew of Mentha piperita, a hybrid of spearmint and water mint."
+  - "Traditional uses named here include digestion after a heavy meal, an upset stomach, fresh breath, evening calm, and a stuffy nose."
+  - "Steep 1–2 teaspoons of dried leaf for 5–7 minutes with the cup covered so the aroma stays in."
+  - "People with reflux sometimes feel worse, because peppermint can relax the muscle that keeps stomach acid down. Check with a doctor if you are pregnant, nursing, or taking medication."
+sources:
+  - title: "This article is drawn from traditional herbal use and the author's experience. It does not cite peer-reviewed studies."
+    url: 
 ---
 There's something about the smell of peppermint that instantly wakes up the senses, and when that same bright, cooling flavor is steeped into a cup of tea, it becomes one of the most comforting rituals in the herbal world. Made from the dried leaves of *Mentha piperita*, peppermint leaf tea has been brewed for generations as an after-dinner brew, a mid-afternoon pick-me-up, and a caffeine-free way to unwind at the end of a long day.
 

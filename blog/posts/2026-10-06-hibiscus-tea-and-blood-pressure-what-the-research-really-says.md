@@ -1,9 +1,36 @@
 ---
 title: "Hibiscus Tea & Blood Pressure: What the Research Really Says"
 date: 2026-10-06T11:15:00.000-05:00
-category: Herbal Remedies
-description: A plain-English look at the studies on hibiscus tea and blood pressure, how to brew it, and who should be careful.
+category: Conditions
+tags: Hibiscus, Blood Pressure, Tea
+description: "A plain-English look at the studies on hibiscus tea and blood pressure, how to brew it, and who should be careful."
 thumbnail: /images/uploads/hibiscus-tea-blood-pressure-banner.jpg
+thumbnailAlt: "A glass cup of deep red hibiscus tea beside a fresh hibiscus flower and dried calyces, with the title Hibiscus Tea and Blood Pressure."
+featured: true
+author: Dondre Burton
+authorRole: Founder, Herbal Harmony TN
+authorPhoto: /images/authors/dondre.svg
+authorBio: "Dondre Burton founded Herbal Harmony TN in Memphis. Mullein leaf was his way into herbs, and he writes about teas, plants, and everyday rituals in plain language from his own experience."
+reviewer: Herbal Harmony Editorial
+reviewerRole: "Checked for plain language and sourcing. Not a clinical review."
+takeaways:
+  - "Across the trials summarized here, people who drank hibiscus regularly saw the top blood pressure number drop by roughly 7 points."
+  - "Many of those studies used about 2–3 cups a day for several weeks, with changes often showing up after 4–6 weeks."
+  - "Hibiscus may add to the effect of blood pressure medicine, diuretics, or diabetes medication."
+  - "The article treats the tea as a supportive habit, not a replacement for prescribed treatment."
+sources:
+  - title: "McKay DL, Chen CY, Saltzman E, Blumberg JB. Hibiscus sabdariffa L. tea (tisane) lowers blood pressure in prehypertensive and mildly hypertensive adults. Journal of Nutrition. 2010."
+    url: https://doi.org/10.3945/jn.109.115097
+  - title: "Mozaffari-Khosravi H, et al. The effects of sour tea (Hibiscus sabdariffa) on hypertension in patients with type II diabetes. Journal of Human Hypertension. 2009."
+    url: https://doi.org/10.1038/jhh.2008.100
+  - title: "Serban C, Sahebkar A, Ursoniu S, Andrica F, Banach M. Effect of sour tea (Hibiscus sabdariffa L.) on arterial hypertension: a systematic review and meta-analysis. Journal of Hypertension. 2015."
+    url: https://doi.org/10.1097/HJH.0000000000000585
+  - title: "Ellis LR, et al. A systematic review and meta-analysis of the effects of Hibiscus sabdariffa on blood pressure and cardiometabolic markers. Nutrition Reviews. 2022."
+    url: https://doi.org/10.1093/nutrit/nuab104
+  - title: "Norouzzadeh M, et al. Efficacy and safety of Hibiscus sabdariffa in cardiometabolic health: an overview of reviews and updated dose-response meta-analysis. Complementary Therapies in Medicine. 2025."
+    url: https://doi.org/10.1016/j.ctim.2025.103135
+  - title: "Hopkins AL, Lamm MG, Funk JL, Ritenbaugh C. Hibiscus sabdariffa L. in the treatment of hypertension and hyperlipidemia: a comprehensive review. Fitoterapia. 2013."
+    url: https://doi.org/10.1016/j.fitote.2013.01.003
 ---
 If you grew up around Caribbean, Mexican, or West African kitchens, you probably already know this tea. It's called **sorrel**, **agua de Jamaica**, **bissap**, or **karkadé** depending on where you are, and it pours out a deep ruby red with a tart, cranberry-like taste.
 

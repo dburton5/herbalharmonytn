@@ -60,34 +60,25 @@ function toRfc822(dateValue) {
 }
 
 function loadPosts() {
-  var files;
+  var manifestPath = path.join(__dirname, 'blog', 'posts.json');
+  var data;
   try {
-    files = fs.readdirSync(POSTS_DIR);
+    data = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   } catch (err) {
-    console.error('Could not read posts directory: ' + POSTS_DIR);
+    console.error('Could not read ' + manifestPath + '. Run node build-blog.js first.');
     console.error(err.message);
     return [];
   }
+  var list = data.posts || [];
 
-var mdFiles = files.filter(function (name) {
-  return name.slice(-3) === '.md';
-});
-
-var posts = mdFiles.map(function (filename) {
-  var fullPath = path.join(POSTS_DIR, filename);
-  var raw = fs.readFileSync(fullPath, 'utf8');
-  var parsed = parseFrontmatter(raw);
-  var meta = parsed.meta;
-  var slug = slugFromFilename(filename);
-  var link = SITE_URL + '/blog/#' + encodeURIComponent(slug);
-  // Each post gets a small share page at /blog/<slug>/ with preview tags
-  // (title, description, image) so Facebook and other sites show a proper card.
-  var shareUrl = SITE_URL + '/blog/' + encodeURIComponent(slug) + '/';
+var posts = list.map(function (meta) {
+  var slug = meta.slug;
+  var articleUrl = SITE_URL + (meta.url || ('/blog/' + encodeURIComponent(slug) + '/'));
   var image = meta.thumbnail || '';
   var imageUrl = image ? (/^https?:/.test(image) ? image : SITE_URL + image) : '';
   var imageLength = 0;
   if (image && !/^https?:/.test(image)) {
-    try { imageLength = fs.statSync(path.join(__dirname, image)).size; } catch (e) {}
+    try { imageLength = fs.statSync(path.join(__dirname, image.replace(/^\//, ''))).size; } catch (e) {}
   }
   var dateObj = meta.date ? new Date(meta.date) : new Date();
 
@@ -97,9 +88,9 @@ var posts = mdFiles.map(function (filename) {
                           dateObj: dateObj,
                           pubDate: toRfc822(meta.date),
                           slug: slug,
-                          blogLink: link,
-                          link: shareUrl,
-                          guid: link,
+                          blogLink: articleUrl,
+                          link: articleUrl,
+                          guid: articleUrl,
                           imageUrl: imageUrl,
                           imageLength: imageLength
                         };
@@ -119,7 +110,7 @@ function buildRss(posts) {
       '      <link>' + post.link + '</link>\n' +
       '      <pubDate>' + post.pubDate + '</pubDate>\n' +
       '      <description>' + escapeXml(post.description) + '</description>\n' +
-      '      <guid isPermaLink="false">' + post.guid + '</guid>\n' +
+      '      <guid isPermaLink="true">' + post.guid + '</guid>\n' +
       (post.imageUrl
         ? '      <enclosure url="' + escapeXml(post.imageUrl) + '" length="' + post.imageLength + '" type="' + imageType(post.imageUrl) + '"/>\n' +
           '      <media:content url="' + escapeXml(post.imageUrl) + '" medium="image"/>\n'
@@ -151,40 +142,8 @@ function escapeAttr(str) {
   return escapeXml(str).replace(/"/g, '&quot;');
 }
 
-function buildSharePage(post) {
-  var title = escapeAttr(post.title);
-  var desc = escapeAttr(post.description);
-  return '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
-    '<meta charset="UTF-8">\n' +
-    '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
-    '<title>' + title + ' | Herbal Harmony TN</title>\n' +
-    '<meta name="description" content="' + desc + '">\n' +
-    '<link rel="canonical" href="' + escapeAttr(post.link) + '">\n' +
-    '<meta property="og:type" content="article">\n' +
-    '<meta property="og:site_name" content="Herbal Harmony TN">\n' +
-    '<meta property="og:title" content="' + title + '">\n' +
-    '<meta property="og:description" content="' + desc + '">\n' +
-    '<meta property="og:url" content="' + escapeAttr(post.link) + '">\n' +
-    (post.imageUrl ? '<meta property="og:image" content="' + escapeAttr(post.imageUrl) + '">\n' : '') +
-    '<meta name="twitter:card" content="' + (post.imageUrl ? 'summary_large_image' : 'summary') + '">\n' +
-    '<script>window.location.replace(' + JSON.stringify(post.blogLink) + ');</script>\n' +
-    '</head>\n<body style="font-family:sans-serif;background:#F4F1EB;color:#2B3B22;text-align:center;padding:3rem 1rem">\n' +
-    '<p><a href="' + escapeAttr(post.blogLink) + '" style="color:#2B3B22">Read &ldquo;' + title + '&rdquo;</a></p>\n' +
-    '</body>\n</html>\n';
-}
-
-function writeSharePages(posts) {
-  posts.forEach(function (post) {
-    var dir = path.join(__dirname, 'blog', post.slug);
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), buildSharePage(post), 'utf8');
-  });
-  console.log('Wrote ' + posts.length + ' blog share page(s).');
-}
-
 function main() {
   var posts = loadPosts();
-  writeSharePages(posts);
   var rss = buildRss(posts);
   fs.writeFileSync(OUTPUT_FILE, rss, 'utf8');
   console.log('RSS feed written to ' + OUTPUT_FILE + ' with ' + posts.length + ' item(s).');

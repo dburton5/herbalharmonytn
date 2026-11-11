@@ -11,12 +11,44 @@ collections:
     folder: "blog/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{category}}"
+    description: "Saving here publishes on the next Netlify build. Neighbor pitches from /write/ do not show up on their own. For an approved Community Voices piece, start from blog/templates/community-voice.md so the byline includes their name, photo, and Memphis neighborhood."
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Category", name: "category", widget: "select", options: ["Herbal Remedies", "Supplements", "Holistic Wellness"] }
-      - { label: "Description", name: "description", widget: "string", hint: "Short summary for the blog card" }
+      - { label: "Updated Date", name: "updated", widget: "datetime", required: false, hint: "Leave blank if you have not revised the article." }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Herbs A–Z", "Conditions", "Rituals & Rest", "Recipes", "Community Voices"]
+      - { label: "Tags", name: "tags", widget: "string", required: false, hint: "Comma-separated. Example: Mullein, Respiratory, Tea" }
+      - { label: "Description", name: "description", widget: "text", hint: "Short summary for the card and the top of the article." }
       - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+      - { label: "Featured Image Alt Text", name: "thumbnailAlt", widget: "string", required: false, hint: "Describe the photo for someone who cannot see it." }
+      - { label: "Featured on the journal home", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Draft (hide from the site)", name: "draft", widget: "boolean", default: false, required: false }
+      - { label: "Voice", name: "voice", widget: "select", options: ["founder", "community"], default: "founder", required: false, hint: "Use community for a neighbor's approved post." }
+      - { label: "Author Name", name: "author", widget: "string", default: "Dondre Burton" }
+      - { label: "Author Role", name: "authorRole", widget: "string", required: false, default: "Founder, Herbal Harmony TN" }
+      - { label: "Memphis Neighborhood", name: "authorNeighborhood", widget: "string", required: false, hint: "Community Voices only. Example: Cooper-Young" }
+      - { label: "Author Photo", name: "authorPhoto", widget: "image", required: false }
+      - { label: "Author Bio", name: "authorBio", widget: "text", required: false }
+      - { label: "Reviewed By", name: "reviewer", widget: "string", required: false, default: "Herbal Harmony Editorial" }
+      - { label: "Reviewer Note", name: "reviewerRole", widget: "string", required: false, default: "Checked for plain language and sourcing. Not a clinical review." }
+      - label: "Key Takeaways"
+        name: "takeaways"
+        widget: "list"
+        required: false
+        hint: "One point per row. Shown in the box at the top of the article."
+        field: { label: "Takeaway", name: "takeaway", widget: "string" }
+      - label: "Sources"
+        name: "sources"
+        widget: "list"
+        required: false
+        hint: "Studies, books, or traditions. The URL can be blank."
+        fields:
+          - { label: "Source", name: "title", widget: "string" }
+          - { label: "URL", name: "url", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
   # ── SHOP ──────────────────────────────────────────────
