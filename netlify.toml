@@ -29,3 +29,22 @@
   to = "/shop/"
   status = 301
   force = true
+
+# Ask crawlers not to index the Decap CMS. The page stays reachable so
+# Netlify Identity can show its own login. This is the only response
+# header set here; the rest of the browser security headers are a
+# separate change and should not be added in this block.
+[[headers]]
+  for = "/admin"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/admin/"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

@@ -168,7 +168,7 @@ function reviewsSection(p) {
     '  <form class="rv-form" name="' + formName + '" method="POST" action="/shop/review-thanks/" data-netlify="true" netlify-honeypot="company">\n' +
     '    <input type="hidden" name="form-name" value="' + formName + '">\n' +
     '    <input type="hidden" name="product" value="' + esc(p.slug) + '">\n' +
-    '    <p class="rv-hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>\n' +
+    '    <p class="rv-hp" aria-hidden="true"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>\n' +
     '    <fieldset class="rv-rate"><legend>Your rating</legend><div class="rv-stars-in">' +
     [5, 4, 3, 2, 1].map(function (n) {
       return '<input type="radio" id="rate' + n + '" name="rating" value="' + n + '"' + (n === 5 ? ' checked' : '') + ' required>' +

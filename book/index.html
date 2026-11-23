@@ -104,6 +104,7 @@
 .form-msg strong { color: var(--cream); font-family: var(--slab); font-size: 1.15rem; display: block; margin-bottom: 0.35rem; }
 .form-msg a { color: var(--tan); font-weight: 600; }
 .hp { position: absolute; left: -5000px; }
+.bot-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 /* keep labels/script in their own fonts inside sections that set body fonts */
 .phase p.hrs, .author p.eyebrow, .signup p.eyebrow { font-family: var(--sans); font-size: 0.68rem; line-height: 1.4; font-weight: 600; letter-spacing: 0.2em; }
 .author p.eyebrow { color: var(--sage); margin-bottom: 0.5rem; }
@@ -219,6 +220,9 @@
       <h2>The 6 Phases at a Glance</h2>
       <p>A one-page guide to every phase: the hours, what's happening in your body, and one practical tip for each. Print it, stick it on the fridge, check it mid-fast.</p>
       <form class="signup-form" id="guideForm" action="https://buttondown.com/api/emails/embed-subscribe/HerbalHarmonyTN" method="post" target="_blank" novalidate>
+        <p class="bot-hp" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </p>
         <label for="guideEmail" class="hp">Email address</label>
         <input type="email" id="guideEmail" name="email" placeholder="Your email address" autocomplete="email" required>
         <input type="hidden" name="embed" value="1">
@@ -267,10 +271,19 @@
   var msg = document.getElementById('guideMsg');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    var trap = form.querySelector('[name="bot-field"]');
+    if (trap && trap.value) {
+      form.style.display = 'none';
+      msg.classList.add('show');
+      return;
+    }
     var email = document.getElementById('guideEmail');
     if (!email.value || !email.checkValidity()) { email.focus(); email.reportValidity && email.reportValidity(); return; }
     var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Sending…';
-    fetch(form.action, { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+    var body = new FormData();
+    body.append('email', email.value);
+    body.append('embed', '1');
+    fetch(form.action, { method: 'POST', mode: 'no-cors', body: body })
       .catch(function () {})
       .then(function () {
         form.style.display = 'none';
