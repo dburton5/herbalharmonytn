@@ -10,8 +10,10 @@
 
   gtag('config', 'G-S7YN9JLEH8');
 </script>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F4F1EB">
 <title>Herbal Harmony TN — Harmonize Life</title>
 <meta name="description" content="Small-batch herbal teas, tinctures and holistic wellness from Memphis, TN.">
 <meta property="og:type" content="website">
@@ -27,846 +29,770 @@
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="shortcut icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="alternate" type="application/rss+xml" title="Herbal Harmony TN" href="https://herbalharmonytn.com/rss.xml">
+<link rel="preload" as="image" href="/images/home/hero.webp" type="image/webp" fetchpriority="high">
+<link rel="alternate" type="application/rss+xml" title="Herbal Harmony TN" href="https://herbalharmonytn.com/rss.xml">
 <style>
 :root {
   --green-deep: #2B3B22;
   --green-dark: #3A4F2F;
   --green-mid: #4E6B3C;
-  --green-sage: #7A8B6F;
+  --green-sage: #5E7054;
   --green-light: #96A88A;
   --green-pale: #B5C4A8;
   --cream: #F4F1EB;
   --cream-warm: #EAE4D8;
   --cream-dark: #D9D0C1;
   --gold: #B8A060;
-  --gold-light: #D4C48A;
+  --gold-light: #E7D7A4;
+  --gold-on-dark: #F4E6C0;
   --bark: #6B5744;
   --text-dark: #2A2A25;
-  --text-mid: #5A5A50;
-  --text-light: #8A8A7E;
+  --text-mid: #3F3F38;
+  --text-soft: #4E5148;
   --white: #FDFBF7;
+  --ink: #1E2419;
+  --line: rgba(43, 59, 34, 0.12);
+  --shadow: 0 14px 34px rgba(43, 59, 34, 0.08);
+  --radius: 18px;
+  --max: 1120px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
+html { scroll-behavior: smooth; scroll-padding-top: 5.4rem; }
+[hidden] { display: none !important; }
+img { max-width: 100%; height: auto; }
 body {
   font-family: 'DM Sans', sans-serif;
   color: var(--text-dark);
   background: var(--white);
-  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
 }
+h1, h2, h3, h4, p, a { overflow-wrap: break-word; }
+:focus-visible {
+  outline: 2px solid var(--green-deep);
+  outline-offset: 3px;
+}
+a, button { -webkit-tap-highlight-color: rgba(78, 107, 60, 0.16); }
 
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 2000;
+  background: var(--green-deep);
+  color: var(--cream);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
 }
+.skip:focus { top: max(0.75rem, env(safe-area-inset-top)); }
 
 /* ════════ NAV ════════ */
 nav {
   position: fixed;
-  top: 0; left: 0; width: 100%;
-  padding: 1rem 2.5rem;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  transition: all 0.4s ease;
-}
-
-nav.scrolled {
+  gap: 0.75rem;
+  padding: max(0.45rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) 0.45rem max(1rem, env(safe-area-inset-left));
   background: rgba(244, 241, 235, 0.98);
-  box-shadow: 0 1px 16px rgba(0,0,0,0.05);
-  padding: 0.6rem 2.5rem;
+  border-bottom: 1px solid rgba(43, 59, 34, 0.08);
 }
-
-.nav-logo img {
-  height: 72px;
-  transition: height 0.4s ease;
-}
-
-nav.scrolled .nav-logo img { height: 56px; }
-
-.nav-links {
-  display: flex;
-  gap: 1.35rem;
-  list-style: none;
-}
-
+nav.scrolled { box-shadow: 0 1px 16px rgba(43, 59, 34, 0.06); }
+.nav-logo { display: flex; align-items: center; min-height: 44px; }
+.nav-logo img { height: 48px; width: auto; display: block; }
+.nav-links { list-style: none; }
 .nav-links a {
   text-decoration: none;
-  color: var(--text-mid);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  transition: color 0.3s;
-  position: relative;
 }
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 1.5px;
-  background: var(--green-mid);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover { color: var(--green-dark); }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a:focus-visible, .menu-toggle:focus-visible, .btn:focus-visible {
-  outline: 2px solid var(--green-mid);
-  outline-offset: 3px;
-}
-
+.nav-links a[aria-current="page"] { color: var(--green-deep); }
 .menu-toggle {
-  display: none;
+  display: flex;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
-  background: none;
-  border: none;
   cursor: pointer;
+  position: relative;
+  z-index: 1002;
 }
-
 .menu-toggle span {
-  width: 24px; height: 2px;
+  display: block;
+  width: 22px;
+  height: 2px;
   background: var(--green-deep);
-  transition: all 0.3s;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+.menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 959px) {
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100dvh;
+    background: #F4F1EB;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 5.25rem 1.25rem max(2rem, env(safe-area-inset-bottom));
+    overflow-y: auto;
+    z-index: 1001;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    font-size: 1.15rem;
+    letter-spacing: 0.14em;
+    color: var(--green-deep);
+  }
+  .nav-links a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    text-decoration-color: var(--green-mid);
+  }
+  body.menu-open { overflow: hidden; }
+}
+@media (min-width: 960px) {
+  nav { padding: 0.55rem 2rem; }
+  .nav-logo img { height: 60px; }
+  .menu-toggle { display: none; }
+  .nav-links { display: flex; align-items: center; gap: 0.35rem 1.15rem; }
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 0.15rem;
+  }
+  .nav-links a:hover { color: var(--green-deep); }
+  .nav-links a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--green-mid); }
 }
 
 /* ════════ HERO ════════ */
 .hero {
-  min-height: 100vh;
-  display: flex;
+  padding: 6.1rem max(1.15rem, env(safe-area-inset-right)) 3.25rem max(1.15rem, env(safe-area-inset-left));
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(184, 160, 96, 0.18), transparent 46%),
+    radial-gradient(ellipse at 0% 90%, rgba(122, 139, 111, 0.16), transparent 48%),
+    linear-gradient(180deg, #F7F3EB 0%, var(--cream) 58%, #FBF9F4 100%);
+}
+.hero-grid {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 1.6rem;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 7rem 2rem 7.5rem;
-  position: relative;
-  background: linear-gradient(170deg, var(--cream) 0%, var(--cream-warm) 50%, var(--white) 100%);
-  overflow: hidden;
 }
-
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  animation: orbFloat 10s ease-in-out infinite;
-}
-
-.hero-orb-1 {
-  top: -8%; right: -5%;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(122,139,111,0.1) 0%, transparent 70%);
-}
-
-.hero-orb-2 {
-  bottom: -12%; left: -8%;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(184,160,96,0.07) 0%, transparent 70%);
-  animation-delay: -5s;
-}
-
-@keyframes orbFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(15px, -25px) scale(1.05); }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-}
-
-.hero-logo {
-  width: 260px;
-  max-width: 70vw;
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.2s;
-}
-
-.hero-tag {
-  font-size: 0.72rem;
-  letter-spacing: 0.3em;
+.hero-tag, .tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--green-sage);
-  font-weight: 500;
-  margin-bottom: 1.2rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.4s;
+  color: var(--green-mid);
+  line-height: 1.55;
 }
-
+.hero-tag { margin-bottom: 0.85rem; }
+.tag { margin-bottom: 0.7rem; }
+.tag::after, .hero-tag::after {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 3px;
+  margin-top: 0.75rem;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--green-mid), var(--gold));
+}
 .hero h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 6.5vw, 5rem);
-  font-weight: 400;
-  line-height: 1.08;
-  color: var(--green-deep);
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.6s;
-}
-
-.hero h1 em {
-  font-style: italic;
-  color: var(--green-mid);
-}
-
-.hero-sub {
-  font-family: 'Lora', serif;
-  font-size: 1.1rem;
-  color: var(--text-mid);
-  line-height: 1.75;
-  max-width: 500px;
-  margin: 0 auto 2.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.8s;
-}
-
-.hero-btns {
-  display: inline-flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 1s;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.85rem 2rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  font-size: clamp(2.7rem, 6.2vw, 4.85rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--green-deep);
+  margin-bottom: 0.95rem;
 }
-
-.btn-fill {
-  background: var(--green-dark);
-  color: var(--cream);
-  border: none;
+.hero h1 em { font-style: italic; font-weight: 500; color: var(--green-mid); }
+.hero-sub, .sdesc {
+  font-family: 'Lora', serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-mid);
 }
-
-.btn-fill:hover {
-  background: var(--green-deep);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(43,59,34,0.18);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--green-dark);
-  border: 1.5px solid var(--green-sage);
-}
-
-.btn-outline:hover {
-  background: var(--green-sage);
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 2rem;
-  left: 0;
-  right: 0;
+.hero-sub { max-width: 36rem; margin-bottom: 1.45rem; }
+.hero-btns, .btn-row {
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+}
+.btn {
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 1.3s;
-}
-
-.scroll-cue span {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem 1.35rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-light);
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.hero-btns .btn { width: 100%; }
+.btn-fill { background: var(--green-dark); color: var(--cream); }
+.btn-outline { background: transparent; color: var(--green-dark); border-color: var(--green-sage); }
+.btn-gold { background: var(--gold); color: var(--ink); }
+.hero-photo { margin: 0; }
+.hero-frame {
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--cream-warm);
+  box-shadow: 0 18px 44px rgba(43, 59, 34, 0.12);
+  aspect-ratio: 4 / 5;
+}
+.hero-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-photo figcaption {
+  margin-top: 0.7rem;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-soft);
 }
 
-.scroll-cue .bar {
-  width: 1px; height: 36px;
-  background: linear-gradient(to bottom, var(--green-sage), transparent);
-  animation: pulse 2s ease-in-out infinite;
+@media (min-width: 720px) {
+  .hero-btns, .btn-row { flex-direction: row; flex-wrap: wrap; }
+  .hero-btns .btn, .btn-row .btn { width: auto; min-width: 180px; }
+}
+@media (min-width: 900px) {
+  .hero { padding: 7.6rem 2.5rem 4.5rem; }
+  .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 3.25rem; }
+  .hero-frame { max-height: 640px; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-fill:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(43, 59, 34, 0.16); }
+  .btn-outline:hover { background: var(--green-dark); color: var(--cream); border-color: var(--green-dark); transform: translateY(-2px); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
-  50% { opacity: 1; transform: scaleY(1); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ════════ SHARED ════════ */
-section { padding: 6rem 2.5rem; }
-
-.tag {
-  font-size: 0.68rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--green-sage);
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-}
-
+/* ════════ SHARED SECTIONS ════════ */
+section { padding: 4.25rem max(1.15rem, env(safe-area-inset-right)) 4.5rem max(1.15rem, env(safe-area-inset-left)); }
+.wrap { width: min(var(--max), 100%); margin: 0 auto; }
 .stitle {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.9rem, 3.8vw, 2.8rem);
-  font-weight: 400;
+  font-weight: 500;
+  font-size: clamp(2.05rem, 4.6vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   color: var(--green-deep);
-  margin-bottom: 1rem;
-  line-height: 1.15;
+  margin-bottom: 0.75rem;
 }
+.sdesc { max-width: 38rem; }
+.center { text-align: center; }
+.center .tag::after, .center .sdesc { margin-left: auto; margin-right: auto; }
+.center .btn { margin-top: 0.25rem; }
 
-.sdesc {
-  font-family: 'Lora', serif;
-  font-size: 0.98rem;
-  color: var(--text-mid);
-  line-height: 1.75;
-  max-width: 540px;
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
+.js .reveal.vis { opacity: 1; transform: none; }
 
 /* ════════ PILLARS ════════ */
-.pillars { background: var(--cream); }
-
-.pillars-inner {
-  max-width: 1100px;
-  margin: 0 auto;
+.pillars { background: var(--white); }
+.pillar-grid {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.7rem;
 }
-
-/* Six pillars: rotating "lazy susan" ring */
-.pillar-carousel { margin-top: 3rem; }
-.pillar-stage {
-  --cw: 300px;
-  --ch: 330px;
-  position: relative;
-  height: calc(var(--ch) + 80px);
-  perspective: 1400px;
-  perspective-origin: 50% 40%;
-  overflow: hidden;
-  touch-action: pan-y;
-  cursor: grab;
-}
-.pillar-stage.dragging { cursor: grabbing; }
-.pillar-ring {
-  position: absolute;
-  left: 50%; top: 10px;
-  width: var(--cw); height: var(--ch);
-  margin-left: calc(var(--cw) / -2);
-  transform-style: preserve-3d;
-  transform: translateZ(calc(var(--r, 280px) * -1)) rotateY(var(--angle, 0deg));
-  transition: transform 0.9s cubic-bezier(.22,.8,.26,1);
-}
-.pillar-stage.dragging .pillar-ring { transition: none; }
 .pillar {
-  position: absolute; inset: 0;
   background: var(--white);
-  padding: 2.2rem 1.8rem;
-  border-radius: 8px;
-  border: 1px solid rgba(122,139,111,0.14);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.15rem 1.3rem;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  position: relative;
   overflow: hidden;
-  transform: rotateY(calc(var(--i) * 60deg)) translateZ(var(--r, 280px));
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  opacity: 0.45;
-  filter: saturate(0.6);
-  transition: opacity 0.6s ease, filter 0.6s ease, box-shadow 0.6s ease;
-  user-select: none;
 }
 .pillar::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 3px;
+  top: 0; left: 0; right: 0;
+  height: 3px;
   background: linear-gradient(90deg, var(--green-mid), var(--gold));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.6s ease 0.2s;
 }
-.pillar.is-front { opacity: 1; filter: none; box-shadow: 0 10px 26px rgba(43,59,34,0.10); }
-.pillar.is-front::before { transform: scaleX(1); }
-.pillar-icon { width: 44px; height: 44px; margin-bottom: 1.2rem; }
+.pillar-icon { width: 44px; height: 44px; display: block; margin-bottom: 0.8rem; }
 .pillar h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin-bottom: 0.4rem;
+  line-height: 1.15;
+}
+.pillar p { font-size: 0.98rem; color: var(--text-mid); line-height: 1.65; }
+
+/* ════════ ABOUT ════════ */
+.about { background: var(--cream); }
+.about-inner { display: grid; gap: 1.6rem; align-items: center; }
+.about-photo {
+  margin: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--cream-warm);
+  aspect-ratio: 5 / 4;
+  box-shadow: var(--shadow);
+}
+.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+.about-text .sdesc { margin-bottom: 1rem; }
+.about-sig {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem;
+  font-style: italic;
+  color: var(--green-mid);
+  margin-top: 0.4rem;
+}
+
+/* ════════ HERBS ════════ */
+.herbs { background: var(--white); }
+.herb-grid { display: grid; gap: 0.8rem; margin-top: 1.6rem; }
+.herb-card {
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.65rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+}
+.herb-media {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--cream-warm);
+}
+.herb-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.herb-body { display: flex; flex-direction: column; min-width: 0; }
+.herb-name {
+  display: block;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.45rem;
   font-weight: 600;
   color: var(--green-deep);
-  margin-bottom: 0.6rem;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
 }
-.pillar p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
-.pillar-controls { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin-top: 1.2rem; }
-.pillar-nav {
-  width: 44px; height: 44px; border-radius: 50%;
-  border: 1.5px solid var(--green-sage); background: transparent; color: var(--green-dark);
-  font-size: 1.1rem; cursor: pointer; transition: all 0.25s ease;
-}
-.pillar-nav:hover { background: var(--green-dark); color: var(--cream); border-color: var(--green-dark); }
-.pillar-nav:focus-visible, .pillar-dot:focus-visible { outline: 2px solid var(--green-mid); outline-offset: 3px; }
-.pillar-dots { display: flex; gap: 0.55rem; }
-.pillar-dot {
-  width: 10px; height: 10px; border-radius: 50%; padding: 0; border: none; cursor: pointer;
-  background: rgba(122,139,111,0.3); transition: all 0.3s ease;
-}
-.pillar-dot[aria-selected="true"] { background: var(--green-mid); width: 26px; border-radius: 99px; }
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-@media (prefers-reduced-motion: reduce) {
-  .pillar-ring, .pillar, .pillar::before { transition: none; }
-}
-
-/* ════════ ABOUT ════════ */
-.about { background: var(--white); }
-
-.about-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+.herb-blurb { display: block; font-size: 0.95rem; line-height: 1.5; color: var(--text-mid); }
+.herb-go {
+  display: inline-flex;
   align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.about-photo {
-  width: 100%;
-  aspect-ratio: 4/5;
-  background: linear-gradient(145deg, var(--cream-warm), var(--green-pale), var(--cream));
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-photo::after {
-  content: '';
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(122,139,111,0.15);
-  border-radius: 4px;
-}
-
-.about-photo span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  font-style: italic;
+  min-height: 44px;
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--green-dark);
-  opacity: 0.45;
-  text-align: center;
-  padding: 2rem;
 }
 
-.about-text .sdesc { margin-bottom: 1.2rem; }
-
-.about-sig {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-  font-style: italic;
-  color: var(--green-mid);
-  margin-top: 1.5rem;
+/* ════════ BLEND ════════ */
+.blend { background: #EFE8DC; }
+.blend-grid { display: grid; gap: 1.4rem; align-items: center; }
+.blend-photo {
+  margin: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--cream-dark);
+  aspect-ratio: 4 / 5;
+  box-shadow: var(--shadow);
+}
+.blend-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+.blend-copy .sdesc { margin-bottom: 0.9rem; }
+.blend-meta {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 1.15rem;
 }
 
 /* ════════ BLOG ════════ */
-.blog { background: var(--cream); }
-
+.blog { background: #F7F4EE; }
 .blog-top {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  max-width: 1100px;
-  margin: 0 auto 2.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-bottom: 1.4rem;
 }
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
-  max-width: 1100px;
-  margin: 0 auto;
+.blog-top .stitle { margin-bottom: 0; }
+.blog-grid { display: grid; gap: 1rem; }
+.blog-loading {
+  font-family: 'Lora', serif;
+  color: var(--text-mid);
+  padding: 1.5rem 0;
 }
-
+.blog-loading a { color: var(--green-dark); font-weight: 600; }
 .bcard {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   background: var(--white);
-  border-radius: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid rgba(122,139,111,0.06);
-  transition: all 0.4s ease;
-  cursor: pointer;
   text-decoration: none;
   color: inherit;
-  display: block;
+  height: 100%;
 }
-
-.bcard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 44px rgba(0,0,0,0.06);
-}
-
 .bcard-img {
-  width: 100%;
-  height: 190px;
   position: relative;
-  background-size: cover;
-  background-position: center;
+  aspect-ratio: 16 / 10;
+  background: var(--cream-warm);
+  overflow: hidden;
 }
-
-.bcard-img-1 { background: linear-gradient(135deg, #6B8B5E 0%, #8BA87A 40%, #A8C49A 100%); }
-.bcard-img-2 { background: linear-gradient(135deg, #C47A4E 0%, #D4A06A 40%, #E8C5A0 100%); }
-.bcard-img-3 { background: linear-gradient(135deg, #7A6B5E 0%, #A08B7A 40%, #C4B4A0 100%); }
-
+.bcard-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .bcard-cat {
   position: absolute;
-  bottom: 10px; left: 10px;
-  background: rgba(253,251,247,0.92);
-  padding: 0.25rem 0.65rem;
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
+  left: 0.7rem;
+  bottom: 0.7rem;
+  background: rgba(253, 251, 247, 0.94);
+  color: var(--green-deep);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--green-dark);
-  border-radius: 2px;
-  font-weight: 600;
 }
-
-.bcard-body { padding: 1.4rem; }
-
-.bcard-date {
-  font-size: 0.7rem;
-  color: var(--text-light);
-  letter-spacing: 0.04em;
-  margin-bottom: 0.5rem;
-}
-
+.bcard-body { padding: 1.05rem 1.1rem 1.15rem; display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
+.bcard-date { font-size: 0.82rem; color: var(--text-soft); }
 .bcard h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
+  line-height: 1.2;
   color: var(--green-deep);
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
 }
-
-.bcard p {
-  font-size: 0.85rem;
-  color: var(--text-mid);
-  line-height: 1.65;
-}
-
+.bcard-body > p { font-size: 0.95rem; line-height: 1.6; color: var(--text-mid); }
+.bcard-by { font-size: 0.85rem; color: var(--text-soft); margin-top: auto; padding-top: 0.35rem; }
 .bcard-link {
-  display: inline-block;
-  margin-top: 0.8rem;
-  font-size: 0.75rem;
-  color: var(--green-mid);
-  text-decoration: none;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.82rem;
+  font-weight: 600;
   letter-spacing: 0.06em;
-  transition: color 0.3s;
+  text-transform: uppercase;
+  color: var(--green-dark);
 }
 
-.bcard-link:hover { color: var(--green-deep); }
-
-.bcard-by {
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
-  color: var(--text-mid);
+/* ════════ WRITE ════════ */
+.invite { background: var(--white); }
+.invite-card {
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(180deg, #FBF8F2 0%, var(--cream) 100%);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 2rem 1.25rem 1.7rem;
+  box-shadow: var(--shadow);
 }
+.invite-card .tag::after { margin-left: auto; margin-right: auto; }
+.invite-card .sdesc { margin: 0 auto 1.25rem; }
+.invite-card .btn { min-width: min(100%, 240px); }
 
-/* ════════ HOME REVIEWS ════════ */
-.home-reviews { background: var(--cream-warm); text-align: center; }
-.hr-inner { max-width: 1100px; margin: 0 auto; }
-.hr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.4rem; margin-top: 2.5rem; text-align: left; }
-.hr-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 6px; padding: 1.6rem 1.4rem; display: flex; flex-direction: column; }
-.hr-stars { color: var(--gold); letter-spacing: 2px; font-size: 1.05rem; }
-.hr-stars .off { color: var(--cream-dark); }
-.hr-text { font-family: 'Lora', serif; font-size: 0.98rem; line-height: 1.75; color: var(--text-dark); margin: 0.8rem 0 1rem; flex: 1; }
-.hr-meta { font-size: 0.8rem; color: var(--text-light); }
-.hr-meta strong { color: var(--green-deep); font-weight: 600; }
-.hr-meta a { color: var(--green-mid); text-decoration: none; }
-
-/* ════════ COMING SOON ════════ */
+/* ════════ SHOP ════════ */
 .coming-soon {
   background: var(--green-deep);
   color: var(--cream);
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
-
-.coming-soon::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 25% 40%, rgba(122,139,111,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 60%, rgba(184,160,96,0.08) 0%, transparent 55%);
-}
-
-.cs-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.coming-soon .tag { color: var(--gold); }
+.coming-soon .tag { color: var(--gold-on-dark); }
+.coming-soon .tag::after { background: linear-gradient(90deg, var(--gold-light), var(--gold-on-dark)); }
 .coming-soon .stitle { color: var(--cream); }
-.coming-soon .sdesc {
-  color: rgba(244,241,235,0.65);
-  margin: 0 auto 2.5rem;
-}
-
+.coming-soon .sdesc { color: #E7E1D6; }
+.coming-soon :focus-visible, footer :focus-visible { outline-color: var(--cream); }
 .prod-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.4rem;
-  margin-top: 2.5rem;
+  gap: 0.9rem;
+  margin-top: 1.8rem;
+  text-align: left;
 }
-
 .prod-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 6px;
-  padding: 1.8rem 1.2rem;
-  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  color: inherit;
+  text-decoration: none;
 }
-
-.prod-card:hover {
-  background: rgba(255,255,255,0.1);
-  transform: translateY(-3px);
+.prod-live { border-color: rgba(231, 215, 164, 0.55); }
+.prod-media {
+  height: 168px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 0.9rem;
 }
-
-.prod-emoji { font-size: 1.8rem; margin-bottom: 0.8rem; }
-
+.prod-media img { width: 100%; height: 100%; object-fit: cover; object-position: 32% center; display: block; }
+.prod-card:not(.prod-live) .prod-media {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin-bottom: 0.85rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+.prod-media-book { background: #3A2C22; }
+.prod-media-book img { object-fit: contain; padding: 0.35rem; }
+.prod-emoji { font-size: 2rem; line-height: 1; }
 .prod-card h4 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
+  font-size: 1.35rem;
+  font-weight: 600;
   color: var(--cream);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
 }
-
-.prod-card p {
-  font-size: 0.78rem;
-  color: rgba(244,241,235,0.5);
-  line-height: 1.6;
+.prod-card p { font-size: 0.92rem; line-height: 1.6; color: #E7E1D6; }
+.prod-more, .prod-soon {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: auto;
+  padding-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-
+.prod-more { color: var(--gold-on-dark); }
+.prod-soon { color: #E4D7B0; }
+.shop-actions { margin-top: 1.5rem; }
 .notify {
   display: flex;
-  gap: 0.6rem;
-  max-width: 420px;
-  margin: 2.5rem auto 0;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: min(440px, 100%);
+  margin: 1.35rem auto 0;
 }
-
-.notify input {
-  flex: 1;
-  padding: 0.8rem 1.1rem;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.13);
-  border-radius: 3px;
+.notify input[type="email"] {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
   color: var(--cream);
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 16px;
   outline: none;
-  transition: border-color 0.3s;
 }
-
-.notify input::placeholder { color: rgba(244,241,235,0.3); }
-.notify input:focus { border-color: var(--green-sage); }
-
+.notify input::placeholder { color: #E4DDD0; }
+.notify input:focus { border-color: var(--gold-light); }
 .notify button {
-  padding: 0.8rem 1.6rem;
+  min-height: 48px;
+  padding: 0.75rem 1.3rem;
   background: var(--gold);
-  color: var(--green-deep);
-  border: none;
-  border-radius: 3px;
+  color: var(--ink);
+  border: 0;
+  border-radius: 12px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s;
-  white-space: nowrap;
+}
+.notify input[type="hidden"] { display: none; }
+
+/* ════════ REVIEWS ════════ */
+.home-reviews { background: var(--cream-warm); text-align: center; }
+.hr-grid {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.6rem;
+  text-align: left;
+}
+.hr-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+}
+.hr-stars { color: #8C7040; letter-spacing: 2px; font-size: 1.05rem; }
+.hr-stars .off { color: var(--cream-dark); }
+.hr-text {
+  font-family: 'Lora', serif;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin: 0.7rem 0 0.8rem;
+  flex: 1;
+}
+.hr-meta { font-size: 0.9rem; color: var(--text-soft); }
+.hr-meta strong { color: var(--green-deep); font-weight: 600; }
+.hr-meta a {
+  color: var(--green-dark);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
-.notify button:hover {
-  background: var(--gold-light);
-  transform: translateY(-1px);
-}
-
+.notify { position: relative; }
 .hp {
   position: absolute;
-  left: -10000px;
   width: 1px;
   height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ════════ FOOTER ════════ */
 footer {
-  background: #1E2419;
-  color: rgba(244,241,235,0.55);
-  padding: 3.5rem 2.5rem 1.5rem;
+  background: var(--ink);
+  color: #E6E0D4;
+  padding: 3rem max(1.15rem, env(safe-area-inset-right)) max(1.4rem, env(safe-area-inset-bottom)) max(1.15rem, env(safe-area-inset-left));
 }
-
-.foot-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto 2.5rem;
-}
-
-.foot-brand img {
-  height: 64px;
-  margin-bottom: 1rem;
-}
-
-.foot-brand p {
-  font-size: 0.85rem;
-  line-height: 1.7;
-  max-width: 300px;
-}
-
+.foot-grid { display: grid; gap: 1.75rem; width: min(var(--max), 100%); margin: 0 auto 1.5rem; }
+.foot-brand img { height: 56px; width: auto; margin-bottom: 0.8rem; }
+.foot-brand p { font-size: 0.95rem; line-height: 1.7; max-width: 34rem; color: #E6E0D4; }
 .foot-col h4 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   color: var(--cream);
-  margin-bottom: 1rem;
+  margin-bottom: 0.35rem;
   font-weight: 600;
 }
-
 .foot-col a {
-  display: block;
-  color: rgba(244,241,235,0.45);
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: #E6E0D4;
   text-decoration: none;
-  font-size: 0.83rem;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s;
+  font-size: 0.95rem;
 }
-
-.foot-col a:hover { color: var(--green-light); }
-
 .foot-bottom {
-  border-top: 1px solid rgba(255,255,255,0.05);
-  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.1rem;
   text-align: center;
-  font-size: 0.72rem;
-  color: rgba(244,241,235,0.25);
-  max-width: 1100px;
+  font-size: 0.85rem;
+  color: #D9D3C6;
+  width: min(var(--max), 100%);
   margin: 0 auto;
 }
 
-/* ════════ REVEAL ════════ */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+@media (min-width: 700px) {
+  section { padding: 5.25rem 2rem; }
+  .pillar-grid, .blog-grid, .hr-grid { grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  .prod-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .blog-top { flex-direction: row; justify-content: space-between; align-items: flex-end; }
+  .notify { flex-direction: row; align-items: center; }
+  .notify button { white-space: nowrap; }
+  .foot-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; }
 }
-
-.reveal.vis {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ════════ RESPONSIVE ════════ */
-@media (max-width: 900px) {
-  .blog-grid, .prod-grid { grid-template-columns: 1fr !important; }
-  .about-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .about-photo { max-width: 400px; margin: 0 auto; }
-  .foot-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-}
-
-@media (max-height: 760px) {
-  .scroll-cue { display: none; }
-}
-
-@media (max-width: 860px) {
-  .nav-links {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    background: var(--cream);
-    flex-direction: column;
-    align-items: center;
-    justify-content: safe center;
-    gap: 1.15rem;
-    z-index: 1000;
-    overflow-y: auto;
-    padding: 5.25rem 1.5rem 2rem;
+@media (min-width: 900px) {
+  section { padding: 6rem 2.5rem; }
+  .about-inner, .blend-grid { grid-template-columns: 0.92fr 1.08fr; gap: 3.25rem; }
+  .about-photo { aspect-ratio: 4 / 5; }
+  .herb-grid { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+  .herb-card {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    padding: 0.7rem 0.7rem 0.85rem;
+    height: 100%;
   }
-  .nav-links.open { display: flex; }
-  .nav-links a { font-size: 1.1rem; letter-spacing: 0.14em; }
-  .menu-toggle { display: flex; z-index: 1001; }
+  .herb-media { aspect-ratio: 4 / 5; }
+  .herb-body { display: flex; flex-direction: column; padding: 0.35rem 0.4rem 0.2rem; flex: 1; }
+  .herb-go { margin-top: auto; }
+  .invite-card { padding: 3rem 3.2rem 2.4rem; }
 }
-
-@media (max-width: 700px) {
-  nav { padding: 0.8rem 1.5rem; }
-  nav.scrolled { padding: 0.5rem 1.5rem; }
-  section { padding: 4rem 1.5rem; }
-
-  .nav-links {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    background: var(--cream);
-    flex-direction: column;
-    align-items: center;
-    justify-content: safe center;
-    gap: 1.15rem;
-    overflow-y: auto;
-    padding: 5.25rem 1.5rem 2rem;
+@media (min-width: 1040px) {
+  .pillar-grid, .blog-grid { grid-template-columns: repeat(3, 1fr); }
+  .prod-grid { grid-template-columns: repeat(4, 1fr); }
+  .hr-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .pillar:hover, .herb-card:hover, .bcard:hover, .prod-card:hover, .hr-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
   }
-
-  .nav-links.open { display: flex; }
-  .nav-links a { font-size: 1.1rem; letter-spacing: 0.15em; }
-  .menu-toggle { display: flex; z-index: 1001; }
-  .nav-logo img { height: 52px; }
-  nav.scrolled .nav-logo img { height: 44px; }
-  .hero {
-    min-height: auto;
-    padding: 7rem 1.5rem 3.5rem;
+  .pillar, .herb-card, .bcard, .prod-card, .hr-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .herb-card:hover .herb-name, .bcard:hover h3 { color: var(--green-mid); }
+  .foot-col a:hover { color: #fff; }
+  .bcard-img img, .herb-media img, .blend-photo img, .about-photo img, .hero-frame img { transition: transform 0.45s ease; }
+  .bcard:hover img, .herb-card:hover img { transform: scale(1.04); }
+  .notify button:hover { background: var(--gold-light); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
   }
-  .hero-logo { width: 190px; margin-bottom: 1.4rem; }
-  .pillar-stage { --cw: 250px; --ch: 340px; }
-  .pillar { padding: 1.8rem 1.4rem; }
-  .hero-tag { font-size: 0.64rem; letter-spacing: 0.16em; line-height: 1.7; }
-  .hero h1 { margin-bottom: 1.1rem; }
-  .hero-sub { font-size: 1rem; margin-bottom: 2rem; }
-  .hero-btns { flex-direction: column; align-items: stretch; width: 100%; max-width: 300px; }
-  .hero-btns .btn { text-align: center; }
-  .scroll-cue { display: none; }
-  .blog-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .notify { flex-direction: column; }
-  .notify button { width: 100%; }
+  .js .reveal { opacity: 1; transform: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="navbar" aria-label="Primary">
   <a href="/" class="nav-logo">
     <img src="/images/logo.png" alt="Herbal Harmony">
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/" onclick="closeMenu()">Home</a></li>
+    <li><a href="/" aria-current="page" onclick="closeMenu()">Home</a></li>
     <li><a href="#about" onclick="closeMenu()">About</a></li>
     <li><a href="/blog/" onclick="closeMenu()">Blog</a></li>
     <li><a href="/write/" title="Write for Herbal Harmony" onclick="closeMenu()">Write</a></li>
@@ -878,84 +804,78 @@ footer {
   </button>
 </nav>
 
-<!-- HERO -->
+<main id="main">
+
 <section class="hero" id="home">
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
-  <div class="hero-content">
-    <img src="/images/logo.png" alt="Herbal Harmony" class="hero-logo">
-    <p class="hero-tag">Memphis, Tennessee · Rooted in Nature</p>
-    <h1>Wellness Through<br><em>Nature's Wisdom</em></h1>
-    <p class="hero-sub">Exploring the healing power of herbs, natural supplements, and holistic living helping you find balance from the roots up.</p>
-    <div class="hero-btns">
-      <a href="/blog/" class="btn btn-fill">Read the Blog</a>
-      <a href="/shop/" class="btn btn-outline">Shop Now</a>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="hero-tag">Memphis, Tennessee · Rooted in Nature</p>
+      <h1>Wellness Through<br><em>Nature's Wisdom</em></h1>
+      <p class="hero-sub">Exploring the healing power of herbs, natural supplements, and holistic living helping you find balance from the roots up.</p>
+      <div class="hero-btns">
+        <a href="/shop/" class="btn btn-fill">Shop Now</a>
+        <a href="/blog/" class="btn btn-outline">Read the Blog</a>
+      </div>
     </div>
-  </div>
-  <div class="scroll-cue">
-    <span>Explore</span>
-    <div class="bar"></div>
+    <figure class="hero-photo">
+      <div class="hero-frame">
+        <picture>
+          <source srcset="/images/home/hero.webp" type="image/webp">
+          <img src="/images/home/hero.jpg" alt="A glass jar of Harmony Herbal Blend with a copper lid beside a steaming mug of golden tea on a sunlit wooden table." width="960" height="1200" fetchpriority="high">
+        </picture>
+      </div>
+      <figcaption>Harmony Herbal Blend, hand-blended in Memphis</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- PILLARS -->
 <section class="pillars" id="pillars">
-  <div class="pillars-inner">
+  <div class="wrap">
     <div class="reveal">
       <p class="tag">What We Believe</p>
       <h2 class="stitle">Six Pillars of Harmony</h2>
       <p class="sdesc">Real wellness isn't a trend it's a return to what the earth has always provided.</p>
     </div>
-    <div class="pillar-carousel reveal" id="pillarCarousel" aria-roledescription="carousel" aria-label="Six Pillars of Harmony">
-      <div class="pillar-stage" id="pillarStage">
-        <div class="pillar-ring" id="pillarRing">
-      <article class="pillar" style="--i:0" role="group" aria-roledescription="slide" aria-label="1 of 6: Herbal Wisdom">
+    <div class="pillar-grid">
+      <article class="pillar reveal">
         <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C" aria-hidden="true"><path d="M24 44V22"/><path d="M24 22C24 22 16 18 16 10C16 6 20 2 24 6C28 2 32 6 32 10C32 18 24 22 24 22Z"/><path d="M18 38C12 36 8 30 8 24C8 18 12 14 16 14"/><path d="M30 38C36 36 40 30 40 24C40 18 36 14 32 14"/></svg>
         <h3>Herbal Wisdom</h3>
         <p>Getting to know the plants people have trusted for generations, from mullein and elderberry to adaptogens and time-honored herbal traditions.</p>
       </article>
-      <article class="pillar" style="--i:1" role="group" aria-roledescription="slide" aria-label="2 of 6: Nourish &amp; Supplement">
+      <article class="pillar reveal">
         <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C" aria-hidden="true"><circle cx="24" cy="24" r="10"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6"/><path d="M10 10l4 4M34 34l4 4M10 38l4-4M34 14l4-4"/></svg>
         <h3>Nourish &amp; Supplement</h3>
         <p>Whole-food nutrition, natural supplements, and intentional nourishment: giving your body good building blocks to feel its best.</p>
       </article>
-      <article class="pillar" style="--i:2" role="group" aria-roledescription="slide" aria-label="3 of 6: Holistic Living">
+      <article class="pillar reveal">
         <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C" aria-hidden="true"><path d="M8 24C8 14 14 8 24 8"/><path d="M14 24C14 18 18 14 24 14"/><path d="M20 24C20 21 21 20 24 20"/><circle cx="24" cy="24" r="2" fill="#4E6B3C"/><path d="M24 8C34 8 40 14 40 24C40 34 34 40 24 40C14 40 8 34 8 24"/></svg>
         <h3>Holistic Living</h3>
         <p>Movement, sauna sessions, herbal teas and fresh air: building a daily rhythm that brings your mind and body into alignment.</p>
       </article>
-      <article class="pillar" style="--i:3" role="group" aria-roledescription="slide" aria-label="4 of 6: Learn &amp; Grow">
+      <article class="pillar reveal">
         <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C" aria-hidden="true"><path d="M24 14C19 10 12 9 6 10v26c6-1 13 0 18 4"/><path d="M24 14c5-4 12-5 18-4v26c-6-1-13 0-18 4"/><path d="M24 14v26"/><path d="M33 4c-3 2-4 5-3 8 3-1 5-4 3-8z"/></svg>
         <h3>Learn &amp; Grow</h3>
         <p>Honest, research-backed information in plain language, so you can understand your body and make your own informed choices.</p>
       </article>
-      <article class="pillar" style="--i:4" role="group" aria-roledescription="slide" aria-label="5 of 6: Ritual &amp; Rest">
+      <article class="pillar reveal">
         <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C" aria-hidden="true"><path d="M10 22h24v8a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z"/><path d="M34 25h3a4 4 0 0 1 0 8h-4"/><path d="M18 16c0-3 3-3 3-6"/><path d="M25 16c0-3 3-3 3-6"/><path d="M8 44h32"/></svg>
         <h3>Ritual &amp; Rest</h3>
         <p>Slowing down on purpose. A morning cup of tea, a quiet evening, real sleep: small daily rituals that make balance something you practice, not chase.</p>
       </article>
-      <article class="pillar" style="--i:5" role="group" aria-roledescription="slide" aria-label="6 of 6: Rooted in Community">
+      <article class="pillar reveal">
         <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" color="#4E6B3C" aria-hidden="true"><circle cx="24" cy="14" r="5"/><circle cx="11" cy="20" r="4"/><circle cx="37" cy="20" r="4"/><path d="M15 40v-6a9 9 0 0 1 18 0v6"/><path d="M4 38v-4a7 7 0 0 1 9-6.7"/><path d="M44 38v-4a7 7 0 0 0-9-6.7"/></svg>
         <h3>Rooted in Community</h3>
         <p>Wellness grown in Memphis and shared with our neighbors: small-batch goods, honest information, and good health within reach for everyone.</p>
       </article>
-        </div>
-      </div>
-      <div class="pillar-controls">
-        <button type="button" class="pillar-nav" id="pillarPrev" aria-label="Previous pillar">&#8592;</button>
-        <div class="pillar-dots" id="pillarDots" role="tablist" aria-label="Choose a pillar"></div>
-        <button type="button" class="pillar-nav" id="pillarNext" aria-label="Next pillar">&#8594;</button>
-      </div>
-      <p class="visually-hidden" id="pillarStatus" aria-live="polite"></p>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="about" id="about">
-  <div class="about-inner">
-    <div class="about-photo reveal" style="background-image:url('/images/shelf.jpg');background-size:cover;background-position:center;">
-    </div>
+  <div class="wrap about-inner">
+    <figure class="about-photo reveal">
+      <img src="/images/home/shelf.jpg" alt="A wooden cabinet of labeled glass jars filled with dried herbs, including mullein, peppermint, cloves, and elderberry." width="1000" height="1333" loading="lazy" decoding="async">
+    </figure>
     <div class="about-text">
       <div class="reveal">
         <p class="tag">The Story</p>
@@ -969,57 +889,123 @@ footer {
   </div>
 </section>
 
-<!-- BLOG -->
-<section class="blog" id="blog">
-  <div class="blog-top">
+<section class="herbs" id="herbs" aria-labelledby="herbs-title">
+  <div class="wrap">
     <div class="reveal">
-      <p class="tag">From the Journal</p>
-      <h2 class="stitle">Latest Posts</h2>
+      <p class="tag">From the Apothecary</p>
+      <h2 class="stitle" id="herbs-title">Herbs Worth Knowing</h2>
+      <p class="sdesc">Three plants the journal keeps coming back to, written up in plain language.</p>
     </div>
-    <a href="/blog/" class="btn btn-outline reveal" style="font-size:0.72rem; padding:0.65rem 1.4rem;">View All</a>
-  </div>
-  <div class="blog-grid" id="blogGrid">
-    <div class="bcard reveal" style="text-align:center;padding:3rem;grid-column:1/-1;">
-      <p style="color:var(--text-light);font-family:'Lora',serif;">Loading posts...</p>
+    <div class="herb-grid">
+      <a class="herb-card reveal" href="/blog/mullein-leaf-the-herb-that-started-it-all/">
+        <span class="herb-media"><img src="/images/uploads/mullein500_large.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
+        <span class="herb-body">
+          <span class="herb-name">Mullein Leaf</span>
+          <span class="herb-blurb">How I discovered mullein leaf for lung support, and simple ways to start using it.</span>
+          <span class="herb-go">Read the story</span>
+        </span>
+      </a>
+      <a class="herb-card reveal" href="/blog/the-ancient-power-of-elderberry-syrup/">
+        <span class="herb-media"><img src="/images/home/elderberry.jpg" alt="" width="1000" height="742" loading="lazy" decoding="async"></span>
+        <span class="herb-body">
+          <span class="herb-name">Elderberry</span>
+          <span class="herb-blurb">How a simple purple berry became one of nature's most trusted immune allies.</span>
+          <span class="herb-go">Read the story</span>
+        </span>
+      </a>
+      <a class="herb-card reveal" href="/blog/peppermint-leaf-tea-a-refreshing-classic-for-digestion-and-calm/">
+        <span class="herb-media"><img src="/images/home/peppermint.jpg" alt="" width="900" height="900" loading="lazy" decoding="async"></span>
+        <span class="herb-body">
+          <span class="herb-name">Peppermint Leaf</span>
+          <span class="herb-blurb">A refreshing classic for digestion and calm, with simple tips for brewing a cup at home.</span>
+          <span class="herb-go">Read the story</span>
+        </span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
+<section class="blend" id="blend" aria-labelledby="blend-title">
+  <div class="wrap blend-grid">
+    <figure class="blend-photo reveal">
+      <img src="/images/home/jars.jpg" alt="A row of Harmony Herbal Blend jars with copper lids lined up on a wooden shelf beside other labeled herb jars." width="1100" height="1467" loading="lazy" decoding="async">
+    </figure>
+    <div class="blend-copy reveal">
+      <p class="tag">Small Batch</p>
+      <h2 class="stitle" id="blend-title">Harmony Herbal Blend</h2>
+      <p class="sdesc">A warming, caffeine-free loose-leaf blend of six herbs and spices — cool peppermint, mellow mullein, cinnamon, ginger, golden turmeric and a touch of the sea. Hand-blended in small batches in Memphis, TN.</p>
+      <p class="blend-meta">8 oz clear glass jar with rose-gold lid · $15</p>
+      <div class="btn-row">
+        <a class="btn btn-fill" href="/shop/harmony-herbal-blend/">Shop the blend</a>
+        <a class="btn btn-outline" href="/blog/harmony-herbal-blend-whats-in-the-jar-and-what-it-can-support/">What's in the jar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blog" id="blog">
+  <div class="wrap">
+    <div class="blog-top">
+      <div class="reveal">
+        <p class="tag">From the Journal</p>
+        <h2 class="stitle">Latest Posts</h2>
+      </div>
+      <a href="/blog/" class="btn btn-outline reveal">View All</a>
+    </div>
+    <div class="blog-grid" id="blogGrid">
+      <p class="blog-loading">Loading posts…</p>
+    </div>
+    <noscript><p class="blog-loading"><a href="/blog/">Read the latest posts on the journal.</a></p></noscript>
+  </div>
+</section>
+
+<section class="invite" id="write-invite" aria-labelledby="write-title">
+  <div class="wrap">
+    <div class="invite-card reveal">
+      <p class="tag">Community Voices · Memphis</p>
+      <h2 class="stitle" id="write-title">Write for Herbal Harmony</h2>
+      <p class="sdesc">Share what you know about herbs, food, rest, and neighborhood rituals. Don reads every pitch. If a piece is a fit, it runs under your name. Nothing goes live on its own.</p>
+      <a class="btn btn-fill" href="/write/">Write for us</a>
+    </div>
+  </div>
+</section>
+
 <section class="coming-soon" id="products">
-  <div class="cs-inner">
-    <div class="reveal">
+  <div class="wrap">
+    <div class="reveal center">
       <p class="tag">Shop</p>
       <h2 class="stitle">From Our Hands to Yours</h2>
       <p class="sdesc">Resources and products rooted in real experience, real ingredients, and real results.</p>
     </div>
-    <div class="prod-grid" style="grid-template-columns: repeat(4, 1fr);">
-      <a href="/book/" class="prod-card reveal" style="text-decoration:none;border:1.5px solid rgba(184,160,96,0.3);">
-        <div class="prod-emoji">📖</div>
+    <div class="prod-grid">
+      <a href="/book/" class="prod-card prod-live reveal">
+        <span class="prod-media prod-media-book"><img src="/book/cover.jpg" alt="" width="800" height="1199" loading="lazy" decoding="async"></span>
         <h4>The 6 Phases of Fasting</h4>
         <p>A comprehensive guide to the transformative journey of fasting — from preparation to autophagy to refeeding.</p>
-        <span style="display:inline-block;margin-top:0.8rem;font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">Learn More →</span>
+        <span class="prod-more">Learn More →</span>
       </a>
-      <a href="/shop/harmony-herbal-blend/" class="prod-card reveal" style="text-decoration:none;border:1.5px solid rgba(184,160,96,0.3);">
-        <div class="prod-emoji">🍵</div>
+      <a href="/shop/harmony-herbal-blend/" class="prod-card prod-live reveal">
+        <span class="prod-media"><img src="/images/home/blend.jpg" alt="" width="1000" height="1000" loading="lazy" decoding="async"></span>
         <h4>Harmony Herbal Blend</h4>
         <p>Our first small-batch loose-leaf tea — warming, caffeine free, hand-blended in Memphis.</p>
-        <span style="display:inline-block;margin-top:0.8rem;font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">Now Available · $15 →</span>
+        <span class="prod-more">Now Available · $15 →</span>
       </a>
       <div class="prod-card reveal">
-        <div class="prod-emoji">🌿</div>
+        <span class="prod-media" aria-hidden="true"><span class="prod-emoji">🌿</span></span>
         <h4>Herbal Supplements</h4>
         <p>Whole-plant formulas designed to support your body naturally.</p>
-        <span style="display:inline-block;margin-top:0.8rem;font-size:0.65rem;color:rgba(244,241,235,0.35);letter-spacing:0.1em;text-transform:uppercase;">Coming Soon</span>
+        <span class="prod-soon">Coming Soon</span>
       </div>
       <div class="prod-card reveal">
-        <div class="prod-emoji">🫙</div>
+        <span class="prod-media" aria-hidden="true"><span class="prod-emoji">🫙</span></span>
         <h4>Herbal Tinctures</h4>
         <p>Concentrated plant extracts for targeted, everyday wellness support.</p>
-        <span style="display:inline-block;margin-top:0.8rem;font-size:0.65rem;color:rgba(244,241,235,0.35);letter-spacing:0.1em;text-transform:uppercase;">Coming Soon</span>
+        <span class="prod-soon">Coming Soon</span>
       </div>
     </div>
-    <a href="/shop/" class="btn btn-fill reveal" style="margin-top:2.2rem;background:var(--gold);color:var(--green-deep);">Visit the Shop</a>
+    <div class="shop-actions center">
+      <a href="/shop/" class="btn btn-gold reveal">Visit the Shop</a>
+    </div>
     <form class="notify reveal" id="notifyForm" action="https://buttondown.com/api/emails/embed-subscribe/HerbalHarmonyTN" method="post" target="_blank" novalidate>
       <p class="hp" aria-hidden="true">
         <label>Leave this empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
@@ -1032,17 +1018,17 @@ footer {
   </div>
 </section>
 
-<!-- REVIEWS (filled from /shop/reviews.json; stays hidden until there are approved reviews) -->
 <section class="home-reviews" id="reviews" hidden>
-  <div class="hr-inner">
+  <div class="wrap">
     <p class="tag">Reviews</p>
     <h2 class="stitle">Kind Words from the Community</h2>
     <div class="hr-grid" id="homeReviews"></div>
-    <a href="/shop/" class="btn btn-fill" style="margin-top:2.2rem;">Visit the Shop</a>
+    <a href="/shop/" class="btn btn-fill" style="margin-top:1.6rem;">Visit the Shop</a>
   </div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
 <footer>
   <div class="foot-grid">
     <div class="foot-brand">
@@ -1071,123 +1057,48 @@ footer {
 </footer>
 
 <script>
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
-});
-
-function toggleMenu() {
-  var links = document.getElementById('navLinks');
-  var open = links.classList.toggle('open');
-  var btn = document.getElementById('menuBtn');
-  if (btn) {
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  }
-}
-function closeMenu() {
-  document.getElementById('navLinks').classList.remove('open');
-}
-
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Six pillars rotating ring
 (function () {
-  var stage = document.getElementById('pillarStage');
-  if (!stage) return;
-  var ring = document.getElementById('pillarRing');
-  var cards = Array.prototype.slice.call(ring.querySelectorAll('.pillar'));
-  var dotsWrap = document.getElementById('pillarDots');
-  var status = document.getElementById('pillarStatus');
-  var n = cards.length, step = 360 / n, pos = 0, timer = null, resumeAt = 0;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('navbar');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
 
-  function radius() {
-    var cw = cards[0].offsetWidth || 300;
-    return Math.round((cw / 2) / Math.tan(Math.PI / n) + 28);
-  }
-  function setRadius() { stage.style.setProperty('--r', radius() + 'px'); ring.style.setProperty('--r', radius() + 'px'); }
-
-  var dots = cards.map(function (c, i) {
-    var b = document.createElement('button');
-    b.type = 'button'; b.className = 'pillar-dot'; b.setAttribute('role', 'tab');
-    b.setAttribute('aria-label', c.querySelector('h3').textContent);
-    b.addEventListener('click', function () { goTo(i, true); });
-    dotsWrap.appendChild(b);
-    return b;
-  });
-
-  function idx() { return ((pos % n) + n) % n; }
-  function render(announce) {
-    ring.style.setProperty('--angle', (-pos * step) + 'deg');
-    var a = idx();
-    cards.forEach(function (c, i) {
-      var front = i === a;
-      c.classList.toggle('is-front', front);
-      c.setAttribute('aria-hidden', front ? 'false' : 'true');
-    });
-    dots.forEach(function (d, i) { d.setAttribute('aria-selected', i === a ? 'true' : 'false'); d.tabIndex = i === a ? 0 : -1; });
-    if (announce) status.textContent = cards[a].getAttribute('aria-label');
-  }
-  function goTo(i, user) {
-    var d = i - idx();
-    if (d > n / 2) d -= n;
-    if (d < -n / 2) d += n;
-    pos += d; render(user); if (user) pause();
-  }
-  function move(delta, user) { pos += delta; render(user); if (user) pause(); }
-  function pause() { resumeAt = Date.now() + 9000; }
-
-  document.getElementById('pillarPrev').addEventListener('click', function () { move(-1, true); });
-  document.getElementById('pillarNext').addEventListener('click', function () { move(1, true); });
-  stage.addEventListener('mouseenter', function () { resumeAt = Infinity; });
-  stage.addEventListener('mouseleave', function () { resumeAt = Date.now() + 2500; });
-  stage.addEventListener('focusin', function () { resumeAt = Infinity; });
-  stage.addEventListener('focusout', function () { resumeAt = Date.now() + 2500; });
-  stage.tabIndex = 0;
-  stage.setAttribute('aria-label', 'Pillars. Use left and right arrow keys to turn.');
-  stage.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') { e.preventDefault(); move(1, true); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); move(-1, true); }
-  });
-
-  // drag / swipe to spin
-  var startX = null, startPos = 0, moved = false;
-  stage.addEventListener('pointerdown', function (e) {
-    if (e.button !== undefined && e.button !== 0) return;
-    startX = e.clientX; startPos = pos; moved = false;
-  });
-  window.addEventListener('pointermove', function (e) {
-    if (startX === null) return;
-    var dx = e.clientX - startX;
-    if (Math.abs(dx) > 6) { moved = true; stage.classList.add('dragging'); }
-    if (moved) ring.style.setProperty('--angle', (-(startPos * step) + dx * 0.35) + 'deg');
-  });
-  window.addEventListener('pointerup', function (e) {
-    if (startX === null) return;
-    var dx = e.clientX - startX; startX = null; stage.classList.remove('dragging');
-    if (moved) {
-      var steps = Math.round((dx * 0.35) / step);
-      if (steps === 0 && Math.abs(dx) > 40) steps = dx < 0 ? -1 : 1;
-      pos = startPos - steps; render(true); pause();
+  function setMenu(open) {
+    var links = document.getElementById('navLinks');
+    var btn = document.getElementById('menuBtn');
+    links.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    if (btn) {
+      btn.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     }
-  });
-
-  setRadius(); render(false);
-  window.addEventListener('resize', setRadius);
-  if (!reduce) {
-    timer = setInterval(function () {
-      if (Date.now() < resumeAt || document.hidden) return;
-      var r = stage.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      move(1, false);
-    }, 4200);
   }
+  window.toggleMenu = function () {
+    setMenu(!document.getElementById('navLinks').classList.contains('open'));
+  };
+  window.closeMenu = function () { setMenu(false); };
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') window.closeMenu();
+  });
 })();
 
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(els, function (el) { el.classList.add('vis'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('vis');
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  Array.prototype.forEach.call(els, function (el) { obs.observe(el); });
+})();
 
 // Product-updates signup: subscribe via Buttondown in the background
 (function () {
@@ -1224,6 +1135,11 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     'recipes': 'linear-gradient(135deg, #6B5344 0%, #A67C52 40%, #E4C9A0 100%)',
     'community voices': 'linear-gradient(135deg, #3A4F2F 0%, #7A8B6F 50%, #D4C48A 100%)'
   };
+  var lightThumb = {
+    '/images/uploads/u3215293719_peppermint_leaf_tea_-hd_-v_8.1_58d78e11-3ef5-4ee2-9b32-db4b7a02ae1a_0.png': '/images/home/peppermint.jpg',
+    '/images/uploads/ca032e0b-5bf0-405f-aa54-593b24c1cf02.png': '/images/home/elderberry.jpg',
+    '/images/uploads/chamomile-hero.jpg': '/images/home/chamomile.jpg'
+  };
 
   function esc(t) {
     return String(t == null ? '' : t)
@@ -1240,11 +1156,10 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       posts.slice(0, MAX_POSTS).forEach(function(p) {
         var bg = catColors[(p.category || '').toLowerCase()] || catColors['herbs a–z'];
         var safeThumb = (p.thumbnail && (p.thumbnail.charAt(0) === '/' || /^https:/.test(p.thumbnail))) ? p.thumbnail : '';
-        var thumbStyle = safeThumb
-          ? 'background-image:url(' + esc(safeThumb) + ');background-size:cover;background-position:center;'
-          : 'background:' + bg + ';';
+        if (lightThumb[safeThumb]) safeThumb = lightThumb[safeThumb];
         html += '<a href="' + esc(p.url || '/blog/') + '" class="bcard reveal vis">' +
-          '<div class="bcard-img" style="' + thumbStyle + '">' +
+          '<div class="bcard-img" style="background:' + bg + '">' +
+          (safeThumb ? '<img src="' + esc(safeThumb) + '" alt="" width="800" height="500" loading="lazy" decoding="async">' : '') +
           (p.category ? '<span class="bcard-cat">' + esc(p.category) + '</span>' : '') +
           '</div><div class="bcard-body">' +
           '<p class="bcard-date">' + esc(p.dateLabel || '') + '</p>' +
@@ -1258,8 +1173,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     })
     .catch(function() {
       document.getElementById('blogGrid').innerHTML =
-        '<div style="text-align:center;padding:3rem;grid-column:1/-1;">' +
-        '<p style="color:var(--text-light);font-family:Lora,serif;">Posts coming soon — check back shortly.</p></div>';
+        '<p class="blog-loading">Posts are on the journal. <a href="/blog/">Read the blog</a></p>';
     });
 })();
 </script>
@@ -1303,4 +1217,3 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
-
