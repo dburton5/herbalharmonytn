@@ -708,6 +708,14 @@ section { padding: 6rem 2.5rem; }
   transform: translateY(-1px);
 }
 
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* ════════ FOOTER ════════ */
 footer {
   background: #1E2419;
@@ -1013,6 +1021,9 @@ footer {
     </div>
     <a href="/shop/" class="btn btn-fill reveal" style="margin-top:2.2rem;background:var(--gold);color:var(--green-deep);">Visit the Shop</a>
     <form class="notify reveal" id="notifyForm" action="https://buttondown.com/api/emails/embed-subscribe/HerbalHarmonyTN" method="post" target="_blank" novalidate>
+      <p class="hp" aria-hidden="true">
+        <label>Leave this empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label>
+      </p>
       <input type="email" name="email" aria-label="Email address" placeholder="Enter your email for product updates" autocomplete="email" required>
       <input type="hidden" name="embed" value="1">
       <button type="submit">Notify Me</button>
@@ -1184,12 +1195,22 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   if (!f) return;
   f.addEventListener('submit', function (e) {
     e.preventDefault();
+    var trap = f.querySelector('[name="bot-field"]');
+    var msg = document.getElementById('notifyMsg');
+    if (trap && trap.value) {
+      f.style.display = 'none';
+      msg.style.display = 'block';
+      return;
+    }
     var em = f.querySelector('input[type=email]');
     if (!em.value || !em.checkValidity()) { em.focus(); if (em.reportValidity) em.reportValidity(); return; }
     f.querySelector('button').disabled = true;
-    fetch(f.action, { method: 'POST', mode: 'no-cors', body: new FormData(f) })
+    var body = new FormData();
+    body.append('email', em.value);
+    body.append('embed', '1');
+    fetch(f.action, { method: 'POST', mode: 'no-cors', body: body })
       .catch(function () {})
-      .then(function () { f.style.display = 'none'; document.getElementById('notifyMsg').style.display = 'block'; });
+      .then(function () { f.style.display = 'none'; msg.style.display = 'block'; });
   });
 })();
 
@@ -1266,6 +1287,19 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     })
     .catch(function () {});
 })();
+</script>
+<!-- Completes a Netlify Identity invite that opens the homepage, then sends that person to the CMS. No login button is shown. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', function (user) {
+      if (!user) {
+        window.netlifyIdentity.on('login', function () {
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
 </script>
 </body>
 </html>
